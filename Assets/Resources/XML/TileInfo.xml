@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<TileInfo>
+  <Tile id="Tilemap_0_0">
+    <Name>grass</Name>
+    <Path>Tile/Tilemap_0_0</Path>
+  </Tile>
+  <Tile id="Tilemap_0_1">
+    <Name>grass</Name>
+    <Path>Tile/Tilemap_0_1</Path>
+  </Tile>
+  <Tile id="Tilemap_0_2">
+    <Name>grass</Name>
+    <Path>Tile/Tilemap_0_2</Path>
+  </Tile>
+  <Tile id="Tilemap_0_3">
+    <Name>grass</Name>
+    <Path>Tile/Tilemap_0_3</Path>
+  </Tile>
+  <Tile id="Tilemap_1_0">
+    <Name>grass</Name>
+    <Path>Tile/Tilemap_1_0</Path>
+  </Tile>
+  <Tile id="Tilemap_1_1">
+    <Name>grass</Name>
+    <Path>Tile/Tilemap_1_1</Path>
+  </Tile>
+  <Tile id="Tilemap_1_2">
+    <Name>grass</Name>
+    <Path>Tile/Tilemap_1_2</Path>
+  </Tile>
+  <Tile id="Tilemap_1_3">
+    <Name>grass</Name>
+    <Path>Tile/Tilemap_1_3</Path>
+  </Tile>
+</TileInfo>
