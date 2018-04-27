@@ -32,4 +32,20 @@
     <Name>grass</Name>
     <Path>Tile/Tilemap_1_3</Path>
   </Tile>
+  <Tile id="Tilemap_1_4">
+    <Name>grass</Name>
+    <Path>Tile/Tilemap_1_4</Path>
+  </Tile>
+  <Tile id="Tilemap_1_5">
+    <Name>grass</Name>
+    <Path>Tile/Tilemap_1_5</Path>
+  </Tile>
+  <Tile id="Tilemap_1_6">
+    <Name>grass</Name>
+    <Path>Tile/Tilemap_1_6</Path>
+  </Tile>
+  <Tile id="Tilemap_1_7">
+    <Name>grass</Name>
+    <Path>Tile/Tilemap_1_7</Path>
+  </Tile>
 </TileInfo>

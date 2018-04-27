@@ -17,9 +17,8 @@ public class PlayerInput : MonoBehaviour {
         vec3BodyPosition = CameraPositionSetter.Get.AddTarget(gameObject.ToString() + "Body");
         vec3MoveTo = CameraPositionSetter.Get.AddTarget(gameObject.ToString() + "MoveTo");
     }
-
-    // Update is called once per frame
-    void Update () {
+    private void FixedUpdate()
+    {
         Vector2 dir = Vector2.zero;
         timeSum += Time.deltaTime;
         if (timeSum >= MoveRepeatTime)
@@ -30,11 +29,15 @@ public class PlayerInput : MonoBehaviour {
             if (Input.GetKey(KeyCode.DownArrow)) dir += new Vector2(0, -1);
             if (Input.GetKey(KeyCode.LeftArrow)) dir += new Vector2(-1, 0);
             if (Input.GetKey(KeyCode.RightArrow)) dir += new Vector2(1, 0);
+            if (Input.GetKey(KeyCode.Space)) multiple *= 20;
             dir = Vector2.ClampMagnitude(dir, 1);
             if (dir != Vector2.zero)
                 rigid2D.AddForce(dir * MovePower * multiple);
         }
+    }
 
+    // Update is called once per frame
+    void Update () {
         vec3BodyPosition.vec = transform.position;
         vec3MoveTo.vec = Util.V3toV2(transform.position) + rigid2D.velocity * Time.deltaTime;
     }
