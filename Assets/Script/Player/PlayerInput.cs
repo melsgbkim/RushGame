@@ -29,11 +29,16 @@ public class PlayerInput : MonoBehaviour {
             if (Input.GetKey(KeyCode.DownArrow)) dir += new Vector2(0, -1);
             if (Input.GetKey(KeyCode.LeftArrow)) dir += new Vector2(-1, 0);
             if (Input.GetKey(KeyCode.RightArrow)) dir += new Vector2(1, 0);
-            if (Input.GetKey(KeyCode.Space)) multiple *= 20;
+            
             dir = Vector2.ClampMagnitude(dir, 1);
             if (dir != Vector2.zero)
-                rigid2D.AddForce(dir * MovePower * multiple);
+                rigid2D.AddForce(dir * MovePower);
+
+            
         }
+
+        if (Input.GetKeyDown(KeyCode.Space)) rigid2D.AddForce(new Vector2(1, 0) * MovePower * 30);
+
     }
 
     // Update is called once per frame
