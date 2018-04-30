@@ -58,4 +58,11 @@ public class XmlFile
     }
 
     string XmlFilePath = "";
+
+
+
+    public static XmlFile Load(string path)
+    {
+        return XMLFileLoader.Loader.File(path);
+    }
 }

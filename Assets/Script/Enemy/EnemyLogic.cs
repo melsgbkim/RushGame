@@ -24,6 +24,10 @@ public class EnemyLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (dead) Destroy(gameObject);
+        if (dead)
+        {
+            gameObject.GetComponent<EnemyInfo>().OnDead();
+            Destroy(gameObject);
+        }
     }
 }

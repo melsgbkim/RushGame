@@ -8,9 +8,13 @@ public class CameraPositionSetter : MonoBehaviour {
     Hashtable TargetList = new Hashtable();
     //List<GameObject> TargetList = new List<GameObject>();
     // Use this for initialization
-    void Start () {
+    public CameraPositionSetter()
+    {
         if (Get == null)
             Get = this;
+    }
+    void Start () {
+        
 
     }
 	
@@ -21,8 +25,6 @@ public class CameraPositionSetter : MonoBehaviour {
             ave += t.vec;
         ave /= TargetList.Count;
         transform.position = new Vector3(ave.x, ave.y, transform.position.z);
-
-
     }
 
     public Vector3ForCameraTarget AddTarget(string key)
