@@ -25,44 +25,10 @@ public class EnemyInfo : MonoBehaviour
                 gameObject.AddComponent<EnemyLogic>();
                 gameObject.AddComponent<EnemyCollisionHandler>();
 
-                SetChildInfo();
+                ChildInfoParser.Get.SetChildInfo(transform,EnemyNode);
             }
         }
     }
-
-    void SetChildInfo()
-    {
-        for (int i = 0; i < transform.GetChildCount(); i++)
-        {
-            Transform child = transform.GetChild(i);
-            XmlNodeList list = EnemyNode.GetElementsByTagName(child.name);
-            if (list.Count == 0) continue;
-            foreach (XmlElement node in list[0].ChildNodes)
-            {
-                string val = node.InnerText;
-                try
-                {
-                    switch (node.Name)
-                    {
-                        case "x": SetChildLocalPosX(child, val);break;
-                        case "y": SetChildLocalPosY(child, val);break;
-                        case "z": SetChildLocalPosZ(child, val);break;
-                        case "scale": SetChildLocalScale(child,val); break;
-                        case "Animation": SetChildSpriteAnimation(child,val); break;
-                    }
-                }
-                catch (System.Exception e) { }
-            }
-
-        }
-    }
-    void SetChildLocalPosX(Transform c, string value) { c.localPosition = new Vector3(float.Parse(value), c.localPosition.y,  c.localPosition.z); }
-    void SetChildLocalPosY(Transform c, string value) { c.localPosition = new Vector3(c.localPosition.x,  float.Parse(value), c.localPosition.z); }
-    void SetChildLocalPosZ(Transform c, string value) { c.localPosition = new Vector3(c.localPosition.x, c.localPosition.y, float.Parse(value)); }
-    void SetChildLocalScale(Transform c, string value) { c.localScale = new Vector3(float.Parse(value), float.Parse(value), 0); }
-    void SetChildSpriteAnimation(Transform c, string value) {
-        Animator tmp = c.GetComponent<Animator>();
-        tmp.runtimeAnimatorController = Resources.Load(value) as RuntimeAnimatorController; }
 
     public void OnDead()
     {

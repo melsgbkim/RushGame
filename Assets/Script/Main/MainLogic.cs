@@ -5,6 +5,7 @@ using System.Xml;
 public class MainLogic : MonoBehaviour
 {
     public GameObject EnemyPrefab;
+    public GameObject ItemPrefab;
     public static MainLogic Get = null;
     public MainLogic()
     {
@@ -21,7 +22,6 @@ public class MainLogic : MonoBehaviour
                 EnemyCreate("Enemy_opossum", new Vector2(x, y+0.5f));
             }
         }
-        
     }
 
     // Update is called once per frame
@@ -45,13 +45,17 @@ public class MainLogic : MonoBehaviour
         string _RandomCountMax = node.GetAttribute("max");
 
         float minPercent = (_minPercent == "" ? 1 : float.Parse(_minPercent));
-        int Min = (_RandomCountMin == "" ? 1 : int.Parse(_RandomCountMin));
-        int Max = (_RandomCountMax == "" ? 1 : int.Parse(_RandomCountMax));
+        if (Random.RandomRange(0, 1) > minPercent) return;
+
+        float Min = (_RandomCountMin == "" ? 1 : float.Parse(_RandomCountMin));
+        float Max = (_RandomCountMax == "" ? 1 : float.Parse(_RandomCountMax));
+        int count = Mathf.FloorToInt(Random.Range(0f, 1f) * (Max - Min + 1) + Min);
 
         XmlElement ItemInfo = XmlFile.Load("ItemInfo").GetNodeByID(id, "Item");
 
-        print("id:"+id+" count:"+ Random.RandomRange(Min, Max));
-
+        GameObject Item = Instantiate(ItemPrefab, pos, ItemPrefab.transform.rotation) as GameObject;
+        Item.GetComponent<ItemInfo>().id = id;
+        Item.GetComponent<ItemInfo>().Count = count;
         //DropItemPos(new ItemCube(id, Random.RandomRange(Min, Max) * 1f), pos, vel);
 
     }

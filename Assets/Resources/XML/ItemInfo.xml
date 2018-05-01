@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <ItemInfo>
-  <Item id="Item_0">
+  <Item id="Item_1">
     <Name>Cheese</Name>
-    <Path>Sprite/ItemIcon_0</Path>
+    <Sprite>
+      <Image Index="1">Sprite/ItemIcon</Image>
+    </Sprite>
+    <Shadow>
+      <x>0</x>
+      <y>-0.12</y>
+      <scale>0.6</scale>
+    </Shadow>
   </Item>
 </ItemInfo>
