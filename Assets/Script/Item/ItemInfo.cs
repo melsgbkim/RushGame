@@ -6,6 +6,7 @@ public class ItemInfo : MonoBehaviour
 {
     string _id = "";
     public int Count = 0;
+    public GameObject Player = null;
     XmlElement ItemNode = null;
     public string id
     {
@@ -21,27 +22,29 @@ public class ItemInfo : MonoBehaviour
             {
                 _id = value;
 
-                gameObject.AddComponent<EnemyLogic>();
-                gameObject.AddComponent<EnemyCollisionHandler>();
-
                 ChildInfoParser.Get.SetChildInfo(transform, ItemNode);
 
-                MainItemPositionUpdater.Get.AddList(new ItemPositionData(transform, transform.localPosition, transform.localPosition + Quaternion.Euler(0, 0, Random.RandomRange(0, 360)) * new Vector3(Random.RandomRange(0.3f, 0.75f), 0, 0), 1));
+                MainItemPositionUpdater.Get.AddList(new ItemPositionData(this, transform.localPosition, 
+                    transform.localPosition + Quaternion.Euler(0, 0, Random.RandomRange(0, 360)) * new Vector3(Random.RandomRange(0.3f, 0.75f), 0, 0), "ItemDrop", 1,1f));
             }
         }
     }
 
-
-
-    // Use this for initialization
-    void Start()
+    public void EndItemMove(string type)
     {
-        
+        if (type == "ItemDrop")
+        {
+            ItemGetByPlayer(Player);
+        }
+        else if (type == "ItemGet")
+        {
+            Destroy(gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ItemGetByPlayer(GameObject player)
     {
-
+        MainItemPositionUpdater.Get.AddList(new ItemPositionData(this, transform.localPosition, player.transform, "ItemGet", 0, 3f,0.2f));
+        player.GetComponent<PlayerInventory>().GetItem(id,Count);
     }
 }

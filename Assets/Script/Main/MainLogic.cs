@@ -37,7 +37,7 @@ public class MainLogic : MonoBehaviour
         //enemy.transform.localPosition = pos;
     }
 
-    public void RandomDropItem(XmlElement node,Vector2 pos)
+    public void RandomDropItem(XmlElement node,Vector2 pos,GameObject player)
     {
         string id = node.InnerText;
         string _minPercent = node.GetAttribute("percent");
@@ -56,6 +56,7 @@ public class MainLogic : MonoBehaviour
         GameObject Item = Instantiate(ItemPrefab, pos, ItemPrefab.transform.rotation) as GameObject;
         Item.GetComponent<ItemInfo>().id = id;
         Item.GetComponent<ItemInfo>().Count = count;
+        Item.GetComponent<ItemInfo>().Player = player;
         //DropItemPos(new ItemCube(id, Random.RandomRange(Min, Max) * 1f), pos, vel);
 
     }

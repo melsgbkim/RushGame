@@ -5,6 +5,7 @@ using System.Xml;
 public class EnemyInfo : MonoBehaviour
 {
     string _id = "";
+    public GameObject Player = null;
     XmlElement EnemyNode = null;
     public string id
     {
@@ -38,7 +39,7 @@ public class EnemyInfo : MonoBehaviour
             switch(node.Name)
             {
                 case "RandomDropItem":
-                    MainLogic.Get.RandomDropItem(node, transform.position);
+                    MainLogic.Get.RandomDropItem(node, transform.position,Player);
                     break;
             }
         }
