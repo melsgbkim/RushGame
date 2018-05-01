@@ -6,10 +6,15 @@
       <RandomDropItem percent="1"   >Item_0</RandomDropItem>
       <RandomDropItem percent="0.5" min="1" max="3">Item_0</RandomDropItem>
     </Destroy>
-    <Path>Enemy/opossum</Path>
-    <PrefabPath>prefab/EmptyEnemy</PrefabPath>
-    <Animation>Animations/opossum-1</Animation>
     <RigidbodyMass>10</RigidbodyMass>
     <RigidbodyDrag>1</RigidbodyDrag>
+    <Sprite>
+      <Animation>Animations/opossum-1</Animation>
+    </Sprite>    
+    <Shadow>
+      <x>0</x>
+      <y>-0.11</y>
+      <scale>0.8</scale>
+    </Shadow>
   </Enemy>
 </EnemyInfo>
