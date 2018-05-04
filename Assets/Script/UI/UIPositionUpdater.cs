@@ -16,25 +16,58 @@ public class UIPositionUpdater : MonoBehaviour
         {
             if(_toggle != value)
             {
-                end = false;
                 _toggle = value;
-                progress = 0f;
+                StartUpdate();
             }
         }
     }
 
 
     public string name = "";
+    public bool NoInput = false;
     public Vector3 PosToggleOFF;
     public Vector2 SizeToggleOFF = Vector2.one;
     public Vector3 PosToggleON;
     public Vector2 SizeToggleON = Vector2.one;
     public float SpeedToggle = 2f;
-    public float SpeedTogglePow = 1f;
+    public float SpeedTogglePow = 3f;
     // Use this for initialization
     void Start()
     {
-        transform.localPosition = PosToggleOFF;
+        
+        if(NoInput)
+        {
+            PosToggleOFF = PosToggleON = transform.localPosition;
+            SizeToggleOFF = SizeToggleON = transform.localScale;
+            NoInput = false;
+        }
+        else
+        {
+            transform.localPosition = PosToggleOFF;
+            transform.localScale = SizeToggleOFF;
+        }
+    }
+
+    void StartUpdate()
+    {
+        end = false;
+        progress = 0f;
+    }
+
+    public void SetNextPos(Vector3 nextPos, Vector2 NextSize)
+    {
+        PosToggleOFF = PosToggleON;
+        SizeToggleOFF = SizeToggleON;
+        PosToggleON = nextPos;
+        SizeToggleON = NextSize;
+        StartUpdate();
+    }
+    public void SetNextPos(Vector3 nextPos)
+    {
+        PosToggleOFF = PosToggleON;
+        SizeToggleOFF = SizeToggleON;
+        PosToggleON = nextPos;
+        StartUpdate();
     }
 
     public void UpdatePos()

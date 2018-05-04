@@ -45,7 +45,7 @@ public class MainLogic : MonoBehaviour
         string _RandomCountMax = node.GetAttribute("max");
 
         float minPercent = (_minPercent == "" ? 1 : float.Parse(_minPercent));
-        if (Random.RandomRange(0, 1) > minPercent) return;
+        if (Random.Range(0f, 1f) > minPercent) return;
 
         float Min = (_RandomCountMin == "" ? 1 : float.Parse(_RandomCountMin));
         float Max = (_RandomCountMax == "" ? 1 : float.Parse(_RandomCountMax));

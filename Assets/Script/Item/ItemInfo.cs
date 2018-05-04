@@ -4,28 +4,26 @@ using System.Xml;
 
 public class ItemInfo : MonoBehaviour
 {
-    string _id = "";
     public int Count = 0;
     public GameObject Player = null;
-    XmlElement ItemNode = null;
+
+    Item item;
+
     public string id
     {
         get
         {
-            return _id;
+            return item.id;
         }
         set
         {
-            XmlFile ItemInfoFile = XmlFile.Load("ItemInfo");
-            ItemNode = ItemInfoFile.GetNodeByID(value, "Item");
-            if (ItemNode != null)
+            Item tmp = new Item(value);
+            if(tmp.OK)
             {
-                _id = value;
-
-                ChildInfoParser.Get.SetChildInfo(transform, ItemNode);
-
-                MainItemPositionUpdater.Get.AddList(new ItemPositionData(this, transform.localPosition, 
-                    transform.localPosition + Quaternion.Euler(0, 0, Random.RandomRange(0, 360)) * new Vector3(Random.RandomRange(0.3f, 0.75f), 0, 0), "ItemDrop", 1,1f));
+                item = tmp;
+                ChildInfoParser.Get.SetChildInfo(transform, item.ItemNode);
+                MainItemPositionUpdater.Get.AddList(new ItemPositionData(this, transform.localPosition,
+                    transform.localPosition + Quaternion.Euler(0, 0, Random.RandomRange(0, 360)) * new Vector3(Random.RandomRange(0.3f, 0.75f), 0, 0), "ItemDrop", 1, 1f));
             }
         }
     }
