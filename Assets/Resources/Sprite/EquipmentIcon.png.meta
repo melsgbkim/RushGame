@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: 5dc664acefa07cf4cb1b71fe28755bd2
-timeCreated: 1525072908
+guid: a910c8841a6a9c34c820950250aa6679
+timeCreated: 1525422475
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: ItemIcon_0
-    21300002: ItemIcon_1
-    21300004: ItemIcon_2
-    21300006: ItemIcon_3
-    21300008: ItemIcon_4
-    21300010: ItemIcon_5
+    21300000: EquipmentIcon_0
+    21300002: EquipmentIcon_1
+    21300004: EquipmentIcon_2
+    21300006: EquipmentIcon_3
+    21300008: EquipmentIcon_4
+    21300010: EquipmentIcon_5
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -1
     wrapU: 1
@@ -86,13 +86,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ItemIcon_0
+      name: EquipmentIcon_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 239
-        width: 18
-        height: 16
+        x: 4
+        y: 453
+        width: 45
+        height: 53
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -100,13 +100,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ItemIcon_1
+      name: EquipmentIcon_1
       rect:
         serializedVersion: 2
-        x: 22
-        y: 239
-        width: 23
-        height: 16
+        x: 57
+        y: 452
+        width: 52
+        height: 53
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,13 +114,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ItemIcon_2
+      name: EquipmentIcon_2
       rect:
         serializedVersion: 2
-        x: 52
-        y: 240
-        width: 15
-        height: 15
+        x: 119
+        y: 451
+        width: 44
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,13 +128,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ItemIcon_3
+      name: EquipmentIcon_3
       rect:
         serializedVersion: 2
-        x: 71
-        y: 239
-        width: 18
-        height: 16
+        x: 168
+        y: 449
+        width: 55
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,13 +142,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ItemIcon_4
+      name: EquipmentIcon_4
       rect:
         serializedVersion: 2
-        x: 92
-        y: 239
-        width: 23
-        height: 17
+        x: 226
+        y: 451
+        width: 47
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,13 +156,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ItemIcon_5
+      name: EquipmentIcon_5
       rect:
         serializedVersion: 2
-        x: 118
-        y: 240
-        width: 19
-        height: 15
+        x: 284
+        y: 452
+        width: 57
+        height: 53
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

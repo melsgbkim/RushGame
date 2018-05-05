@@ -6,9 +6,8 @@ public class ItemInfo : MonoBehaviour
 {
     public int Count = 0;
     public GameObject Player = null;
-
+    XmlElement ItemNode = null;
     Item item;
-
     public string id
     {
         get
@@ -31,7 +30,7 @@ public class ItemInfo : MonoBehaviour
 
     public void EndItemMove(string type)
     {
-        if (type == "ItemDrop")
+        if (type == "ItemDrop" && Player != null)
         {
             MainEffManager.Get.NewEff("Eff_ItemHitTheFloor", transform.localPosition);
             ItemGetByPlayer(Player);

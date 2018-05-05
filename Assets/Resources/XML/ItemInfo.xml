@@ -3,127 +3,120 @@
   <Item id="Item_0001">
     <Name>Cheese</Name>
     <Category>etc</Category>
-    <Sprite>
-      <Image Index="1">Sprite/ItemIcon</Image>
-    </Sprite>
-    <Shadow>
-      <x>0</x>
-      <y>-0.12</y>
-      <scale>0.6</scale>
-    </Shadow>
+    <Sprite>  <Image Index="1">Sprite/ItemIcon</Image>  </Sprite>
+    <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
   </Item>
-
-
   <Item id="Item_0002">
-    <Name>Cheese2</Name>
+    <Name>Cheese</Name>
     <Category>etc</Category>
-    <Sprite> <Image Index="1">Sprite/ItemIcon</Image> </Sprite>
+    <Sprite>  <Image Index="1">Sprite/ItemIcon</Image>  </Sprite>
+    <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
   </Item>
   <Item id="Item_0003">
-    <Name>Cheese3</Name>
+    <Name>Cheese</Name>
     <Category>etc</Category>
-    <Sprite> <Image Index="1">Sprite/ItemIcon</Image> </Sprite>
+    <Sprite>  <Image Index="1">Sprite/ItemIcon</Image>  </Sprite>
+    <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
   </Item>
   <Item id="Item_0004">
-    <Name>Cheese4</Name>
+    <Name>Cheese</Name>
     <Category>etc</Category>
-    <Sprite> <Image Index="1">Sprite/ItemIcon</Image> </Sprite>
+    <Sprite>  <Image Index="1">Sprite/ItemIcon</Image>  </Sprite>
+    <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
   </Item>
   <Item id="Item_0005">
-    <Name>Cheese5</Name>
+    <Name>Cheese</Name>
     <Category>etc</Category>
-    <Sprite> <Image Index="1">Sprite/ItemIcon</Image> </Sprite>
+    <Sprite>  <Image Index="1">Sprite/ItemIcon</Image>  </Sprite>
+    <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
   </Item>
   <Item id="Item_0006">
-    <Name>Cheese6</Name>
+    <Name>Cheese</Name>
     <Category>etc</Category>
-    <Sprite> <Image Index="1">Sprite/ItemIcon</Image> </Sprite>
+    <Sprite>  <Image Index="1">Sprite/ItemIcon</Image>  </Sprite>
+    <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
   </Item>
   <Item id="Item_0007">
-    <Name>Cheese7</Name>
+    <Name>Cheese</Name>
     <Category>etc</Category>
-    <Sprite> <Image Index="1">Sprite/ItemIcon</Image> </Sprite>
+    <Sprite>  <Image Index="1">Sprite/ItemIcon</Image>  </Sprite>
+    <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
   </Item>
   <Item id="Item_0008">
-    <Name>Cheese8</Name>
+    <Name>Cheese</Name>
     <Category>etc</Category>
-    <Sprite> <Image Index="1">Sprite/ItemIcon</Image> </Sprite>
+    <Sprite>  <Image Index="1">Sprite/ItemIcon</Image>  </Sprite>
+    <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
   </Item>
   <Item id="Item_0009">
-    <Name>Cheese9</Name>
+    <Name>mouse</Name>
     <Category>etc</Category>
-    <Sprite> <Image Index="1">Sprite/ItemIcon</Image> </Sprite>
+    <Sprite>  <Image Index="2">Sprite/ItemIcon</Image>  </Sprite>
+    <Shadow>  <x>0</x>  <y>-0.07</y>  <scale>0.6</scale>  </Shadow>
   </Item>
   <Item id="Item_0010">
-    <Name>Cheese10</Name>
+    <Name>zerry</Name>
     <Category>etc</Category>
-    <Sprite> <Image Index="1">Sprite/ItemIcon</Image> </Sprite>
+    <Sprite>  <Image Index="3">Sprite/ItemIcon</Image>  </Sprite>
+    <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
   </Item>
 
-  <Item id="Item_0011">
-    <Name>Cheese10</Name>
-    <Category>equipment</Category>
-    <Sprite> <Image Index="1">Sprite/ItemIcon</Image> </Sprite>
-  </Item>
 
-  <Item id="Item_0012">
-    <Name>Cheese10</Name>
+  <Item id="Item_Q0001">
+    <Name>Cheese</Name>
     <Category>quest</Category>
-    <Sprite> <Image Index="1">Sprite/ItemIcon</Image> </Sprite>
+    <Sprite>  <Image Index="4">Sprite/ItemIcon</Image>  </Sprite>
+    <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
   </Item>
-
-  <Item id="Item_0013">
-    <Name>Cheese10</Name>
-    <Category>equipment</Category>
-    <Sprite> <Image Index="1">Sprite/ItemIcon</Image> </Sprite>
-  </Item>
-
-  <Item id="Item_0014">
-    <Name>Cheese10</Name>
+  <Item id="Item_Q0002">
+    <Name>mouse</Name>
     <Category>quest</Category>
-    <Sprite> <Image Index="1">Sprite/ItemIcon</Image> </Sprite>
+    <Sprite>  <Image Index="5">Sprite/ItemIcon</Image>  </Sprite>
+    <Shadow>  <x>0</x>  <y>-0.07</y>  <scale>0.6</scale>  </Shadow>
   </Item>
-
-  <Item id="Item_0015">
-    <Name>Cheese10</Name>
-    <Category>equipment</Category>
-    <Sprite> <Image Index="1">Sprite/ItemIcon</Image> </Sprite>
-  </Item>
-
-  <Item id="Item_0016">
-    <Name>Cheese10</Name>
+  <Item id="Item_Q0003">
+    <Name>zerry</Name>
     <Category>quest</Category>
-    <Sprite> <Image Index="1">Sprite/ItemIcon</Image> </Sprite>
+    <Sprite>  <Image Index="6">Sprite/ItemIcon</Image>  </Sprite>
+    <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
   </Item>
 
-  <Item id="Item_0017">
-    <Name>Cheese10</Name>
+
+
+  <Item id="Item_E0001">
+    <Name>Armor1</Name>
     <Category>equipment</Category>
-    <Sprite> <Image Index="1">Sprite/ItemIcon</Image> </Sprite>
+    <Sprite>  <Image Index="1">Sprite/EquipmentIcon</Image>  <scale>0.5</scale>  </Sprite>
+    <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
   </Item>
-
-  <Item id="Item_0018">
-    <Name>Cheese10</Name>
-    <Category>potion</Category>
-    <Sprite> <Image Index="1">Sprite/ItemIcon</Image> </Sprite>
+  <Item id="Item_E0002">
+    <Name>Armor2</Name>
+    <Category>equipment</Category>
+    <Sprite>  <Image Index="2">Sprite/EquipmentIcon</Image>  <scale>0.5</scale>  </Sprite>
+    <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
   </Item>
-
-  <Item id="Item_0019">
-    <Name>Cheese10</Name>
-    <Category>potion</Category>
-    <Sprite> <Image Index="1">Sprite/ItemIcon</Image> </Sprite>
+  <Item id="Item_E0003">
+    <Name>Armor3</Name>
+    <Category>equipment</Category>
+    <Sprite>  <Image Index="3">Sprite/EquipmentIcon</Image>  <scale>0.5</scale>  </Sprite>
+    <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
   </Item>
-
-  <Item id="Item_0020">
-    <Name>Cheese10</Name>
-    <Category>potion</Category>
-    <Sprite> <Image Index="1">Sprite/ItemIcon</Image> </Sprite>
+  <Item id="Item_E0004">
+    <Name>Ring</Name>
+    <Category>equipment</Category>
+    <Sprite>  <Image Index="4">Sprite/EquipmentIcon</Image>  <scale>0.5</scale>  </Sprite>
+    <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
   </Item>
-
-  <Item id="Item_0021">
-    <Name>Cheese10</Name>
-    <Category>potion</Category>
-    <Sprite> <Image Index="1">Sprite/ItemIcon</Image> </Sprite>
+  <Item id="Item_E0005">
+    <Name>Earring</Name>
+    <Category>equipment</Category>
+    <Sprite>  <Image Index="5">Sprite/EquipmentIcon</Image>  <scale>0.5</scale>  <y>0.05</y>  </Sprite>
+    <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
   </Item>
-
+  <Item id="Item_E0006">
+    <Name>Helm</Name>
+    <Category>equipment</Category>
+    <Sprite>  <Image Index="6">Sprite/EquipmentIcon</Image>  <scale>0.5</scale>  </Sprite>
+    <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
+  </Item>
 </ItemInfo>
