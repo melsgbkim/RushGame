@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<EffInfo>
+  <Eff id="Eff_ItemHitTheFloor">
+    <Name>Eff_ItemHitTheFloor</Name>
+    <Path>prefab/Effect/ItemHitTheFloor</Path>
+  </Eff>
+  <Eff id="Eff_EnemyDead">
+    <Name>Eff_EnemyDead</Name>
+    <Path>prefab/Effect/EnemyDead</Path>
+  </Eff>
+
+
+  
+</EffInfo>

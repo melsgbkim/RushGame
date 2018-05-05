@@ -27,6 +27,7 @@ public class EnemyLogic : MonoBehaviour
         if (dead)
         {
             gameObject.GetComponent<EnemyInfo>().OnDead();
+            MainEffManager.Get.NewEff("Eff_EnemyDead", transform.localPosition);
             Destroy(gameObject);
         }
     }

@@ -9,6 +9,7 @@ public class PlayerCollisionHandler : MonoBehaviour
         {
             collision.gameObject.GetComponent<EnemyCollisionHandler>().CollisionFromPlayer(gameObject);
             collision.gameObject.GetComponent<EnemyInfo>().Player = gameObject;
+            PopupTextList.New(Random.Range(1, 800).ToString(),collision.transform.position);
         }
     }
 

@@ -4,22 +4,7 @@
     <Name>opossum</Name>
     <Destroy>
       <RandomDropItem percent="1"   >Item_0001</RandomDropItem>
-      <RandomDropItem percent="0.3" min="1" max="3">Item_0002</RandomDropItem>
-      <RandomDropItem percent="0.3" min="1" max="3">Item_0003</RandomDropItem>
-      <RandomDropItem percent="0.3" min="1" max="3">Item_0004</RandomDropItem>
-      <RandomDropItem percent="0.3" min="1" max="3">Item_0005</RandomDropItem>
-      <RandomDropItem percent="0.3" min="1" max="3">Item_0006</RandomDropItem>
-      <RandomDropItem percent="0.3" min="1" max="3">Item_0007</RandomDropItem>
-      <RandomDropItem percent="0.3" min="1" max="3">Item_0008</RandomDropItem>
-      <RandomDropItem percent="0.3" min="1" max="3">Item_0009</RandomDropItem>
-      <RandomDropItem percent="0.3" min="1" max="3">Item_0010</RandomDropItem>
-      <RandomDropItem percent="0.3" min="1" max="3">Item_0011</RandomDropItem>
-      <RandomDropItem percent="0.3" min="1" max="3">Item_0012</RandomDropItem>
-      <RandomDropItem percent="0.3" min="1" max="3">Item_0013</RandomDropItem>
-      <RandomDropItem percent="0.3" min="1" max="3">Item_0014</RandomDropItem>
-      <RandomDropItem percent="0.3" min="1" max="3">Item_0015</RandomDropItem>
-      <RandomDropItem percent="0.3" min="1" max="3">Item_0016</RandomDropItem>
-      <RandomDropItem percent="0.3" min="1" max="3">Item_0017</RandomDropItem>
+      <RandomDropItem percent="0.5" min="1" max="3">Item_0002</RandomDropItem>
     </Destroy>
     <RigidbodyMass>10</RigidbodyMass>
     <RigidbodyDrag>1</RigidbodyDrag>

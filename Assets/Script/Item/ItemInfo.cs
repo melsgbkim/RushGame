@@ -23,7 +23,8 @@ public class ItemInfo : MonoBehaviour
                 item = tmp;
                 ChildInfoParser.Get.SetChildInfo(transform, item.ItemNode);
                 MainItemPositionUpdater.Get.AddList(new ItemPositionData(this, transform.localPosition,
-                    transform.localPosition + Quaternion.Euler(0, 0, Random.RandomRange(0, 360)) * new Vector3(Random.RandomRange(0.3f, 0.75f), 0, 0), "ItemDrop", 1, 1f));
+                    transform.localPosition + Quaternion.Euler(0, 0, Random.RandomRange(0, 360)) * new Vector3(Random.RandomRange(0.3f, 0.75f), 0, 0), 
+                    "ItemDrop", 1, 1f,0.6f + Random.Range(-0.2f,0)));
             }
         }
     }
@@ -32,6 +33,7 @@ public class ItemInfo : MonoBehaviour
     {
         if (type == "ItemDrop")
         {
+            MainEffManager.Get.NewEff("Eff_ItemHitTheFloor", transform.localPosition);
             ItemGetByPlayer(Player);
         }
         else if (type == "ItemGet")
