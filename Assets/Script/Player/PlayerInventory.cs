@@ -96,7 +96,6 @@ public class PlayerItemCategory
         this.type = type;
         this.Parent = p;
         CategoryUI = UIInventoryManager.Get.GetCategoryUI(type);
-        CategoryUI.GetComponent<UIPositionUpdater>().toggle = true;
     }
 
     void CheckItem(string key)
@@ -109,8 +108,6 @@ public class PlayerItemCategory
             GameObject tmp = UIInventoryManager.Get.NewItemUI();
             ItemUITable.Add(key, tmp);
             (ItemTable[key] as Item).UI = tmp;
-            tmp.GetComponent<UIPositionUpdater>().SizeToggleOFF = Vector2.zero;
-            tmp.GetComponent<UIPositionUpdater>().toggle = true;
             tmp.GetComponent<Image>().sprite = tmpItem.sprite;
         }
     }
@@ -128,15 +125,20 @@ public class PlayerItemCategory
     }
     public void UpdatePos()
     {
-        CategoryUI.GetComponent<UIPositionUpdater>().UpdatePos();
+        if(CategoryUI.GetComponent<UIItemPositionUpdater>().end == false)
+            CategoryUI.GetComponent<UIItemPositionUpdater>().UpdatePos();
         foreach (string key in ItemUITable.Keys)
-            (ItemUITable[key] as GameObject).GetComponent<UIPositionUpdater>().UpdatePos();
+        {
+            UIItemPositionUpdater tmp = (ItemUITable[key] as GameObject).GetComponent<UIItemPositionUpdater>();
+            if(tmp.end == false)
+                tmp.UpdatePos();
+        }
     }
 
     public void UpdateNewPos(int StartIndex)
     {
         Vector3 next = new Vector3(0, StartIndex * -100f, 0);
-        CategoryUI.GetComponent<UIPositionUpdater>().SetNextPos(next);
+        CategoryUI.GetComponent<UIItemPositionUpdater>().SetNextPos(next);
         int x = 0;
         StartIndex += 1;
         List<string> list = ItemUITable.Keys.Cast<string>().ToList();
@@ -144,7 +146,7 @@ public class PlayerItemCategory
         foreach (string key in list)
         {
             next = new Vector3((x-4) * 100f, StartIndex * -100f, 0);
-            (ItemUITable[key] as GameObject).GetComponent<UIPositionUpdater>().SetNextPos(next,Vector2.one);
+            (ItemUITable[key] as GameObject).GetComponent<UIItemPositionUpdater>().SetNextPos(next);
             x += 1;
             if (x >= 9)
             {

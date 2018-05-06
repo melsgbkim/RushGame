@@ -17,7 +17,7 @@ public class UIInventoryManager : MonoBehaviour
     public GameObject NewItemUI()
     {
         GameObject result = Instantiate(ItemPrefab);
-        result.transform.parent = root;
+        result.transform.SetParent(root);
         result.transform.localPosition = Vector3.zero;
         return result;
     }
@@ -26,7 +26,7 @@ public class UIInventoryManager : MonoBehaviour
     {
         for(int i=0;i< root.childCount;i++)
         {
-            if (root.GetChild(i).GetComponent<UIPositionUpdater>().name == name)
+            if (root.GetChild(i).GetComponent<UIItemPositionUpdater>().name == name)
                 return root.GetChild(i).gameObject;
         }
         return null;

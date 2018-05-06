@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224284955383224886}
   - component: {fileID: 222446986680306544}
   - component: {fileID: 114369874644295602}
-  - component: {fileID: 114599966589855054}
+  - component: {fileID: 114218987885997038}
   m_Layer: 5
   m_Name: Image (1) 1
   m_TagString: Untagged
@@ -29,6 +29,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114218987885997038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1227260402680522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d7aea271ebd41c4bb1f0ca8621539d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: 
+  MoveSpeed: 2
+  end: 0
+  type: 2
+  isCategory: 0
 --- !u!114 &114369874644295602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -56,26 +72,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114599966589855054
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1227260402680522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c5e2d7c92a163742bb67fd6e212dcd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  end: 1
-  name: 
-  NoInput: 0
-  PosToggleOFF: {x: 0, y: 0, z: 0}
-  SizeToggleOFF: {x: 1, y: 1}
-  PosToggleON: {x: 0, y: 0, z: 0}
-  SizeToggleON: {x: 1, y: 1}
-  SpeedToggle: 2
-  SpeedTogglePow: 3
 --- !u!222 &222446986680306544
 CanvasRenderer:
   m_ObjectHideFlags: 1

@@ -10,19 +10,23 @@ public class MainUiToggleManager : MonoBehaviour
         get { return _NowOpenedUI; }
         set
         {
-            for(int i=0;i<UIList.Count;i++)
+            for (int i = 0; i < UIList.Count; i++)
             {
                 if (UIList[i].name == _NowOpenedUI || UIList[i].name == value)
                 {
                     if (UIList[i].end)
                         UIUpdateList.Add(UIList[i]);
-                    UIList[i].toggle = (UIList[i].name == value);
+                    UIList[i].toggle = value;
                 }
             }
             _NowOpenedUI = value;
+            for (int i = 0; i < ButtonList.Count; i++)
+                ButtonList[i].toggle = (_NowOpenedUI != "" ? "OpenWindow" : "");
+            UIUpdateList.AddRange(ButtonList);
+
         }
     }
-
+    public void ToggleUIClose()     { NowOpenedUI="";}
     public void ToggleUIStat()      { NowOpenedUI="Stat";}
     public void ToggleUISkill()     { NowOpenedUI="Skill";}
     public void ToggleUIInven()     { NowOpenedUI="Inven";}
@@ -33,7 +37,9 @@ public class MainUiToggleManager : MonoBehaviour
     public List<UIPositionUpdater> UIList = new List<UIPositionUpdater>();
     List<UIPositionUpdater> UIUpdateList = new List<UIPositionUpdater>();
 
+    public List<UIPositionUpdater> ButtonList;
 
+    
 
     // Use this for initialization
     void Start()

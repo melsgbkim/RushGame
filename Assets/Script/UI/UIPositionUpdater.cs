@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class UIPositionUpdater : MonoBehaviour
 {
-    bool _toggle = false;
+    public string _toggle = "default";
     float progress = 0f;
     public bool end = true;
-    public bool toggle
+    public string toggle
     {
         get
         {
@@ -16,58 +17,38 @@ public class UIPositionUpdater : MonoBehaviour
         {
             if(_toggle != value)
             {
-                _toggle = value;
+                beforeData = GetData(_toggle);
+                _toggle = (dataTable.Contains(value) ? value : "default");
                 StartUpdate();
             }
         }
     }
 
+    Hashtable dataTable = new Hashtable();
+    UIPositionData beforeData;
 
+    public List<UIPositionData> PosDataList;
     public string name = "";
-    public bool NoInput = false;
-    public Vector3 PosToggleOFF;
-    public Vector2 SizeToggleOFF = Vector2.one;
-    public Vector3 PosToggleON;
-    public Vector2 SizeToggleON = Vector2.one;
+    public UIPositionData.MOVETYPE NoInputType = UIPositionData.MOVETYPE.Nomal;
     public float SpeedToggle = 2f;
-    public float SpeedTogglePow = 3f;
+
     // Use this for initialization
     void Start()
     {
+        foreach(UIPositionData data in PosDataList)
+            dataTable.Add(data.name, data);
         
-        if(NoInput)
-        {
-            PosToggleOFF = PosToggleON = transform.localPosition;
-            SizeToggleOFF = SizeToggleON = transform.localScale;
-            NoInput = false;
-        }
+        if (dataTable.ContainsKey("default") == false)
+            dataTable.Add("default", new UIPositionData("default", transform.localPosition, transform.localScale, NoInputType));
         else
-        {
-            transform.localPosition = PosToggleOFF;
-            transform.localScale = SizeToggleOFF;
-        }
+            SetByData(dataTable["default"] as UIPositionData);
+        beforeData = dataTable["default"] as UIPositionData;
     }
 
     void StartUpdate()
     {
         end = false;
         progress = 0f;
-    }
-
-    public void SetNextPos(Vector3 nextPos, Vector2 NextSize)
-    {
-        PosToggleOFF = PosToggleON;
-        SizeToggleOFF = SizeToggleON;
-        PosToggleON = nextPos;
-        SizeToggleON = NextSize;
-        StartUpdate();
-    }
-    public void SetNextPos(Vector3 nextPos)
-    {
-        PosToggleOFF = PosToggleON;
-        SizeToggleOFF = SizeToggleON;
-        PosToggleON = nextPos;
-        StartUpdate();
     }
 
     public void UpdatePos()
@@ -77,13 +58,70 @@ public class UIPositionUpdater : MonoBehaviour
         if (progress > 1f) end = true;
         if (progress > 1f) progress = 1f;
 
-        float per = 0f;
-        if (toggle) per = 1-Mathf.Pow(1-progress, SpeedTogglePow);
-        else        per = 1-Mathf.Pow(progress, SpeedTogglePow);
+        SetByData(  (GetData(toggle) as UIPositionData).Progress(beforeData, progress)  );
+    }
+
+    UIPositionData GetData(string key)
+    {
+        if (dataTable.ContainsKey(key))
+            return dataTable[key] as UIPositionData;
+        return dataTable["default"] as UIPositionData;
+    }
+
+    public void SetByData(UIPositionData data)
+    {
+        transform.localPosition = data.pos;
+        transform.localScale = data.scale;
+    }
+}
 
 
-        transform.localPosition = per * PosToggleON + (1 - per) * PosToggleOFF;
-        transform.localScale = per * SizeToggleON + (1 - per) * SizeToggleOFF;
-       
+[System.Serializable]
+public class UIPositionData
+{
+    public UIPositionData() { }
+    public UIPositionData(string name,Vector3 pos,Vector2 scale, MOVETYPE MoveType)
+    {
+        this.name = name; 
+        this.pos = pos;
+        this.scale = scale;
+        this.MoveType = MoveType;
+    }
+    public string name = "";
+    public Vector3 pos = Vector3.zero;
+    public Vector2 scale = Vector2.one;
+    public MOVETYPE MoveType = MOVETYPE.Data;
+
+    public enum MOVETYPE
+    {
+        Nomal,
+        SlowToFaster,
+        FastToSlower,
+        Teleport,
+        Data
+    }
+    float SlowToFaster(float per) { return Mathf.Pow(per, 3); }
+    float FastToSlower(float per) { return 1 - Mathf.Pow(1-per, 3); }
+    float Nomal(float per) { return per; }
+    float Teleport(float per) { return 1; }
+
+    public UIPositionData Progress(UIPositionData from,float per)
+    {
+        per = GetPer(per);
+        return new UIPositionData("result",
+            per * pos   + (1 - per) * from.pos,
+            per * scale + (1 - per) * from.scale,
+            MOVETYPE.Data);
+    }
+
+    float GetPer(float per)
+    {
+        switch (MoveType)
+        {
+            case MOVETYPE.SlowToFaster: return SlowToFaster(per);
+            case MOVETYPE.FastToSlower: return FastToSlower(per);
+            case MOVETYPE.Teleport:     return Teleport(per);
+        }
+        return per;
     }
 }
