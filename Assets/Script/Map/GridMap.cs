@@ -30,10 +30,6 @@ public class GridMap : MonoBehaviour
                 tilemap.SetTile(new Vector3Int(3, 2, 0), TileInfoHashTable.Get.GetTile("Tilemap_0_3"));
                 break;
             case 1:
-                tilemap.SetTile(new Vector3Int(0, 2, 0), TileInfoHashTable.Get.GetTile("Tilemap_1_4"));
-                tilemap.SetTile(new Vector3Int(1, 2, 0), TileInfoHashTable.Get.GetTile("Tilemap_1_5"));
-                tilemap.SetTile(new Vector3Int(2, 2, 0), TileInfoHashTable.Get.GetTile("Tilemap_1_6"));
-                tilemap.SetTile(new Vector3Int(3, 2, 0), TileInfoHashTable.Get.GetTile("Tilemap_1_7"));
                 break;
         }
     }
