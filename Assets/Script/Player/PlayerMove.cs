@@ -11,6 +11,8 @@ public class PlayerMove : MonoBehaviour
     Vector3ForCameraTarget vec3BodyPosition;
     Vector3ForCameraTarget vec3MoveTo;
 
+    Vector2? dir = null;
+
     void Start()
     {
         rigid2D = GetComponent<Rigidbody2D>();
@@ -18,21 +20,30 @@ public class PlayerMove : MonoBehaviour
         vec3BodyPosition = CameraPositionSetter.Get.AddTarget(gameObject.ToString() + "Body");
         vec3MoveTo = CameraPositionSetter.Get.AddTarget(gameObject.ToString() + "MoveTo");
     }
+    public void FixedUpdate()
+    {
+        if (dir != null)
+        {
+            timeSum += Time.deltaTime;
+            if (timeSum >= MoveRepeatTime)
+            {
+                int multiple = Mathf.RoundToInt(timeSum / MoveRepeatTime);
+                timeSum -= multiple * MoveRepeatTime;
+
+                dir = Vector2.ClampMagnitude(dir.Value, 1);
+                if (dir != Vector2.zero)
+                    rigid2D.AddForce(dir.Value * MovePower);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space)) rigid2D.AddForce(dir.Value * MovePower * 40);
+            //for test
+
+            dir = null;
+        }
+    }
     public void MoveUpdate(Vector2 dir)
     {
-        timeSum += Time.deltaTime;
-        if (timeSum >= MoveRepeatTime)
-        {
-            int multiple = Mathf.RoundToInt(timeSum / MoveRepeatTime);
-            timeSum -= multiple * MoveRepeatTime;
-
-            dir = Vector2.ClampMagnitude(dir, 1);
-            if (dir != Vector2.zero)
-                rigid2D.AddForce(dir * MovePower);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space)) rigid2D.AddForce(dir * MovePower * 40);
-        //for test
+        this.dir = dir;
     }
 
     // Update is called once per frame
