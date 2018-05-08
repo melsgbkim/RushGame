@@ -101,15 +101,13 @@ UI
 	{
 		버튼류
 		{
-			옵션 버튼류 		톱니모양
-			인벤토리			가방모양
-			스킬				마법책
-			퀘스트			스크롤펼쳐진 모양		
-			장비강화,개조	방어구랑 +문자랑 화살표위쪽방향	http://toscamp.com/bbs/board.php?bo_table=tos_armor&wr_id=1000377&page=13
-			스텟				알통자랑자세 +문자 http://www.thinkstockphotos.co.kr/image/ilustraci%C3%B3n-de-stock-biceps-flex-arm-vector-icon/589965288
-
+//			옵션 버튼류 		톱니모양
+//			인벤토리			가방모양
+//			스킬				마법책
+//			퀘스트			스크롤펼쳐진 모양		
+//			장비강화,개조	방어구랑 +문자랑 화살표위쪽방향	
+//			스텟				알통자랑자세 +문자
 		}
-
 	}
 
 	지역 인식 추가
@@ -311,6 +309,8 @@ UI
 		성벽
 		발사대
 	}
+
+	오브젝트 생성방식 변경 (pool에서 뽑아내는 형식)
 
 }
 

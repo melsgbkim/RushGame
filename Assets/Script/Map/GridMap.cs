@@ -6,8 +6,15 @@ using System.Xml;
 public class GridMap : MonoBehaviour
 {
     Tilemap tilemap;
+    public Grid grid;
 
-    public int type = 0;
+    public enum GridType
+    {
+        Nomal,
+        HasCollision,
+        AreaData
+    }
+    public GridType type = GridType.Nomal;
 
     // Use this for initialization
     void Start()
@@ -15,7 +22,7 @@ public class GridMap : MonoBehaviour
         tilemap = GetComponent<Tilemap>();
         switch(type)
         {
-            case 0:
+            case GridType.Nomal:
                 tilemap.SetTile(new Vector3Int(0, 0, 0), TileInfoHashTable.Get.GetTile("Tilemap_0_0"));
                 tilemap.SetTile(new Vector3Int(1, 0, 0), TileInfoHashTable.Get.GetTile("Tilemap_0_1"));
                 tilemap.SetTile(new Vector3Int(2, 0, 0), TileInfoHashTable.Get.GetTile("Tilemap_0_2"));
@@ -29,7 +36,7 @@ public class GridMap : MonoBehaviour
                 tilemap.SetTile(new Vector3Int(2, 2, 0), TileInfoHashTable.Get.GetTile("Tilemap_0_2"));
                 tilemap.SetTile(new Vector3Int(3, 2, 0), TileInfoHashTable.Get.GetTile("Tilemap_0_3"));
                 break;
-            case 1:
+            case GridType.HasCollision:
                 break;
         }
     }
@@ -37,6 +44,10 @@ public class GridMap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    }
 
+    public TileBase GetTileFromPos(Vector3Int posInt)
+    {
+        return tilemap.GetTile(posInt);
     }
 }

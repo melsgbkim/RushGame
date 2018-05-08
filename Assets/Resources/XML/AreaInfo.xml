@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<AreaInfo>
+  <Area id="AreaTown">
+    <Name>Town</Name>
+    <AreaMoveType>Nomal</AreaMoveType>
+    <AreaUIType>TownUI</AreaUIType>
+  </Area>
+
+  <Area id="None">
+    <Name>NoneArea</Name>
+    <AreaMoveType>UseAddForce</AreaMoveType>
+    <AreaUIType>FieldUI</AreaUIType>
+  </Area>
+
+  <Area id="AreaNearTown">
+    <Name>NearTown</Name>
+    <AreaMoveType>UseAddForce</AreaMoveType>
+    <AreaUIType>FieldUI</AreaUIType>
+    <EnemyList>
+      <Enemy>Enemy_opossum</Enemy>
+    </EnemyList>
+  </Area>
+</AreaInfo>

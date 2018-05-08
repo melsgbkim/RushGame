@@ -29,6 +29,7 @@ public class TileInfoHashTable
             Debug.Log("TileInfoXml , id="+id+" TileInfo.Path.count="+list.Count);
         TileBase result = Resources.Load(list[0].InnerText) as TileBase;
         table.Add(id, result);
+        result.name = XMLUtil.FindOneByTag(xmlNode, "Name").InnerText;
         return result;
     }
 }

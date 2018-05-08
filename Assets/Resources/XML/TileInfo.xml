@@ -1,51 +1,68 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <TileInfo>
   <Tile id="Tilemap_0_0">
-    <Name>grass</Name>
+    <Name>grass0</Name>
     <Path>Tile/Tilemap_0_0</Path>
+    <AreaName>Field</AreaName>
   </Tile>
   <Tile id="Tilemap_0_1">
-    <Name>grass</Name>
+    <Name>grass1</Name>
     <Path>Tile/Tilemap_0_1</Path>
+    <AreaName>Field</AreaName>
   </Tile>
   <Tile id="Tilemap_0_2">
-    <Name>grass</Name>
+    <Name>grass2</Name>
     <Path>Tile/Tilemap_0_2</Path>
+    <AreaName>Field</AreaName>
   </Tile>
   <Tile id="Tilemap_0_3">
-    <Name>grass</Name>
+    <Name>grass3</Name>
     <Path>Tile/Tilemap_0_3</Path>
+    <AreaName>Field</AreaName>
   </Tile>
   <Tile id="Tilemap_1_0">
-    <Name>grass</Name>
+    <Name>rock0</Name>
     <Path>Tile/Tilemap_1_0</Path>
+    <AreaName>Field</AreaName>
   </Tile>
   <Tile id="Tilemap_1_1">
-    <Name>grass</Name>
+    <Name>rock1</Name>
     <Path>Tile/Tilemap_1_1</Path>
+    <AreaName>Field</AreaName>
   </Tile>
   <Tile id="Tilemap_1_2">
-    <Name>grass</Name>
+    <Name>rock2</Name>
     <Path>Tile/Tilemap_1_2</Path>
+    <AreaName>Field</AreaName>
   </Tile>
   <Tile id="Tilemap_1_3">
-    <Name>grass</Name>
+    <Name>rock3</Name>
     <Path>Tile/Tilemap_1_3</Path>
+    <AreaName>Field</AreaName>
   </Tile>
   <Tile id="Tilemap_1_4">
-    <Name>grass</Name>
+    <Name>rock4</Name>
     <Path>Tile/Tilemap_1_4</Path>
+    <AreaName>Field</AreaName>
   </Tile>
   <Tile id="Tilemap_1_5">
-    <Name>grass</Name>
+    <Name>rock5</Name>
     <Path>Tile/Tilemap_1_5</Path>
+    <AreaName>Field</AreaName>
   </Tile>
   <Tile id="Tilemap_1_6">
-    <Name>grass</Name>
+    <Name>rock6</Name>
     <Path>Tile/Tilemap_1_6</Path>
+    <AreaName>Field</AreaName>
   </Tile>
   <Tile id="Tilemap_1_7">
-    <Name>grass</Name>
+    <Name>rock7</Name>
     <Path>Tile/Tilemap_1_7</Path>
+    <AreaName>Field</AreaName>
+  </Tile>
+  <Tile id="Tilemap_2_0">
+    <Name>rock7</Name>
+    <Path>Tile/Tilemap_1_7</Path>
+    <AreaName>Field</AreaName>
   </Tile>
 </TileInfo>

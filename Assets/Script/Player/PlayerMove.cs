@@ -12,6 +12,8 @@ public class PlayerMove : MonoBehaviour
     Vector3ForCameraTarget vec3MoveTo;
 
     Vector2? dir = null;
+    string BeforeAreaType = "";
+    string NowAreaType = "";
 
     void Start()
     {
@@ -22,23 +24,37 @@ public class PlayerMove : MonoBehaviour
     }
     public void FixedUpdate()
     {
-        if (dir != null)
+        BeforeAreaType = NowAreaType;
+        NowAreaType = AreaCheckerWhereInPlayer.Get.GetAreaMoveTypePos(transform.localPosition);
+        if (NowAreaType == "Nomal")
         {
-            timeSum += Time.deltaTime;
-            if (timeSum >= MoveRepeatTime)
+            rigid2D.velocity = (dir.Value * 5f);
+        }
+        else
+        {
+            if (BeforeAreaType != "UseAddForce" && dir.HasValue)
             {
-                int multiple = Mathf.RoundToInt(timeSum / MoveRepeatTime);
-                timeSum -= multiple * MoveRepeatTime;
-
-                dir = Vector2.ClampMagnitude(dir.Value, 1);
-                if (dir != Vector2.zero)
-                    rigid2D.AddForce(dir.Value * MovePower);
+                rigid2D.velocity = Vector2.zero;
+                rigid2D.AddForce(dir.Value * MovePower * 5f);
             }
+            if (dir != null)
+            {
+                timeSum += Time.deltaTime;
+                if (timeSum >= MoveRepeatTime)
+                {
+                    int multiple = Mathf.RoundToInt(timeSum / MoveRepeatTime);
+                    timeSum -= multiple * MoveRepeatTime;
 
-            if (Input.GetKeyDown(KeyCode.Space)) rigid2D.AddForce(dir.Value * MovePower * 40);
-            //for test
+                    dir = Vector2.ClampMagnitude(dir.Value, 1);
+                    if (dir != Vector2.zero)
+                        rigid2D.AddForce(dir.Value * MovePower);
+                }
 
-            dir = null;
+                if (Input.GetKeyDown(KeyCode.Space)) rigid2D.AddForce(dir.Value * MovePower * 40);
+                //for test
+
+                dir = null;
+            }
         }
     }
     public void MoveUpdate(Vector2 dir)

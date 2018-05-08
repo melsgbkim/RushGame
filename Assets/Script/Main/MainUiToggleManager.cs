@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class MainUiToggleManager : MonoBehaviour
 {
+    
     string _NowOpenedUI = "";
     public string NowOpenedUI
     {
@@ -20,8 +21,12 @@ public class MainUiToggleManager : MonoBehaviour
                 }
             }
             _NowOpenedUI = value;
+            string toggleForButton = "";
+            if (_NowOpenedUI == "PlayerInField")    toggleForButton = "PlayerInField";
+            else if (_NowOpenedUI != "")            toggleForButton = "OpenWindow";
+            else                                    toggleForButton = "";
             for (int i = 0; i < ButtonList.Count; i++)
-                ButtonList[i].toggle = (_NowOpenedUI != "" ? "OpenWindow" : "");
+                ButtonList[i].toggle = toggleForButton;
             UIUpdateList.AddRange(ButtonList);
 
         }
@@ -38,9 +43,10 @@ public class MainUiToggleManager : MonoBehaviour
     List<UIPositionUpdater> UIUpdateList = new List<UIPositionUpdater>();
 
     public List<UIPositionUpdater> ButtonList;
+    public Transform Player;
 
-    
-
+    string beforeAreaUiType = "";
+    string nowAreaUiType = "";
     // Use this for initialization
     void Start()
     {
@@ -61,5 +67,16 @@ public class MainUiToggleManager : MonoBehaviour
             else
                 i++;
         }
+        CheckUITypeInArea();
+    }
+
+
+
+    void CheckUITypeInArea()
+    {
+        beforeAreaUiType = nowAreaUiType;
+        nowAreaUiType = AreaCheckerWhereInPlayer.Get.GetAreaUITypePos(Player.localPosition);
+        if (nowAreaUiType == "TownUI" && nowAreaUiType != beforeAreaUiType) NowOpenedUI = "";
+        if (nowAreaUiType == "FieldUI" && nowAreaUiType != beforeAreaUiType) NowOpenedUI = "PlayerInField";
     }
 }
