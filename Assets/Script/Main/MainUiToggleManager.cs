@@ -31,13 +31,13 @@ public class MainUiToggleManager : MonoBehaviour
 
         }
     }
-    public void ToggleUIClose()     { NowOpenedUI="";}
-    public void ToggleUIStat()      { NowOpenedUI="Stat";}
-    public void ToggleUISkill()     { NowOpenedUI="Skill";}
-    public void ToggleUIInven()     { NowOpenedUI="Inven";}
-    public void ToggleUIUpgrade()   { NowOpenedUI="Upgrade";}
-    public void ToggleUIQuest()     { NowOpenedUI="Quest";}
-    public void ToggleUIOption()    { NowOpenedUI="Option";}
+    public void ToggleUIClose()     { if (nowAreaUiType == "TownUI") NowOpenedUI ="";}
+    public void ToggleUIStat()      { if (nowAreaUiType == "TownUI") NowOpenedUI="Stat";}
+    public void ToggleUISkill()     { if (nowAreaUiType == "TownUI") NowOpenedUI="Skill";}
+    public void ToggleUIInven()     { if (nowAreaUiType == "TownUI") NowOpenedUI="Inven";}
+    public void ToggleUIUpgrade()   { if (nowAreaUiType == "TownUI") NowOpenedUI="Upgrade";}
+    public void ToggleUIQuest()     { if (nowAreaUiType == "TownUI") NowOpenedUI="Quest";}
+    public void ToggleUIOption()    { if (nowAreaUiType == "TownUI") NowOpenedUI ="Option";}
 
     public List<UIPositionUpdater> UIList = new List<UIPositionUpdater>();
     List<UIPositionUpdater> UIUpdateList = new List<UIPositionUpdater>();
