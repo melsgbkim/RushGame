@@ -11,26 +11,46 @@ public class MainUiToggleManager : MonoBehaviour
         get { return _NowOpenedUI; }
         set
         {
-            for (int i = 0; i < UIList.Count; i++)
-            {
-                if (UIList[i].name == _NowOpenedUI || UIList[i].name == value)
-                {
-                    if (UIList[i].end)
-                        UIUpdateList.Add(UIList[i]);
-                    UIList[i].toggle = value;
-                }
-            }
-            _NowOpenedUI = value;
-            string toggleForButton = "";
-            if (_NowOpenedUI == "PlayerInField")    toggleForButton = "PlayerInField";
-            else if (_NowOpenedUI != "")            toggleForButton = "OpenWindow";
-            else                                    toggleForButton = "";
-            for (int i = 0; i < ButtonList.Count; i++)
-                ButtonList[i].toggle = toggleForButton;
-            UIUpdateList.AddRange(ButtonList);
+            UpadteTownUI(value);
+            updateButton(value);
+            UpdateFieldUI(value);
 
+            _NowOpenedUI = value;
         }
     }
+
+    void UpadteTownUI(string value)
+    {
+        for (int i = 0; i < UIList.Count; i++)
+        {
+            if (UIList[i].name == _NowOpenedUI || UIList[i].name == value)
+            {
+                if (UIList[i].end)
+                    UIUpdateList.Add(UIList[i]);
+                UIList[i].toggle = value;
+            }
+        }
+    }
+
+    void updateButton(string value)
+    {
+        string toggleForButton = "";
+        if (value == "PlayerInField")   toggleForButton = "PlayerInField";
+        else if (value != "")           toggleForButton = "OpenWindow";
+        else                            toggleForButton = "";
+        for (int i = 0; i < ButtonList.Count; i++)  ButtonList[i].toggle = toggleForButton;
+        UIUpdateList.AddRange(ButtonList);
+    }
+
+    void UpdateFieldUI(string value)
+    {
+        string toggle = "";
+        if (value == "PlayerInField")   toggle = "PlayerInField";
+        else                            toggle = "Default";
+        for (int i = 0; i < FieldUIList.Count; i++) FieldUIList[i].toggle = toggle;
+        UIUpdateList.AddRange(FieldUIList);
+    }
+
     public void ToggleUIClose()     { if (nowAreaUiType == "TownUI") NowOpenedUI ="";}
     public void ToggleUIStat()      { if (nowAreaUiType == "TownUI") NowOpenedUI="Stat";}
     public void ToggleUISkill()     { if (nowAreaUiType == "TownUI") NowOpenedUI="Skill";}
@@ -44,6 +64,8 @@ public class MainUiToggleManager : MonoBehaviour
 
     public List<UIPositionUpdater> ButtonList;
     public Transform Player;
+
+    public List<UIPositionUpdater> FieldUIList;
 
     string beforeAreaUiType = "";
     string nowAreaUiType = "";
