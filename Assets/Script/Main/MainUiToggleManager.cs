@@ -37,7 +37,7 @@ public class MainUiToggleManager : MonoBehaviour
         string toggleForButton = "";
         if (value == "PlayerInField")   toggleForButton = "PlayerInField";
         else if (value != "")           toggleForButton = "OpenWindow";
-        else                            toggleForButton = "";
+        else                            toggleForButton = UIPositionUpdater.DefaultToggle;
         for (int i = 0; i < ButtonList.Count; i++)  ButtonList[i].toggle = toggleForButton;
         UIUpdateList.AddRange(ButtonList);
     }
@@ -46,7 +46,7 @@ public class MainUiToggleManager : MonoBehaviour
     {
         string toggle = "";
         if (value == "PlayerInField")   toggle = "PlayerInField";
-        else                            toggle = "Default";
+        else                            toggle = UIPositionUpdater.DefaultToggle;
         for (int i = 0; i < FieldUIList.Count; i++) FieldUIList[i].toggle = toggle;
         UIUpdateList.AddRange(FieldUIList);
     }

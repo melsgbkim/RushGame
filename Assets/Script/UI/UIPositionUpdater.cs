@@ -4,21 +4,22 @@ using System.Collections.Generic;
 
 public class UIPositionUpdater : MonoBehaviour
 {
-    public string _toggle = "default";
+    public const string DefaultToggle = "Default";
+    public string NowToggle = DefaultToggle;
     float progress = 0f;
     public bool end = true;
     public string toggle
     {
         get
         {
-            return _toggle;
+            return NowToggle;
         }
         set
         {
-            if(_toggle != value)
+            if(NowToggle != value)
             {
-                beforeData = GetData(_toggle);
-                _toggle = (dataTable.Contains(value) ? value : "default");
+                beforeData = GetData(NowToggle);
+                NowToggle = (dataTable.Contains(value) ? value : DefaultToggle);
                 StartUpdate();
             }
         }
@@ -29,6 +30,7 @@ public class UIPositionUpdater : MonoBehaviour
 
     public List<UIPositionData> PosDataList;
     public string name = "";
+    public string ThisDataName = DefaultToggle;
     public UIPositionData.MOVETYPE NoInputType = UIPositionData.MOVETYPE.Nomal;
     public float SpeedToggle = 2f;
 
@@ -37,12 +39,13 @@ public class UIPositionUpdater : MonoBehaviour
     {
         foreach(UIPositionData data in PosDataList)
             dataTable.Add(data.name, data);
-        
-        if (dataTable.ContainsKey("default") == false)
-            dataTable.Add("default", new UIPositionData("default", transform.localPosition, transform.localScale, NoInputType));
+
+        string checkKey = (ThisDataName == "" ? DefaultToggle : ThisDataName);
+        if (dataTable.ContainsKey(checkKey) == false)
+            dataTable.Add(checkKey, new UIPositionData(checkKey, transform.localPosition, transform.localScale, NoInputType));
         else
-            SetByData(dataTable["default"] as UIPositionData);
-        beforeData = dataTable["default"] as UIPositionData;
+            SetByData(dataTable[DefaultToggle] as UIPositionData);
+        beforeData = dataTable[DefaultToggle] as UIPositionData;
     }
 
     void StartUpdate()
@@ -65,7 +68,7 @@ public class UIPositionUpdater : MonoBehaviour
     {
         if (dataTable.ContainsKey(key))
             return dataTable[key] as UIPositionData;
-        return dataTable["default"] as UIPositionData;
+        return dataTable[DefaultToggle] as UIPositionData;
     }
 
     public void SetByData(UIPositionData data)

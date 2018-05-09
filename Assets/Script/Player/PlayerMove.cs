@@ -15,6 +15,10 @@ public class PlayerMove : MonoBehaviour
     string BeforeAreaType = "";
     string NowAreaType = "";
 
+
+
+    public Vector2 BeforeVel = Vector2.zero;
+
     void Start()
     {
         rigid2D = GetComponent<Rigidbody2D>();
@@ -56,6 +60,8 @@ public class PlayerMove : MonoBehaviour
                 dir = null;
             }
         }
+
+        BeforeVel = rigid2D.velocity;
     }
     public void MoveUpdate(Vector2 dir)
     {

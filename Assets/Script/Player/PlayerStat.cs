@@ -21,7 +21,7 @@ public class PlayerStat : MonoBehaviour
         v.startPower = v.str * 2f * v.mas;
         v.power = v.str * 2f;
         v.footSpeed = 2f / v.dex * v.mas;
-        v.attackSpeed = 2f / (v.dex - v.mas*20f);
+        v.attackSpeed = 2f / v.dex * v.mas;
         v.evasion = v.luk / v.mas;
         v.critical = v.luk / v.mas;
         v.damage = (v.str + v.dex) * v.mas * v.attackPoint;
