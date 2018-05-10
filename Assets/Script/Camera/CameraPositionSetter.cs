@@ -8,6 +8,10 @@ public class CameraPositionSetter : MonoBehaviour {
     Hashtable TargetList = new Hashtable();
     //List<GameObject> TargetList = new List<GameObject>();
     // Use this for initialization
+    List<float> SizeValueList = new List<float>();
+
+    Vector3 ave;
+    public Camera camera;
     public CameraPositionSetter()
     {
         if (Get == null)
@@ -20,7 +24,30 @@ public class CameraPositionSetter : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Vector3 ave = Vector3.zero;
+        PositionUpdate();
+        SizeUpdate();
+    }
+
+    void SizeUpdate()
+    {
+        float MaxDifferenceFromAve = 0f;
+        foreach (Vector3ForCameraTarget t in TargetList.Values)
+        {
+            if (MaxDifferenceFromAve < (ave - t.vec).magnitude)
+                MaxDifferenceFromAve = (ave - t.vec).magnitude;
+        }
+        SizeValueList.Add(2f + MaxDifferenceFromAve * 5f);
+        float average = 0f;
+        foreach (float v in SizeValueList)
+            average += v / SizeValueList.Count;
+        if (SizeValueList.Count > 20)
+            SizeValueList.RemoveAt(0);
+        camera.orthographicSize = average;
+    }
+
+    void PositionUpdate()
+    {
+        ave = Vector3.zero;
         foreach (Vector3ForCameraTarget t in TargetList.Values)
             ave += t.vec;
         ave /= TargetList.Count;

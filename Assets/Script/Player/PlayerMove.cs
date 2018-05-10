@@ -54,7 +54,15 @@ public class PlayerMove : MonoBehaviour
                         rigid2D.AddForce(dir.Value * MovePower);
                 }
 
-                if (Input.GetKeyDown(KeyCode.Space)) rigid2D.AddForce(dir.Value * MovePower * 40);
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    if(dir == Vector2.zero)
+                        rigid2D.AddForce(rigid2D.velocity.normalized * MovePower * 40); 
+                    else
+                        rigid2D.AddForce(dir.Value * MovePower * 40);
+                }
+
+
                 //for test
 
                 dir = null;

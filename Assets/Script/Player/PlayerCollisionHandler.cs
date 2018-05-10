@@ -18,7 +18,7 @@ public class PlayerCollisionHandler : MonoBehaviour
         {
             collision.gameObject.GetComponent<EnemyCollisionHandler>().CollisionFromPlayer(gameObject);
             collision.gameObject.GetComponent<EnemyInfo>().Player = gameObject;
-            PopupTextList.New(Random.Range(1, 800).ToString(),collision.transform.position);
+            
 
             Rigidbody2D NowRigid = GetComponent<Rigidbody2D>();
             PlayerMove ComponentMove = GetComponent<PlayerMove>();
@@ -29,6 +29,8 @@ public class PlayerCollisionHandler : MonoBehaviour
             float NextSpeed = ComponentMove.BeforeVel.magnitude - PowerLossAmount;
             if (NextSpeed < 0) NextSpeed = 0f;
             NowRigid.velocity = NowRigid.velocity.normalized * NextSpeed;
+
+            PopupTextList.New(MonsterHp.ToString(), collision.transform.position);
         }
     }
 

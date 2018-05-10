@@ -5,16 +5,58 @@ public class PlayerStat : MonoBehaviour
 {
     public bool Set = false;
     public float SetTime = 0f;
+    public bool statEditingNow = false;
+    public bool statSaved = true;
+    StatusValues statBefore = new StatusValues();
     public StatusValues statInt;
     public StatusValues Stat
     {
         get { return statInt; }
         set
         {
-            statInt = value;
+            statInt = new StatusValues(value);
             SetTime = Time.time;
             SetChildValue(statInt);
             SetStat(statInt);
+        }
+    }
+
+    public bool StatAdd(StatusValues.VALUE valueType,int val)
+    {
+        if(statEditingNow == false)
+        {
+            statEditingNow = true;
+            statSaved = false;
+            statBefore = new StatusValues() + statInt;
+        }
+        if (statInt.StatPoint < val)    val = statInt.StatPoint;
+        if (val == 0) return false;
+        statInt.StatPoint -= val;
+        bool result = statInt.AddValue(valueType, val);
+        if (result == true)
+        {
+            Stat = statInt;
+        }
+        return result;
+    }
+
+    public void StatSave()
+    {
+        if (statEditingNow == true)
+        {
+            statEditingNow = false;
+            statSaved = true;
+            Stat = statInt;
+        }
+    }
+
+    public void StatReset()
+    {
+        if (statEditingNow == true && statSaved == false)
+        {
+            statEditingNow = false;
+            statSaved = true;
+            Stat = statBefore;
         }
     }
 
@@ -22,8 +64,8 @@ public class PlayerStat : MonoBehaviour
     {
         v.startPower = v.str * 2f * v.mas;
         v.power = v.str * 2f;
-        v.footSpeed = 2f / v.dex * v.mas;
-        v.attackSpeed = 2f / v.dex * v.mas;
+        v.footSpeed = v.dex / (2f * v.mas);
+        v.attackSpeed = v.dex / (2f * v.mas);
         v.evasion = v.luk / v.mas;
         v.critical = v.luk / v.mas;
         v.damage = (v.str + v.dex) * v.mas * v.attackPoint;
@@ -32,7 +74,7 @@ public class PlayerStat : MonoBehaviour
     void SetStat(StatusValues result)
     {
         GetComponent<PlayerMove>().MovePower = result.power;
-        GetComponent<PlayerMove>().MoveRepeatTime = result.footSpeed;
+        GetComponent<PlayerMove>().MoveRepeatTime = 1f / result.footSpeed;
         GetComponent<Rigidbody2D>().mass = result.mas;
     }
     // Use this for initialization
@@ -55,6 +97,27 @@ public class PlayerStat : MonoBehaviour
 [System.Serializable]
 public class StatusValues
 {
+    public StatusValues() { }
+    public StatusValues(StatusValues a)
+    {
+        maxHP = a.maxHP;
+        maxSP = a.maxSP;
+        str = a.str;
+        dex = a.dex;
+        luk = a.luk;
+        mas = a.mas;
+        incHP = a.incHP;
+        incSP = a.incSP;
+        startPower = a.startPower;
+        power = a.power;
+        footSpeed = a.footSpeed;
+        attackSpeed = a.attackSpeed;
+        evasion = a.evasion;
+        critical = a.critical;
+        attackPoint = a.attackPoint;
+        damage = a.damage;
+        StatPoint = a.StatPoint;
+}
     public string name = "";
     public enum TYPE
     {
@@ -73,8 +136,8 @@ public class StatusValues
         DEX,
         LUK,
         MAS,
-        HPre,
-        SPre,
+        HPregen,
+        SPregen,
         StartPower,
         Power,
         FootSpeed,
@@ -82,7 +145,23 @@ public class StatusValues
         Evasion,
         Critical,
         AttackPoint,
-        Damage
+        Damage,
+
+        //Add
+        StatPoint
+    }
+    public bool AddValue(VALUE v,int val)
+    {
+        switch (v)
+        {
+            case VALUE.HP: maxHP += val; return true;
+            case VALUE.SP: maxSP += val; return true;
+            case VALUE.STR: str += val; return true;
+            case VALUE.DEX: dex += val; return true;
+            case VALUE.LUK: luk += val; return true;
+            case VALUE.MAS: mas += val; return true;
+        }
+        return false;
     }
     public float GetValue(VALUE v)
     {
@@ -94,8 +173,8 @@ public class StatusValues
             case VALUE.DEX:        return dex;
             case VALUE.LUK:        return luk;
             case VALUE.MAS:        return mas;
-            case VALUE.HPre:       return incHP;
-            case VALUE.SPre:       return incSP;
+            case VALUE.HPregen:    return incHP;
+            case VALUE.SPregen:    return incSP;
             case VALUE.StartPower: return startPower;
             case VALUE.Power:      return power;
             case VALUE.FootSpeed:  return footSpeed;
@@ -104,6 +183,8 @@ public class StatusValues
             case VALUE.Critical:   return critical;
             case VALUE.AttackPoint:return attackPoint;
             case VALUE.Damage:     return damage;
+
+            case VALUE.StatPoint: return StatPoint;
         }
         return 0f;
     }
@@ -123,10 +204,11 @@ public class StatusValues
     public float critical = 0f;
     public float attackPoint = 0f;
     public float damage = 0f;
+    public int StatPoint = 0;
 
     public static StatusValues operator +(StatusValues a, StatusValues b)
     {
-        StatusValues result = a;
+        StatusValues result = new StatusValues(a);
         if(a.type == TYPE.integer && b.type == TYPE.integer)
         {
             if(b.maxHP         !=0 )  result.maxHP        += b.maxHP        ;
@@ -145,6 +227,7 @@ public class StatusValues
             if(b.critical      !=0 )  result.critical     += b.critical     ;
             if(b.attackPoint   !=0 )  result.attackPoint  += b.attackPoint  ;
             if(b.damage        !=0 )  result.damage       += b.damage       ;
+            if(b.StatPoint     !=0 )  result.StatPoint    += b.StatPoint;
             result.type = TYPE.integer;
         }
 
