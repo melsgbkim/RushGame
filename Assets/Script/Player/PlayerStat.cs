@@ -4,6 +4,7 @@ using System.Collections;
 public class PlayerStat : MonoBehaviour
 {
     public bool Set = false;
+    public float SetTime = 0f;
     public StatusValues statInt;
     public StatusValues Stat
     {
@@ -11,6 +12,7 @@ public class PlayerStat : MonoBehaviour
         set
         {
             statInt = value;
+            SetTime = Time.time;
             SetChildValue(statInt);
             SetStat(statInt);
         }
@@ -61,6 +63,50 @@ public class StatusValues
 
     }
     public TYPE type = TYPE.integer;
+
+    public enum VALUE
+    {
+        level,
+        HP,
+        SP,
+        STR,
+        DEX,
+        LUK,
+        MAS,
+        HPre,
+        SPre,
+        StartPower,
+        Power,
+        FootSpeed,
+        AttackSpeed,
+        Evasion,
+        Critical,
+        AttackPoint,
+        Damage
+    }
+    public float GetValue(VALUE v)
+    {
+        switch(v)
+        {
+            case VALUE.HP:         return maxHP;
+            case VALUE.SP:         return maxSP;
+            case VALUE.STR:        return str;
+            case VALUE.DEX:        return dex;
+            case VALUE.LUK:        return luk;
+            case VALUE.MAS:        return mas;
+            case VALUE.HPre:       return incHP;
+            case VALUE.SPre:       return incSP;
+            case VALUE.StartPower: return startPower;
+            case VALUE.Power:      return power;
+            case VALUE.FootSpeed:  return footSpeed;
+            case VALUE.AttackSpeed:return attackSpeed;
+            case VALUE.Evasion:    return evasion;
+            case VALUE.Critical:   return critical;
+            case VALUE.AttackPoint:return attackPoint;
+            case VALUE.Damage:     return damage;
+        }
+        return 0f;
+    }
     public float maxHP = 0f;
     public float maxSP = 0f;
     public float str = 0f;

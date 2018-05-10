@@ -11,7 +11,7 @@ public class PlayerInventory : MonoBehaviour
     Hashtable CategoryTable = new Hashtable();
     List<PlayerItemCategory> CategoryList = new List<PlayerItemCategory>();
 
-    bool needCheckPos = false;
+    bool needCheckPos = true;
     void Start()
     {
         AddCategory("equipment");
