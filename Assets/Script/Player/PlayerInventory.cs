@@ -108,7 +108,6 @@ public class PlayerItemCategory
             GameObject tmp = UIInventoryManager.Get.NewItemUI();
             ItemUITable.Add(key, tmp);
             (ItemTable[key] as Item).UI = tmp;
-            tmp.GetComponent<Image>().sprite = tmpItem.sprite;
         }
     }
     public void AddItem(string id,int count)
