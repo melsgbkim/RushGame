@@ -1,70 +1,70 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <ItemInfo>
   <Item id="Item_0001">
-    <Name>Cheese</Name>
+    <Name>Cheese1</Name>
     <Category>etc</Category>
     <Sprite>  <Image Index="1">Sprite/ItemIcon</Image>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <AbleList><Count/></AbleList>
   </Item>
   <Item id="Item_0002">
-    <Name>Cheese</Name>
+    <Name>Cheese2</Name>
     <Category>etc</Category>
     <Sprite>  <Image Index="1">Sprite/ItemIcon</Image>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <AbleList><Count/></AbleList>
   </Item>
   <Item id="Item_0003">
-    <Name>Cheese</Name>
+    <Name>Cheese3</Name>
     <Category>etc</Category>
     <Sprite>  <Image Index="1">Sprite/ItemIcon</Image>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <AbleList><Count/></AbleList>
   </Item>
   <Item id="Item_0004">
-    <Name>Cheese</Name>
+    <Name>Cheese4</Name>
     <Category>etc</Category>
     <Sprite>  <Image Index="1">Sprite/ItemIcon</Image>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <AbleList><Count/></AbleList>
   </Item>
   <Item id="Item_0005">
-    <Name>Cheese</Name>
+    <Name>Cheese5</Name>
     <Category>etc</Category>
     <Sprite>  <Image Index="1">Sprite/ItemIcon</Image>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <AbleList><Count/></AbleList>
   </Item>
   <Item id="Item_0006">
-    <Name>Cheese</Name>
+    <Name>Cheese6</Name>
     <Category>etc</Category>
     <Sprite>  <Image Index="1">Sprite/ItemIcon</Image>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <AbleList><Count/></AbleList>
   </Item>
   <Item id="Item_0007">
-    <Name>Cheese</Name>
+    <Name>Cheese7</Name>
     <Category>etc</Category>
     <Sprite>  <Image Index="1">Sprite/ItemIcon</Image>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <AbleList><Count/></AbleList>
   </Item>
   <Item id="Item_0008">
-    <Name>Cheese</Name>
+    <Name>Cheese8</Name>
     <Category>etc</Category>
     <Sprite>  <Image Index="1">Sprite/ItemIcon</Image>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <AbleList><Count/></AbleList>
   </Item>
   <Item id="Item_0009">
-    <Name>mouse</Name>
+    <Name>mouse9</Name>
     <Category>etc</Category>
     <Sprite>  <Image Index="2">Sprite/ItemIcon</Image>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.07</y>  <scale>0.6</scale>  </Shadow>
     <AbleList><Count/></AbleList>
   </Item>
   <Item id="Item_0010">
-    <Name>zerry</Name>
+    <Name>zerry10</Name>
     <Category>etc</Category>
     <Sprite>  <Image Index="3">Sprite/ItemIcon</Image>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
@@ -73,21 +73,21 @@
 
 
   <Item id="Item_Q0001">
-    <Name>Cheese</Name>
+    <Name>Cheese1Q</Name>
     <Category>quest</Category>
     <Sprite>  <Image Index="4">Sprite/ItemIcon</Image>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <AbleList><Count/></AbleList>
   </Item>
   <Item id="Item_Q0002">
-    <Name>mouse</Name>
+    <Name>mouse2Q</Name>
     <Category>quest</Category>
     <Sprite>  <Image Index="5">Sprite/ItemIcon</Image>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.07</y>  <scale>0.6</scale>  </Shadow>
     <AbleList><Count/></AbleList>
   </Item>
   <Item id="Item_Q0003">
-    <Name>zerry</Name>
+    <Name>zerry3Q</Name>
     <Category>quest</Category>
     <Sprite>  <Image Index="6">Sprite/ItemIcon</Image>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>

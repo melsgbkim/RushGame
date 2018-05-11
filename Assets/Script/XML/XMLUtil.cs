@@ -8,6 +8,7 @@ public class XMLUtil
 {
     public static XmlElement FindOneByTag(XmlElement element, string tag)
     {
+        if (element == null) return null;
         XmlNodeList list = element.GetElementsByTagName(tag);
         foreach (XmlElement node in list)
             return node;

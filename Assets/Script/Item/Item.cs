@@ -4,13 +4,20 @@ using System.Xml;
 
 public class Item
 {
+    static int NextNumber = 0;
+    public static int GetNextNumber()
+    {
+        NextNumber += 1;
+        return NextNumber;
+    }
     public string id = "";
-    
+
+    public int ItemNumber = 0;
     string Name = "";
     bool StackAble = false;
     string Grade = "";
     int Level = 1;
-    public int count = 1;
+    public int count = 0;
     bool isLocked = false;
     string State = "";
 
@@ -60,12 +67,21 @@ public class Item
         XmlFile ItemInfoFile = XmlFile.Load("ItemInfo");
         ItemNode = ItemInfoFile.GetNodeByID(id, "Item");
         if (ItemNode != null)
+        {
             this.id = id;
+            this.ItemNumber = GetNextNumber();
+        }
     }
 
-    public bool AddCount(int count)
+    public bool CanAddCount()
     {
         if (isAble("Count") == false) return false;
+
+        return true;
+    }
+    public bool AddCount(int count)
+    {
+        if (CanAddCount() == false) return false;
         this.count += count;
         if (this.count < 0)
             this.count = 0;
