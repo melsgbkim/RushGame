@@ -13,17 +13,18 @@ public class Item
     public string id = "";
 
     public int ItemNumber = 0;
-    string Name = "";
-    bool StackAble = false;
-    string Grade = "";
-    int Level = 1;
+    public string Name = "";
+    public bool StackAble = false;
+    public string Grade = "";
+    public int Level = 1;
     public int count = 0;
-    bool isLocked = false;
-    string State = "";
+    public bool isLocked = false;
+    public string State = "";
 
     Hashtable AbleList = new Hashtable();
 
     public XmlElement ItemNode = null;
+    public XmlElement ItemGradeNode = null;
     public UIItemInfoUpdater _UI = null;
     public GameObject UI
     {
@@ -62,15 +63,24 @@ public class Item
     {
         get { return id != ""; }
     }
-    public Item(string id)
+    public Item(string id,bool onlyInfo = false)
     {
         XmlFile ItemInfoFile = XmlFile.Load("ItemInfo");
         ItemNode = ItemInfoFile.GetNodeByID(id, "Item");
         if (ItemNode != null)
         {
             this.id = id;
-            this.ItemNumber = GetNextNumber();
+            if(onlyInfo == false)
+                this.ItemNumber = GetNextNumber();
+
+            Name = XMLUtil.FindOneByTag(ItemNode, "Name").InnerText;
+            XmlElement tmp = XMLUtil.FindOneByTag(ItemNode, "Grade");
+            Grade = (tmp == null ? "nomal" : tmp.InnerText);
+
+            XmlFile GradeInfoFile = XmlFile.Load("GradeInfo");
+            ItemGradeNode = GradeInfoFile.GetNodeByID(Grade, "Grade");
         }
+        
     }
 
     public bool CanAddCount()
@@ -88,4 +98,26 @@ public class Item
         _UI.SetCount(this.count);
         return true;
     }
+
+
+
+
+    //Info
+    public Color GetColorByGrade(string grade, string tag)
+    {
+        XmlElement nameColor = XMLUtil.FindOneByTag(ItemGradeNode, tag);
+        float r = float.Parse(XMLUtil.FindOneByTag(nameColor, "r").InnerText);
+        float g = float.Parse(XMLUtil.FindOneByTag(nameColor, "g").InnerText);
+        float b = float.Parse(XMLUtil.FindOneByTag(nameColor, "b").InnerText);
+        float a = float.Parse(XMLUtil.FindOneByTag(nameColor, "a").InnerText);
+        return new Color(r, g, b, a);
+    }
+
+    public Color GetColorByGrade(string tag)
+    {
+        return GetColorByGrade(Grade,tag);
+    }
+
+
+
 }

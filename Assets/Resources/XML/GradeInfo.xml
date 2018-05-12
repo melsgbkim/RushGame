@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<GradeInfo>
+  <Grade id="nomal">
+    <Name>Nomal</Name>
+    <NameColor>  <r>1</r>  <g>1</g>  <b>1</b>  <a>1</a>  </NameColor>
+    <BackColor>  <r>0.6</r>  <g>0.6</g>  <b>0.6</b>  <a>0.6</a>  </BackColor>
+  </Grade>
+  <Grade id="rare">
+    <Name>Rare</Name>
+    <NameColor>  <r>1</r>  <g>0.5</g>  <b>1</b>  <a>1</a>  </NameColor>
+    <BackColor>  <r>0.6</r>  <g>0.3</g>  <b>0.6</b>  <a>0.6</a>  </BackColor>
+  </Grade>
+</GradeInfo>
