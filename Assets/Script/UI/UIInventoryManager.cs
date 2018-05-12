@@ -13,7 +13,8 @@ public class UIInventoryManager : MonoBehaviour
     public GameObject ItemPrefab;
 
     public Transform root;
-    
+    public RectTransform Contents;
+
     public GameObject NewItemUI()
     {
         GameObject result = Instantiate(ItemPrefab);
@@ -30,6 +31,11 @@ public class UIInventoryManager : MonoBehaviour
                 return root.GetChild(i).gameObject;
         }
         return null;
+    }
+
+    public void SetInventoryContentsHeight(float h)
+    {
+        Contents.sizeDelta = new Vector2(Contents.rect.width,h);
     }
     // Use this for initialization
     void Start()
