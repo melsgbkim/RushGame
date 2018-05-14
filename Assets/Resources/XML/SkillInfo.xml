@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<SkillInfo>
+	<Skill id="Skill_0001">
+		<Name>TmpSkill1</Name>
+		<Sprite>  <Image Index="1">Sprite/SkillIcon</Image>  </Sprite>
+		<Info>TestInfo1</Info>
+	</Skill>
+	<Skill id="Skill_0002">
+		<Name>TmpSkill2</Name>
+		<Sprite>  <Image Index="2">Sprite/SkillIcon</Image>  </Sprite>
+		<Info>TestInfo2</Info>
+	</Skill>
+	<Skill id="Skill_0003">
+		<Name>TmpSkill3</Name>
+		<Sprite>  <Image Index="3">Sprite/SkillIcon</Image>  </Sprite>
+		<Info>TestInfo3</Info>
+	</Skill>
+	<Skill id="Skill_0004">
+		<Name>TmpSkill4</Name>
+		<Sprite>  <Image Index="4">Sprite/SkillIcon</Image>  </Sprite>
+		<Info>TestInfo4</Info>
+	</Skill>
+	<Skill id="Skill_0005">
+		<Name>TmpSkill5</Name>
+		<Sprite>  <Image Index="5">Sprite/SkillIcon</Image>  </Sprite>
+		<Info>TestInfo5</Info>
+	</Skill>
+	<Skill id="Skill_0006">
+		<Name>TmpSkill6</Name>
+		<Sprite>  <Image Index="6">Sprite/SkillIcon</Image>  </Sprite>
+		<Info>TestInfo6</Info>
+	</Skill>
+</SkillInfo>
