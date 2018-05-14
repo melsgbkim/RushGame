@@ -127,7 +127,7 @@ public class PlayerInventory : MonoBehaviour
         }
         float InventoryHeight = index * 100f;
         if (InventoryHeight < 1020f) InventoryHeight = 1020f;
-        UIInventoryManager.Get.SetInventoryContentsHeight(InventoryHeight);
+        UIInventoryManager.Get.SetContentsHeight(InventoryHeight);
     }
 }
 

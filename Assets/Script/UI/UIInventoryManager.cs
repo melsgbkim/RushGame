@@ -33,7 +33,7 @@ public class UIInventoryManager : MonoBehaviour
         return null;
     }
 
-    public void SetInventoryContentsHeight(float h)
+    public void SetContentsHeight(float h)
     {
         Contents.sizeDelta = new Vector2(Contents.rect.width,h);
     }
