@@ -42,9 +42,7 @@ public class MainLogic : MonoBehaviour
         XmlElement ItemInfo = XmlFile.Load("ItemInfo").GetNodeByID(id, "Item");
 
         GameObject Item = Instantiate(ItemPrefab, pos, ItemPrefab.transform.rotation) as GameObject;
-        Item.GetComponent<ItemInfo>().id = id;
-        Item.GetComponent<ItemInfo>().Count = count;
-        Item.GetComponent<ItemInfo>().Player = player;
+        Item.GetComponent<ItemDropInfo>().Set(id, count, player);
     }
 
     public void RandomDropItem(XmlElement node,Vector2 pos,GameObject player)

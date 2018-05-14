@@ -66,7 +66,7 @@ public class PopupItemInfo : MonoBehaviour
             switch (tmp.type)
             {
                 case PopupItemInfoArea.InfoAreaType.Level:
-                    if (_item != null && _item.isAble("Level"))
+                    if (_item != null && _item.data.isAble("Level"))
                         set = true;
                     break;
                 case PopupItemInfoArea.InfoAreaType.Default:
@@ -93,13 +93,11 @@ public class PopupItemInfo : MonoBehaviour
     void SetItemId(string id)
     {
         _item = new Item(id, true);
-        Icon.sprite = _item.sprite;
+        Icon.sprite = _item.data.SpriteWithIndex;
 
-        Grade.text = XMLUtil.FindOneByTag(_item.ItemGradeNode,"Name").InnerText;
-        Grade.color = _item.GetColorByGrade("NameColor");
-
+        Grade.color = _item.gradeData.NameColor;
         Name.text = _item.Name;
-        InfoText.text = XMLUtil.FindOneByTag(_item.ItemNode, "Info").InnerText; ;
+        InfoText.text = _item.data.Info;
 
         /*
         Image Lock;
@@ -118,7 +116,7 @@ public class PopupItemInfo : MonoBehaviour
         }
         else
         {
-            if (i.isAble("Count"))
+            if (i.data.isAble("Count"))
             {
                 Count.text = i.count.ToString();
                 Count.gameObject.SetActive(true);
@@ -128,7 +126,7 @@ public class PopupItemInfo : MonoBehaviour
                 Count.gameObject.SetActive(false);
             }
 
-            if (i.isAble("Level"))
+            if (i.data.isAble("Level"))
             {
                 EXPBar.NewGaugeData(new UIGaugeData(0,1));
                 Level.text = "Lv " + i.Level;

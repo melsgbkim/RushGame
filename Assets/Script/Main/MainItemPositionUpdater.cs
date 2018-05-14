@@ -42,7 +42,7 @@ public class MainItemPositionUpdater : MonoBehaviour
 
 public class ItemPositionData
 {
-    public ItemPositionData(ItemInfo item, Vector2 posStart, Vector2 posEnd, string type, float height, float power = 1f, float timeMax = 0.6f)
+    public ItemPositionData(ItemDropInfo item, Vector2 posStart, Vector2 posEnd, string type, float height, float power = 1f, float timeMax = 0.6f)
     {
         this.item = item;
         this.posStart = posStart;
@@ -52,7 +52,7 @@ public class ItemPositionData
         this.power = power;
         this.timeMax = timeMax;
     }
-    public ItemPositionData(ItemInfo item, Vector2 posStart, Transform target, string type, float height, float power = 1f, float timeMax = 0.6f)
+    public ItemPositionData(ItemDropInfo item, Vector2 posStart, Transform target, string type, float height, float power = 1f, float timeMax = 0.6f)
     {
         this.item = item;
         this.posStart = posStart;
@@ -63,7 +63,7 @@ public class ItemPositionData
         this.power = power;
         this.timeMax = timeMax;
     }
-    public ItemInfo item;
+    public ItemDropInfo item;
     public Vector2 posStart;
     public Vector2 posEnd;
     public Transform target = null;

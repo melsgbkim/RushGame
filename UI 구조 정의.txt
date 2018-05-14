@@ -1,18 +1,18 @@
-스킬창 + 스크롤
-(
-	렉트마스크
-	(
-		skillAllContent
-	    (
-			skillLine + panel
-			(
-				skillIcon
-				skillInfo
+//스킬창 + 스크롤
+//(
+//	렉트마스크
+//	(
+//		skillAllContent
+//	    (
+//			skillLine + panel
+//			(
+//				skillIcon
+//				skillInfo
 				SkillPointAdd
-			)
-		)
-	)
-)
+//			)
+//		)
+//	)
+//)
 
 퀘스트 ui 스크롤
 (

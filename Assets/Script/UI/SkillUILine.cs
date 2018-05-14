@@ -4,7 +4,7 @@ using System.Collections;
 
 public class SkillUILine : MonoBehaviour
 {
-    public SkillInfo skillInfo = null;
+    public SkillData skillInfo = null;
     public Image Icon;
     public Text before;
     public Text after;
@@ -12,13 +12,13 @@ public class SkillUILine : MonoBehaviour
 
     public void SetSkill(string id)
     {
-        SetSkill(new SkillInfo(id));
+        SetSkill(new SkillData(id));
     }
-    public void SetSkill(SkillInfo s)
+    public void SetSkill(SkillData s)
     {
         skillInfo = s;
 
-        Icon.sprite = skillInfo.Sprite;
+        Icon.sprite = skillInfo.SpriteWithIndex;
         before.text = skillInfo.Info + "_B";
         after.text  = skillInfo.Info + "_A";
     }
