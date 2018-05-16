@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<QuestInfo>
+  <Quest id="QuestBasic_0001">
+    <Name>BasicName</Name>
+    <Type>Basic</Type>
+    <NeedItemList>
+      <Item id="Item_Q0001">  <Count>1</Count>  </Item>
+      <Item id="Item_Q0002">  <Count>1</Count>  </Item>
+      <Item id="Item_Q0003">  <Count>1</Count>  </Item>
+      <Item id="Item_0001">  <Count>1</Count>  </Item>
+      <Item id="Item_0002">  <Count>1</Count>  </Item>
+      <Item id="Item_0003">  <Count>1</Count>  </Item>
+    </NeedItemList>
+    <RewardItemList>
+      <Item id="Item_E0001">  <Level>1</Level>  </Item>
+      <Item id="Item_E0002">  <Level>2</Level>  </Item>
+      <Item id="Item_E0003">  <Level>3</Level>  </Item>
+      <Item id="Item_0001">   <Count>9</Count>  </Item>
+    </RewardItemList>
+    <Info>TestInfo1</Info>
+  </Quest>
+</QuestInfo>

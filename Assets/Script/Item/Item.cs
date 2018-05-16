@@ -48,10 +48,7 @@ public class Item
         {
             if (value.GetComponent<UIItemInfoUpdater>() == null) return;
             _UI = value.GetComponent<UIItemInfoUpdater>();
-
-            _UI.Icon.sprite = data.SpriteWithIndex;//Sprite
-            if (data.isAble("Level")) _UI.SetLevel(this.Level);//HasLevel
-            if (data.isAble("Count")) _UI.SetCount(this.count);//HasCount
+            _UI.SetData(data,this);
         }
     }
 
