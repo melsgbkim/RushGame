@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<ExpEquipmentInfo>
+  <Level id="1">   <NeedToUp>30</NeedToUp>      <Sum>0</Sum>        </Level>
+  <Level id="2">   <NeedToUp>37</NeedToUp>      <Sum>30</Sum>       </Level>
+  <Level id="3">   <NeedToUp>46</NeedToUp>      <Sum>67</Sum>       </Level>
+  <Level id="4">   <NeedToUp>57</NeedToUp>      <Sum>113</Sum>      </Level>
+  <Level id="5">   <NeedToUp>71</NeedToUp>      <Sum>170</Sum>      </Level>
+  <Level id="6">   <NeedToUp>88</NeedToUp>      <Sum>241</Sum>      </Level>
+  <Level id="7">   <NeedToUp>110</NeedToUp>     <Sum>329</Sum>      </Level>
+  <Level id="8">   <NeedToUp>137</NeedToUp>     <Sum>439</Sum>      </Level>
+  <Level id="9">   <NeedToUp>171</NeedToUp>     <Sum>576</Sum>      </Level>
+  <Level id="10">  <NeedToUp>213</NeedToUp>     <Sum>747</Sum>      </Level>
+  <Level id="11">  <NeedToUp>266</NeedToUp>     <Sum>960</Sum>      </Level>
+  <Level id="12">  <NeedToUp>332</NeedToUp>     <Sum>1226</Sum>     </Level>
+  <Level id="13">  <NeedToUp>415</NeedToUp>     <Sum>1558</Sum>     </Level>
+  <Level id="14">  <NeedToUp>518</NeedToUp>     <Sum>1973</Sum>     </Level>
+  <Level id="15">  <NeedToUp>647</NeedToUp>     <Sum>2491</Sum>     </Level>
+  <Level id="16">  <NeedToUp>808</NeedToUp>     <Sum>3138</Sum>     </Level>
+  <Level id="17">  <NeedToUp>1010</NeedToUp>    <Sum>3946</Sum>     </Level>
+  <Level id="18">  <NeedToUp>1262</NeedToUp>    <Sum>4956</Sum>     </Level>
+  <Level id="19">  <NeedToUp>1577</NeedToUp>    <Sum>6218</Sum>     </Level>
+  <Level id="20">  <NeedToUp>1971</NeedToUp>    <Sum>7795</Sum>     </Level>
+  <Level id="21">  <NeedToUp>2463</NeedToUp>    <Sum>9766</Sum>     </Level>
+  <Level id="22">  <NeedToUp>3078</NeedToUp>    <Sum>12229</Sum>    </Level>
+  <Level id="23">  <NeedToUp>3847</NeedToUp>    <Sum>15307</Sum>    </Level>
+  <Level id="24">  <NeedToUp>4808</NeedToUp>    <Sum>19154</Sum>    </Level>
+  <Level id="25">  <NeedToUp>6010</NeedToUp>    <Sum>23962</Sum>    </Level>
+  <Level id="26">  <NeedToUp>7512</NeedToUp>    <Sum>29972</Sum>    </Level>
+  <Level id="27">  <NeedToUp>9390</NeedToUp>    <Sum>37484</Sum>    </Level>
+  <Level id="28">  <NeedToUp>11737</NeedToUp>   <Sum>46874</Sum>    </Level>
+  <Level id="29">  <NeedToUp>14671</NeedToUp>   <Sum>58611</Sum>    </Level>
+  <Level id="30">  <NeedToUp>18338</NeedToUp>   <Sum>73282</Sum>    </Level>
+  <Level id="31">  <NeedToUp>22922</NeedToUp>   <Sum>91620</Sum>    </Level>
+  <Level id="32">  <NeedToUp>28652</NeedToUp>   <Sum>114542</Sum>   </Level>
+  <Level id="33">  <NeedToUp>35815</NeedToUp>   <Sum>143194</Sum>   </Level>
+  <Level id="34">  <NeedToUp>44768</NeedToUp>   <Sum>179009</Sum>   </Level>
+  <Level id="35">  <NeedToUp>55960</NeedToUp>   <Sum>223777</Sum>   </Level>
+  <Level id="36">  <NeedToUp>69950</NeedToUp>   <Sum>279737</Sum>   </Level>
+  <Level id="37">  <NeedToUp>87437</NeedToUp>   <Sum>349687</Sum>   </Level>
+  <Level id="38">  <NeedToUp>109296</NeedToUp>  <Sum>437124</Sum>   </Level>
+  <Level id="39">  <NeedToUp>136620</NeedToUp>  <Sum>546420</Sum>   </Level>
+  <Level id="40">  <NeedToUp>0</NeedToUp>     <Sum>683040</Sum>   </Level>
+</ExpEquipmentInfo>

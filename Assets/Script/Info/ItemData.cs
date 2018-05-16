@@ -14,6 +14,7 @@ public class ItemData : DataInterface
         Category = GetElementInnerTextByTag("Category");
         Grade = GetElementInnerTextByTag("Grade");
         Info = GetElementInnerTextByTag("Info");
+        Exp = int.Parse(GetElementInnerTextByTag("Exp"));
     }
     public ItemData(string id)
     {
@@ -24,4 +25,5 @@ public class ItemData : DataInterface
     public string Category = "";
     public string Grade = "";
     public string Info = "";
+    public int Exp = 0;
 }

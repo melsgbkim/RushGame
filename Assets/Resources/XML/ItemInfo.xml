@@ -7,6 +7,7 @@
     <Sprite>  <Image Index="1">Sprite/ItemIcon</Image>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <Info>TestInfo1</Info>
+    <Exp>10</Exp>
     <AbleList><Count/></AbleList>
   </Item>
   <Item id="Item_0002">
@@ -16,6 +17,7 @@
     <Sprite>  <Image Index="1">Sprite/ItemIcon</Image>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <Info>TestInfo1</Info>
+    <Exp>10</Exp>
     <AbleList><Count/></AbleList>
   </Item>
   <Item id="Item_0003">
@@ -25,6 +27,7 @@
     <Sprite>  <Image Index="1">Sprite/ItemIcon</Image>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <Info>TestInfo1</Info>
+    <Exp>10</Exp>
     <AbleList><Count/></AbleList>
   </Item>
   <Item id="Item_0004">
@@ -34,6 +37,7 @@
     <Sprite>  <Image Index="1">Sprite/ItemIcon</Image>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <Info>TestInfo1</Info>
+    <Exp>10</Exp>
     <AbleList><Count/></AbleList>
   </Item>
   <Item id="Item_0005">
@@ -43,6 +47,7 @@
     <Sprite>  <Image Index="1">Sprite/ItemIcon</Image>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <Info>TestInfo1</Info>
+    <Exp>10</Exp>
     <AbleList><Count/></AbleList>
   </Item>
   <Item id="Item_0006">
@@ -52,6 +57,7 @@
     <Sprite>  <Image Index="1">Sprite/ItemIcon</Image>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <Info>TestInfo1</Info>
+    <Exp>10</Exp>
     <AbleList><Count/></AbleList>
   </Item>
   <Item id="Item_0007">
@@ -61,6 +67,7 @@
     <Sprite>  <Image Index="1">Sprite/ItemIcon</Image>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <Info>TestInfo1</Info>
+    <Exp>10</Exp>
     <AbleList><Count/></AbleList>
   </Item>
   <Item id="Item_0008">
@@ -70,6 +77,7 @@
     <Sprite>  <Image Index="1">Sprite/ItemIcon</Image>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <Info>TestInfo1</Info>
+    <Exp>10</Exp>
     <AbleList><Count/></AbleList>
   </Item>
   <Item id="Item_0009">
@@ -79,6 +87,7 @@
     <Sprite>  <Image Index="2">Sprite/ItemIcon</Image>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.07</y>  <scale>0.6</scale>  </Shadow>
     <Info>TestInfo1</Info>
+    <Exp>10</Exp>
     <AbleList><Count/></AbleList>
   </Item>
   <Item id="Item_0010">
@@ -88,6 +97,7 @@
     <Sprite>  <Image Index="3">Sprite/ItemIcon</Image>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <Info>TestInfo1</Info>
+    <Exp>10</Exp>
     <AbleList><Count/></AbleList>
   </Item>
 
@@ -129,6 +139,7 @@
     <Sprite>  <Image Index="1">Sprite/EquipmentIcon</Image>  <scale>0.5</scale>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <Info>TestInfo1</Info>
+    <Exp>100</Exp>
     <AbleList><Level/></AbleList>
   </Item>
   <Item id="Item_E0002">
@@ -138,6 +149,7 @@
     <Sprite>  <Image Index="2">Sprite/EquipmentIcon</Image>  <scale>0.5</scale>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <Info>TestInfo1</Info>
+    <Exp>100</Exp>
     <AbleList><Level/></AbleList>
   </Item>
   <Item id="Item_E0003">
@@ -147,6 +159,7 @@
     <Sprite>  <Image Index="3">Sprite/EquipmentIcon</Image>  <scale>0.5</scale>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <Info>TestInfo1</Info>
+    <Exp>100</Exp>
     <AbleList><Level/></AbleList>
   </Item>
   <Item id="Item_E0004">
@@ -156,6 +169,7 @@
     <Sprite>  <Image Index="4">Sprite/EquipmentIcon</Image>  <scale>0.5</scale>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <Info>TestInfo1</Info>
+    <Exp>100</Exp>
     <AbleList><Level/></AbleList>
   </Item>
   <Item id="Item_E0005">
@@ -165,6 +179,7 @@
     <Sprite>  <Image Index="5">Sprite/EquipmentIcon</Image>  <scale>0.5</scale>  <y>0.05</y>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <Info>TestInfo1</Info>
+    <Exp>100</Exp>
     <AbleList><Level/></AbleList>
   </Item>
   <Item id="Item_E0006">
@@ -174,6 +189,7 @@
     <Sprite>  <Image Index="6">Sprite/EquipmentIcon</Image>  <scale>0.5</scale>  </Sprite>
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <Info>TestInfo1</Info>
+    <Exp>100</Exp>
     <AbleList><Level/></AbleList>
   </Item>
 </ItemInfo>
