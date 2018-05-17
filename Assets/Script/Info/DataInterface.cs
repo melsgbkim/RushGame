@@ -33,12 +33,7 @@ public class DataInterface
 
     public string GetElementInnerTextByTag(string tag, string DefaultValue = "")
     {
-        return GetElementInnerTextByTag(DataNode, tag, DefaultValue);
-    }
-    public string GetElementInnerTextByTag(XmlElement node, string tag,string DefaultValue = "")
-    {
-        XmlElement result = XMLUtil.FindOneByTag(DataNode, tag);
-        return (result == null ? DefaultValue : result.InnerText);
+        return XMLUtil.GetElementInnerTextByTag(DataNode, tag, DefaultValue);
     }
 
     public Sprite SpriteWithIndex
@@ -72,10 +67,10 @@ public class DataInterface
     public Color GetColorByTag(string tag)
     {
         XmlElement nameColor = XMLUtil.FindOneByTag(DataNode, tag);
-        float r = float.Parse(GetElementInnerTextByTag(nameColor, "r","0"));
-        float g = float.Parse(GetElementInnerTextByTag(nameColor, "g","0"));
-        float b = float.Parse(GetElementInnerTextByTag(nameColor, "b","0"));
-        float a = float.Parse(GetElementInnerTextByTag(nameColor, "a","0"));
-        return new Color(r, g, b, a);
+        Color result = new Color(1, 1, 1, 1);
+        Color tmp;
+        if (ColorUtility.TryParseHtmlString(nameColor.InnerText, out tmp))
+            result = tmp;
+        return result;
     }
 }

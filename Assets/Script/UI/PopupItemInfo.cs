@@ -15,7 +15,11 @@ public class PopupItemInfo : MonoBehaviour
     public Image Lock;
     public UIGaugeUpdater EXPBar;
     public Text Level;
+    public Text OptionInfoText;
+    public RectTransform OptionInfoArea;
     public Text InfoText;
+
+    
 
     public string id
     {
@@ -35,6 +39,7 @@ public class PopupItemInfo : MonoBehaviour
             SetAreaPos();
         }
     }
+
     GameObject LevelArea = null;
     public List<PopupItemInfoArea> AreaList = new List<PopupItemInfoArea>();
 
@@ -49,12 +54,14 @@ public class PopupItemInfo : MonoBehaviour
         }
 
 
-        id = "Item_0001";
+        //id = "Item_0001";
+        item = new Item("Item_E0001");
     }
 
     void Update()
     {
-
+        if(Input.GetKeyDown(KeyCode.E))
+            item = new Item("Item_E0001");
     }
 
     void SetAreaPos()
@@ -65,6 +72,10 @@ public class PopupItemInfo : MonoBehaviour
             bool set = false;
             switch (tmp.type)
             {
+                case PopupItemInfoArea.InfoAreaType.Option:
+                    if (_item != null && _item.OptionIDList != null)
+                        set = true;
+                    break;
                 case PopupItemInfoArea.InfoAreaType.Level:
                     if (_item != null && _item.data.isAble("Level"))
                         set = true;
@@ -113,6 +124,7 @@ public class PopupItemInfo : MonoBehaviour
             Count.gameObject.SetActive(false);
             LevelArea.SetActive(false);
             Lock.gameObject.SetActive(false);
+            OptionInfoText.gameObject.SetActive(false);
         }
         else
         {
@@ -137,11 +149,52 @@ public class PopupItemInfo : MonoBehaviour
                 LevelArea.SetActive(false);
             }
 
+            if(i.OptionIDList != null && i.OptionIDList.Count > 0)
+            {
+                int line = 0;
+                OptionInfoText.text = GetOptionText(out line);
+                OptionInfoText.GetComponent<RectTransform>().sizeDelta = new Vector2(OptionInfoText.GetComponent<RectTransform>().rect.width, line * 30f);
+                OptionInfoText.gameObject.SetActive(true);
+                OptionInfoArea.sizeDelta = new Vector2(OptionInfoArea.rect.width, line * 30f + 10f);
+            }
+            else
+            {
+                OptionInfoText.gameObject.SetActive(false);
+            }
+
             Lock.gameObject.SetActive(i.isLocked);
 
             _item = i;
         }
         
+    }
+
+
+    /*
+     *스텟 이름, 현재 적용될 스텟, 장비의 한계스텟(플레이어 레벨이 높으면 미표시) 
+     */
+    string GetOptionText(out int lineCount)
+    {
+        lineCount = 0;
+        string result = "";
+        int TmpPlayerLevel = 1;
+        StatusValues statInt = _item.OptionValues(TmpPlayerLevel);
+        for (int i = (int)(StatusValues.VALUE.HP); i <= (int)(StatusValues.VALUE.Damage); i++)
+        {
+            float val = statInt.GetValue((StatusValues.VALUE)i);
+            bool plus = val > 0;
+            if(val != 0)
+            {
+                string line = "";
+                string valueString = val.ToString();
+                if (plus)   line = "" + ((StatusValues.VALUE)i).ToString() + " : <color=#88ff88>+" + valueString + "</color>";
+                else        line = "" + ((StatusValues.VALUE)i).ToString() + " : <color=#ff8888>" + valueString + "</color>";
+                if(result == "") result += line;
+                else             result += "\n"+line;
+                lineCount += 1;
+            }
+        }
+        return result;
     }
 }
 

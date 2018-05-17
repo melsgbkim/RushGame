@@ -14,6 +14,7 @@ public class UIInventoryManager : MonoBehaviour
 
     public Transform root;
     public RectTransform Contents;
+    public float InventoryHeightMax = 1020f;
 
     public GameObject NewItemUI()
     {
@@ -35,6 +36,7 @@ public class UIInventoryManager : MonoBehaviour
 
     public void SetContentsHeight(float h)
     {
+        if (h < InventoryHeightMax) h = InventoryHeightMax;
         Contents.sizeDelta = new Vector2(Contents.rect.width,h);
     }
     // Use this for initialization

@@ -96,14 +96,14 @@ public class PlayerInventory : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
             GetItem(IDLIST[i], 1);
             i++;
             if (IDLIST.Length <= i) i = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKey(KeyCode.S))
         {
             GetItem(IDLIST[i], -100);
             i++;
@@ -125,9 +125,7 @@ public class PlayerInventory : MonoBehaviour
             node.UpdateNewPos(index);
             index += node.Height;
         }
-        float InventoryHeight = index * 100f;
-        if (InventoryHeight < 1020f) InventoryHeight = 1020f;
-        UIInventoryManager.Get.SetContentsHeight(InventoryHeight);
+        UIInventoryManager.Get.SetContentsHeight(index * 100f);
     }
 }
 

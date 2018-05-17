@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<EquipmentRandomOptionInfo>
+  <Option id="Armor0001">
+    <Node id="1"><STR LvBonus="0.2">3</STR></Node>
+    <Node id="2"><DEX LvBonus="0.2">3</DEX></Node>
+    <Node id="3"><LUK LvBonus="0.2">3</LUK></Node>
+    <Node id="4"><MAS LvBonus="0.1">1</MAS></Node>
+    <Node id="5"><STR LvBonus="0.3">5</STR><DEX LvBonus="-0.2">-3</DEX></Node>
+  </Option>
+  <Option id="Helm0001">
+    <Node id="1"><STR LvBonus="0.2">3</STR></Node>
+    <Node id="2"><DEX LvBonus="0.2">3</DEX></Node>
+    <Node id="3"><LUK LvBonus="0.2">3</LUK></Node>
+    <Node id="4"><MAS LvBonus="0.1">1</MAS></Node>
+    <Node id="5"><STR LvBonus="0.3">5</STR><DEX LvBonus="-0.2">-3</DEX></Node>
+  </Option>
+  <Option id="Other0001">
+    <Node id="1"><STR LvBonus="0.2">3</STR></Node>
+    <Node id="2"><DEX LvBonus="0.2">3</DEX></Node>
+    <Node id="3"><LUK LvBonus="0.2">3</LUK></Node>
+    <Node id="4"><MAS LvBonus="0.1">1</MAS></Node>
+    <Node id="5"><STR LvBonus="0.3">5</STR><DEX LvBonus="-0.2">-3</DEX></Node>
+  </Option>
+</EquipmentRandomOptionInfo>

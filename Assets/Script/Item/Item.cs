@@ -1,12 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.Xml;
 
 public class Item
 {
+    static int NextNumber = 0;
+    public static int GetNextNumber()
+    {
+        NextNumber += 1;
+        return NextNumber;
+    }
+
     public string Name;
     public string Grade;
-    
+
+    public string id = "";
+    public ItemData data = null;
+    public GradeData gradeData = null;
+    public int ItemNumber = 0;
+    public bool StackAble = false;
+    public int Level = 1;
+    public int count = 0;
+    public bool isLocked = false;
+    public string State = "";
+    public List<int> OptionIDList = null;
+    public StatusValues OptionBase = new StatusValues();
+    public StatusValues OptionLvBonus = new StatusValues();
+
+    public UIItemInfoUpdater _UI = null;
+
     public Item(string id, bool onlyInfo = false)
     {
         data = new ItemData(id);
@@ -19,28 +42,11 @@ public class Item
             Name = data.Name;
             Grade = data.Grade;
             gradeData = new GradeData(Grade);
+            TrySetEquipmentRandomOptionData(data.OptionID);
         }
 
     }
 
-    static int NextNumber = 0;
-    public static int GetNextNumber()
-    {
-        NextNumber += 1;
-        return NextNumber;
-    }
-    public string id = "";
-    public ItemData data = null;
-    public GradeData gradeData = null;
-
-    public int ItemNumber = 0;
-    public bool StackAble = false;
-    public int Level = 1;
-    public int count = 0;
-    public bool isLocked = false;
-    public string State = "";
-
-    public UIItemInfoUpdater _UI = null;
     public GameObject UI
     {
         get { return _UI.gameObject; }
@@ -72,5 +78,28 @@ public class Item
             this.count = 0;
         _UI.SetCount(this.count);
         return true;
+    }
+
+    void TrySetEquipmentRandomOptionData(string id)
+    {
+        if (id == "") return;
+        if (OptionIDList != null) return;
+        OptionIDList = new List<int>();
+        EquipmentRandomOptionData OptionData = new EquipmentRandomOptionData(id);
+        int cost = 3;
+        List<EquipmentRandomOptionNode> nodeList = OptionData.GetRandomOptionList(cost);
+
+        foreach (EquipmentRandomOptionNode node in nodeList)
+        {
+            OptionBase += node.statValue;
+            OptionLvBonus += node.statValueLevelBonus;
+            OptionIDList.Add(node.id);
+        }
+    }
+
+    public StatusValues OptionValues(int PlayerLevel)
+    {
+        if (OptionIDList != null) TrySetEquipmentRandomOptionData(data.OptionID);
+        return OptionBase + OptionLvBonus * (this.Level < PlayerLevel ? this.Level : PlayerLevel);
     }
 }

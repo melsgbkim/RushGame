@@ -140,6 +140,8 @@
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <Info>TestInfo1</Info>
     <Exp>100</Exp>
+    <EquipType>Armor</EquipType>
+    <OptionID>Armor0001</OptionID>
     <AbleList><Level/></AbleList>
   </Item>
   <Item id="Item_E0002">
@@ -150,6 +152,8 @@
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <Info>TestInfo1</Info>
     <Exp>100</Exp>
+    <EquipType>Armor</EquipType>
+    <OptionID>Armor0001</OptionID>
     <AbleList><Level/></AbleList>
   </Item>
   <Item id="Item_E0003">
@@ -160,6 +164,8 @@
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <Info>TestInfo1</Info>
     <Exp>100</Exp>
+    <EquipType>Armor</EquipType>
+    <OptionID>Armor0001</OptionID>
     <AbleList><Level/></AbleList>
   </Item>
   <Item id="Item_E0004">
@@ -170,6 +176,8 @@
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <Info>TestInfo1</Info>
     <Exp>100</Exp>
+    <EquipType>Other</EquipType>
+    <OptionID>Other0001</OptionID>
     <AbleList><Level/></AbleList>
   </Item>
   <Item id="Item_E0005">
@@ -180,6 +188,8 @@
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <Info>TestInfo1</Info>
     <Exp>100</Exp>
+    <EquipType>Other</EquipType>
+    <OptionID>Other0001</OptionID>
     <AbleList><Level/></AbleList>
   </Item>
   <Item id="Item_E0006">
@@ -190,6 +200,8 @@
     <Shadow>  <x>0</x>  <y>-0.12</y>  <scale>0.6</scale>  </Shadow>
     <Info>TestInfo1</Info>
     <Exp>100</Exp>
+    <EquipType>Helm</EquipType>
+    <OptionID>Helm0001</OptionID>
     <AbleList><Level/></AbleList>
   </Item>
 </ItemInfo>
