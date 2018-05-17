@@ -16,6 +16,8 @@ public class PopupItemInfo : MonoBehaviour
     public UIGaugeUpdater EXPBar;
     public Text Level;
     public Text OptionInfoText;
+    public Text OptionInfoTextValue1;
+    public Text OptionInfoTextValue2;
     public RectTransform OptionInfoArea;
     public Text InfoText;
 
@@ -152,7 +154,7 @@ public class PopupItemInfo : MonoBehaviour
             if(i.OptionIDList != null && i.OptionIDList.Count > 0)
             {
                 int line = 0;
-                OptionInfoText.text = GetOptionText(out line);
+                SetOptionText(out line);
                 OptionInfoText.GetComponent<RectTransform>().sizeDelta = new Vector2(OptionInfoText.GetComponent<RectTransform>().rect.width, line * 30f);
                 OptionInfoText.gameObject.SetActive(true);
                 OptionInfoArea.sizeDelta = new Vector2(OptionInfoArea.rect.width, line * 30f + 10f);
@@ -173,28 +175,48 @@ public class PopupItemInfo : MonoBehaviour
     /*
      *스텟 이름, 현재 적용될 스텟, 장비의 한계스텟(플레이어 레벨이 높으면 미표시) 
      */
-    string GetOptionText(out int lineCount)
+    void SetOptionText(out int lineCount)
     {
         lineCount = 0;
-        string result = "";
+        string NameText = "";
+        string Value1Text = "";
+        string Value2Text = "";
+        string ln = "";
         int TmpPlayerLevel = 1;
         StatusValues statInt = _item.OptionValues(TmpPlayerLevel);
+        StatusValues statIntEquipLevel = ((TmpPlayerLevel < _item.Level) ? _item.OptionValues(_item.Level) : null);
         for (int i = (int)(StatusValues.VALUE.HP); i <= (int)(StatusValues.VALUE.Damage); i++)
         {
             float val = statInt.GetValue((StatusValues.VALUE)i);
-            bool plus = val > 0;
+            float val2 = 0;
+            if(statIntEquipLevel != null)
+                val2 = statIntEquipLevel.GetValue((StatusValues.VALUE)i);
+            
             if(val != 0)
             {
-                string line = "";
+                bool plus = val > 0;
+                bool plus2 = val2 > 0;
+                string NameTextLine = "";
                 string valueString = val.ToString();
-                if (plus)   line = "" + ((StatusValues.VALUE)i).ToString() + " : <color=#88ff88>+" + valueString + "</color>";
-                else        line = "" + ((StatusValues.VALUE)i).ToString() + " : <color=#ff8888>" + valueString + "</color>";
-                if(result == "") result += line;
-                else             result += "\n"+line;
-                lineCount += 1;
+                string value2String = (val2 == 0 ? "" : val2.ToString());
+
+                NameText += ln+((StatusValues.VALUE)i).ToString();
+
+                if (plus)   Value1Text += ln + "<color=#88ff88>+" + valueString + "</color>";
+                else        Value1Text += ln + "<color=#ff8888>" + valueString + "</color>";
+
+                if (plus2)  Value2Text += ln + "<color=#668866>(+" + value2String + ")</color>";
+                else        Value2Text += ln + "<color=#886666>(" + value2String + ")</color>";
+
+                if (ln == "") ln = "\n";
+
+                 lineCount += 1;
             }
         }
-        return result;
+
+        OptionInfoText.text = NameText;
+        OptionInfoTextValue1.text = Value1Text;
+        OptionInfoTextValue2.text = Value2Text;
     }
 }
 
