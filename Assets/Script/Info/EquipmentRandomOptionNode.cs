@@ -14,8 +14,8 @@ public class EquipmentRandomOptionNode
             {
                 StatusValues.VALUE valName = StatusValues.GetVALUETYPE(node.Name);
 
-                statValue.AddValue(valName,XMLUtil.GetFloat(node.InnerText));
-                statValueLevelBonus.AddValue(valName,XMLUtil.GetAttributeValue(node, "LvBonus", 0f));
+                statValue.SetValue(valName,XMLUtil.GetFloat(node.InnerText));
+                statValueLevelBonus.SetValue(valName,XMLUtil.GetAttributeValue(node, "LvBonus", 0f));
             }
         }
     }

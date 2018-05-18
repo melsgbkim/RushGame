@@ -1,24 +1,54 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <EquipmentRandomOptionInfo>
   <Option id="Armor0001">
-    <Node id="1"><STR LvBonus="0.2">3</STR></Node>
-    <Node id="2"><DEX LvBonus="0.2">3</DEX></Node>
-    <Node id="3"><LUK LvBonus="0.2">3</LUK></Node>
-    <Node id="4"><MAS LvBonus="0.1">1</MAS></Node>
-    <Node id="5"><STR LvBonus="0.3">5</STR><DEX LvBonus="-0.2">-3</DEX></Node>
+    <Node id="1" ><STR LvBonus="0.2">3</STR></Node>
+    <Node id="2" ><DEX LvBonus="0.2">3</DEX></Node>
+    <Node id="3" ><LUK LvBonus="0.2">3</LUK></Node>
+    <Node id="4" ><MAS LvBonus="0.1">1</MAS></Node>
+    <Node id="5" ><STR LvBonus="0.3">5</STR><DEX LvBonus="-0.2">-3</DEX></Node>
+    <Node id="6" ><HPregen LvBonus="0.1">1</HPregen></Node>
+    <Node id="7" ><SPregen LvBonus="0.1">1</SPregen></Node>
+    <Node id="8" ><StartPower LvBonus="0.1">1</StartPower></Node>    
+    <Node id="9" ><Power LvBonus="0.1">1</Power></Node>
+    <Node id="10"><FootSpeed LvBonus="0.1">1</FootSpeed></Node>
+    <Node id="11"><AttackSpeed LvBonus="0.1">1</AttackSpeed></Node>
+    <Node id="12"><Evasion LvBonus="0.1">1</Evasion></Node>
+    <Node id="13"><Critical LvBonus="0.1">1</Critical></Node>
+    <Node id="14"><AttackPoint LvBonus="0.1">1</AttackPoint></Node>
+    <Node id="15"><Damage LvBonus="0.1">1</Damage></Node>
   </Option>
   <Option id="Helm0001">
-    <Node id="1"><STR LvBonus="0.2">3</STR></Node>
-    <Node id="2"><DEX LvBonus="0.2">3</DEX></Node>
-    <Node id="3"><LUK LvBonus="0.2">3</LUK></Node>
-    <Node id="4"><MAS LvBonus="0.1">1</MAS></Node>
-    <Node id="5"><STR LvBonus="0.3">5</STR><DEX LvBonus="-0.2">-3</DEX></Node>
+    <Node id="1" ><STR LvBonus="0.2">3</STR></Node>
+    <Node id="2" ><DEX LvBonus="0.2">3</DEX></Node>
+    <Node id="3" ><LUK LvBonus="0.2">3</LUK></Node>
+    <Node id="4" ><MAS LvBonus="0.1">1</MAS></Node>
+    <Node id="5" ><STR LvBonus="0.3">5</STR><DEX LvBonus="-0.2">-3</DEX></Node>
+    <Node id="6" ><HPregen LvBonus="0.1">1</HPregen></Node>
+    <Node id="7" ><SPregen LvBonus="0.1">1</SPregen></Node>
+    <Node id="8" ><StartPower LvBonus="0.1">1</StartPower></Node>    
+    <Node id="9" ><Power LvBonus="0.1">1</Power></Node>
+    <Node id="10"><FootSpeed LvBonus="0.1">1</FootSpeed></Node>
+    <Node id="11"><AttackSpeed LvBonus="0.1">1</AttackSpeed></Node>
+    <Node id="12"><Evasion LvBonus="0.1">1</Evasion></Node>
+    <Node id="13"><Critical LvBonus="0.1">1</Critical></Node>
+    <Node id="14"><AttackPoint LvBonus="0.1">1</AttackPoint></Node>
+    <Node id="15"><Damage LvBonus="0.1">1</Damage></Node>
   </Option>
   <Option id="Other0001">
-    <Node id="1"><STR LvBonus="0.2">3</STR></Node>
-    <Node id="2"><DEX LvBonus="0.2">3</DEX></Node>
-    <Node id="3"><LUK LvBonus="0.2">3</LUK></Node>
-    <Node id="4"><MAS LvBonus="0.1">1</MAS></Node>
-    <Node id="5"><STR LvBonus="0.3">5</STR><DEX LvBonus="-0.2">-3</DEX></Node>
+    <Node id="1" ><STR LvBonus="0.2">3</STR></Node>
+    <Node id="2" ><DEX LvBonus="0.2">3</DEX></Node>
+    <Node id="3" ><LUK LvBonus="0.2">3</LUK></Node>
+    <Node id="4" ><MAS LvBonus="0.1">1</MAS></Node>
+    <Node id="5" ><STR LvBonus="0.3">5</STR><DEX LvBonus="-0.2">-3</DEX></Node>
+    <Node id="6" ><HPregen LvBonus="0.1">1</HPregen></Node>
+    <Node id="7" ><SPregen LvBonus="0.1">1</SPregen></Node>
+    <Node id="8" ><StartPower LvBonus="0.1">1</StartPower></Node>    
+    <Node id="9" ><Power LvBonus="0.1">1</Power></Node>
+    <Node id="10"><FootSpeed LvBonus="0.1">1</FootSpeed></Node>
+    <Node id="11"><AttackSpeed LvBonus="0.1">1</AttackSpeed></Node>
+    <Node id="12"><Evasion LvBonus="0.1">1</Evasion></Node>
+    <Node id="13"><Critical LvBonus="0.1">1</Critical></Node>
+    <Node id="14"><AttackPoint LvBonus="0.1">1</AttackPoint></Node>
+    <Node id="15"><Damage LvBonus="0.1">1</Damage></Node>
   </Option>
 </EquipmentRandomOptionInfo>

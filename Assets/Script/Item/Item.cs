@@ -86,7 +86,7 @@ public class Item
         if (OptionIDList != null) return;
         OptionIDList = new List<int>();
         EquipmentRandomOptionData OptionData = new EquipmentRandomOptionData(id);
-        int cost = 3;
+        int cost = Random.Range(0,15);
         List<EquipmentRandomOptionNode> nodeList = OptionData.GetRandomOptionList(cost);
 
         foreach (EquipmentRandomOptionNode node in nodeList)

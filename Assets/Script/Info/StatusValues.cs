@@ -39,6 +39,7 @@ public class StatusValues
     public enum VALUE
     {
         level,
+
         HP,
         SP,
         STR,
@@ -97,6 +98,32 @@ public class StatusValues
             case VALUE.StatPoint: return StatPoint;
         }
         return 0f;
+    }
+
+    public void SetValue(VALUE v,float value)
+    {
+        switch (v)
+        {
+            case VALUE.HP: maxHP = value; return;
+            case VALUE.SP: maxSP = value; return;
+            case VALUE.STR: str = value; return;
+            case VALUE.DEX: dex = value; return;
+            case VALUE.LUK: luk = value; return;
+            case VALUE.MAS: mas = value; return;
+            case VALUE.HPregen: incHP = value; return;
+            case VALUE.SPregen: incSP = value; return;
+            case VALUE.StartPower: startPower = value; return;
+            case VALUE.Power: power = value; return;
+            case VALUE.FootSpeed: footSpeed = value; return;
+            case VALUE.AttackSpeed: attackSpeed = value; return;
+            case VALUE.Evasion: evasion = value; return;
+            case VALUE.Critical: critical = value; return;
+            case VALUE.AttackPoint: attackPoint = value; return;
+            case VALUE.Damage: damage = value; return;
+
+            case VALUE.StatPoint: StatPoint = (int)(value); return;
+        }
+        return;
     }
     public float maxHP = 0f;
     public float maxSP = 0f;
