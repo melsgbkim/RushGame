@@ -31,7 +31,7 @@ public class UIItemInfoUpdater : MonoBehaviour
     public void SetData(ItemData data, Item i = null)
     {
         Icon.sprite = data.SpriteWithIndex;//Sprite
-        if (data.isAble("Level")) SetLevel(i.Level);//HasLevel
+        if (data.isAble("Level")) SetLevel(i.level.level);//HasLevel
         if (data.isAble("Count")) SetCount(i.count);//HasCount
     }
 

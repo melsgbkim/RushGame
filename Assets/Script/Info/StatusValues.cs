@@ -38,7 +38,7 @@ public class StatusValues
 
     public enum VALUE
     {
-        level,
+        Level,//Just String
 
         HP,
         SP,

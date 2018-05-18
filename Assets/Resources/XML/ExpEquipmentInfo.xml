@@ -39,5 +39,5 @@
   <Level id="37">  <NeedToUp>87437</NeedToUp>   <Sum>349687</Sum>   </Level>
   <Level id="38">  <NeedToUp>109296</NeedToUp>  <Sum>437124</Sum>   </Level>
   <Level id="39">  <NeedToUp>136620</NeedToUp>  <Sum>546420</Sum>   </Level>
-  <Level id="40">  <NeedToUp>0</NeedToUp>     <Sum>683040</Sum>   </Level>
+  <Level id="40">  <NeedToUp>0</NeedToUp>     <Sum>683040</Sum>   <LevelMax/></Level>
 </ExpEquipmentInfo>

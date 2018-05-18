@@ -20,7 +20,7 @@ public class Item
     public GradeData gradeData = null;
     public int ItemNumber = 0;
     public bool StackAble = false;
-    public int Level = 1;
+    public Level level;
     public int count = 0;
     public bool isLocked = false;
     public string State = "";
@@ -43,6 +43,7 @@ public class Item
             Grade = data.Grade;
             gradeData = new GradeData(Grade);
             TrySetEquipmentRandomOptionData(data.OptionID);
+            level = new Level(ExpData.EXPTYPE.Equipment,data.level);
         }
 
     }
@@ -100,6 +101,6 @@ public class Item
     public StatusValues OptionValues(int PlayerLevel)
     {
         if (OptionIDList != null) TrySetEquipmentRandomOptionData(data.OptionID);
-        return OptionBase + OptionLvBonus * (this.Level < PlayerLevel ? this.Level : PlayerLevel);
+        return OptionBase + OptionLvBonus * (this.level.level < PlayerLevel ? this.level.level : PlayerLevel);
     }
 }

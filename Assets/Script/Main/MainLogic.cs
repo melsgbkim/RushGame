@@ -27,7 +27,28 @@ public class MainLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        PopupItemInfoManager tmp = PopupItemInfoManager.Get;
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (tmp.InfoMain.item != null)
+            {
+                tmp.InfoMain.item.level += 30;
+                tmp.InfoMain.item = tmp.InfoMain.item;
+            }
+            if (tmp.InfoSub.item != null)
+            {
+                tmp.InfoSub.item.level += 10;
+                tmp.InfoSub.item = tmp.InfoMain.item;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            tmp.SetActive(new Item("Item_E0001"));
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            tmp.SetActive(new Item("Item_E0001"), new Item("Item_E0001"));
+        }
     }
 
     public void EnemyCreate(string id,Vector2 pos)

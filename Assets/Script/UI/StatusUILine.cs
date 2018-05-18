@@ -15,9 +15,10 @@ public class StatusUILine : MonoBehaviour
 
     public enum TYPE
     {
-        OneValue,//Level,Unused Stat Point, 
+        OneValue,//remains Stat Point, 
         ThreeValue,//AttackPoint
-        FourValue//Other STR,DEX,LUK,MAS
+        FourValue,//Other STR,DEX,LUK,MAS
+        UniqueValueLevel//Level
     }
 
     public TYPE type = TYPE.FourValue;
@@ -55,6 +56,11 @@ public class StatusUILine : MonoBehaviour
                 ValueList[2].text = "0";
                 ValueList[3].text = player.Stat.GetValue(ValueType).ToString();
                 break;
+            case TYPE.UniqueValueLevel:
+                if (ValueList.Count < 1) break;
+                ValueList[0].text = player.GetComponent<PlayerLevel>().GetIntLv().ToString();
+                break;
+                
         }
 
         

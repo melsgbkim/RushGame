@@ -21,12 +21,15 @@ public class PopupItemInfo : MonoBehaviour
     public RectTransform OptionInfoArea;
     public Text InfoText;
 
-    
+    public int PlayerLevel = 1;
+
+
 
     public string id
     {
         set
         {
+            Init();
             SetItemId(value);
             SetItem(null);
             SetAreaPos();
@@ -34,36 +37,43 @@ public class PopupItemInfo : MonoBehaviour
     }
     public Item item
     {
+        get
+        {
+            return _item;
+        }
         set
         {
-            SetItemId(value.id);
-            SetItem(value);
-            SetAreaPos();
+            Init();
+            if (value == null)
+            {
+                gameObject.SetActive(false);
+                _item = null;
+            }
+            else
+            {
+                SetItemId(value.id);
+                SetItem(value);
+                SetAreaPos();
+                gameObject.SetActive(true);
+            }
         }
     }
 
     GameObject LevelArea = null;
     public List<PopupItemInfoArea> AreaList = new List<PopupItemInfoArea>();
 
-    void Start()
+    bool isInitialized = false;
+    void Init()
     {
-        foreach(PopupItemInfoArea tmp in AreaList)
+        if (isInitialized) return;
+        isInitialized = true;
+        foreach (PopupItemInfoArea tmp in AreaList)
         {
-            switch(tmp.type)
+            switch (tmp.type)
             {
-                case PopupItemInfoArea.InfoAreaType.Level:if (LevelArea == null) LevelArea = tmp.area.gameObject;break;
+                case PopupItemInfoArea.InfoAreaType.Level: if (LevelArea == null) LevelArea = tmp.area.gameObject; break;
             }
         }
-
-
-        //id = "Item_0001";
-        item = new Item("Item_E0001");
-    }
-
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.E))
-            item = new Item("Item_E0001");
     }
 
     void SetAreaPos()
@@ -105,12 +115,13 @@ public class PopupItemInfo : MonoBehaviour
 
     void SetItemId(string id)
     {
-        _item = new Item(id, true);
-        Icon.sprite = _item.data.SpriteWithIndex;
-
-        Grade.color = _item.gradeData.NameColor;
-        Name.text = _item.Name;
-        InfoText.text = _item.data.Info;
+        ItemData data = new ItemData(id);
+        GradeData gradeData = new GradeData(data.Grade);
+        Icon.sprite = data.SpriteWithIndex;
+        Grade.text = gradeData.Name;
+        Grade.color = gradeData.NameColor;
+        Name.text = data.Name;
+        InfoText.text = data.Info;
 
         /*
         Image Lock;
@@ -123,6 +134,7 @@ public class PopupItemInfo : MonoBehaviour
     {
         if(i == null)
         {
+            _item = null;
             Count.gameObject.SetActive(false);
             LevelArea.SetActive(false);
             Lock.gameObject.SetActive(false);
@@ -130,6 +142,7 @@ public class PopupItemInfo : MonoBehaviour
         }
         else
         {
+            _item = i;
             if (i.data.isAble("Count"))
             {
                 Count.text = i.count.ToString();
@@ -142,8 +155,8 @@ public class PopupItemInfo : MonoBehaviour
 
             if (i.data.isAble("Level"))
             {
-                EXPBar.NewGaugeData(new UIGaugeData(0,1));
-                Level.text = "Lv " + i.Level;
+                EXPBar.NewGaugeData(new UIGaugeData(i.level.CurruntExp,i.level.CurruntExpMax));
+                Level.text = "Lv " + i.level.level;
                 LevelArea.SetActive(true);
             }
             else
@@ -168,7 +181,7 @@ public class PopupItemInfo : MonoBehaviour
 
             Lock.gameObject.SetActive(i.isLocked);
 
-            _item = i;
+            
         }
         
     }
@@ -189,9 +202,9 @@ public class PopupItemInfo : MonoBehaviour
         string Value1Text = "";
         string Value2Text = "";
         string ln = "";
-        int TmpPlayerLevel = 1;
-        StatusValues statInt = _item.OptionValues(TmpPlayerLevel);
-        StatusValues statIntEquipLevel = ((TmpPlayerLevel < _item.Level) ? _item.OptionValues(_item.Level) : null);
+        
+        StatusValues statInt = _item.OptionValues(PlayerLevel);
+        StatusValues statIntEquipLevel = ((PlayerLevel < _item.level.level) ? _item.OptionValues(_item.level.level) : null);
         for (int i = (int)(StatusValues.VALUE.HP); i <= (int)(StatusValues.VALUE.Damage); i++)
         {
             float val = statInt.GetValue((StatusValues.VALUE)i);
@@ -204,8 +217,8 @@ public class PopupItemInfo : MonoBehaviour
                 bool plus = val > 0;
                 bool plus2 = val2 > 0;
                 string NameTextLine = "";
-                string valueString = val.ToString();
-                string value2String = (val2 == 0 ? "" : val2.ToString());
+                string valueString = string.Format("{0:#.##}", val);
+                string value2String = (val2 == 0 ? "" : string.Format("{0:#.##}", val2));
 
                 NameText += ln+((StatusValues.VALUE)i).ToString();
 
