@@ -36,8 +36,7 @@ public class Item
         if (data != null)
         {
             this.id = id;
-            if (onlyInfo == false)
-                this.ItemNumber = GetNextNumber();
+            this.ItemNumber = GetNextNumber();
 
             Name = data.Name;
             Grade = data.Grade;

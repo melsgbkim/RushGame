@@ -23,8 +23,8 @@ public class PopupItemInfoManager : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-
     void Start()
     {
+
     }
 }

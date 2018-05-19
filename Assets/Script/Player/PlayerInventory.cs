@@ -43,7 +43,7 @@ public class PlayerInventory : MonoBehaviour
     }
     void AddCategory(string val)
     {
-        PlayerItemCategory tmp = new PlayerItemCategory(val, this);
+        PlayerItemCategory tmp = new PlayerItemCategory(val);
         UIInventoryManager.Get.AddCategory(tmp);
         CategoryTable.Add(val, tmp);
     }
@@ -59,15 +59,17 @@ public class PlayerInventory : MonoBehaviour
         string category = XMLUtil.FindOneByTag(node, "Category").InnerText;
         bool CountAble = XMLUtil.FindOneByTag(XMLUtil.FindOneByTag(node, "AbleList"), "Count") != null;
 
-        List<Item> itemList = GetCategoryTable(category).GetItemInfoList(id);
+        List<ItemWithUIData> itemList = GetCategoryTable(category).GetItemInfoList(id);
         bool NeedCallNewItem = true;
         if (itemList != null && itemList.Count > 0)
         {
-            foreach(Item i in itemList)
+            foreach(ItemWithUIData i in itemList)
             {
-                if (i.AddCount(count) == true)
+                if (i.item.AddCount(count) == true)
+                {
                     NeedCallNewItem = false;
                     break;//succes
+                }
             }
         }
 

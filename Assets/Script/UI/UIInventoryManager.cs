@@ -28,12 +28,13 @@ public class UIInventoryManager : MonoBehaviour
         return result;
     }
 
-    public GameObject GetCategoryUI(string name)
+    public UIItemPositionUpdater GetCategoryUI(string name)
     {
         for(int i=0;i< root.childCount;i++)
         {
-            if (root.GetChild(i).GetComponent<UIItemPositionUpdater>().name == name)
-                return root.GetChild(i).gameObject;
+            UIItemPositionUpdater tmp = root.GetChild(i).GetComponent<UIItemPositionUpdater>();
+            if (tmp.name == name)
+                return tmp;
         }
         return null;
     }
