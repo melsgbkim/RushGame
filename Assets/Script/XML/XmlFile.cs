@@ -17,9 +17,7 @@ public class XmlFile
     {
         try
         {
-            MonoBehaviour.print("Opne Path : "+path);
             TextAsset textAsset = (TextAsset)Resources.Load(path);
-            Debug.Log(textAsset);
             xmlDoc.LoadXml(textAsset.text);
             XmlFilePath = path;
         }

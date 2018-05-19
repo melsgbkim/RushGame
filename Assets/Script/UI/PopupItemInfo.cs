@@ -104,7 +104,7 @@ public class PopupItemInfo : MonoBehaviour
             }
             else
             {
-                tmp.area.gameObject.SetActive(false);
+                if(tmp.area != null)tmp.area.gameObject.SetActive(false);
             }
         }
 
@@ -117,11 +117,11 @@ public class PopupItemInfo : MonoBehaviour
     {
         ItemData data = new ItemData(id);
         GradeData gradeData = new GradeData(data.Grade);
-        Icon.sprite = data.SpriteWithIndex;
-        Grade.text = gradeData.Name;
-        Grade.color = gradeData.NameColor;
-        Name.text = data.Name;
-        InfoText.text = data.Info;
+        if (Icon != null)   Icon.sprite = data.SpriteWithIndex;
+        if (Grade != null)  Grade.text = gradeData.Name;
+        if (Grade != null)  Grade.color = gradeData.NameColor;
+        if (Name != null)   Name.text = data.Name;
+        if (InfoText != null) InfoText.text = data.Info;
 
         /*
         Image Lock;
@@ -135,36 +135,35 @@ public class PopupItemInfo : MonoBehaviour
         if(i == null)
         {
             _item = null;
-            Count.gameObject.SetActive(false);
-            LevelArea.SetActive(false);
-            Lock.gameObject.SetActive(false);
-            OptionInfoText.gameObject.SetActive(false);
+            if (Count != null) Count.gameObject.SetActive(false);
+            if (LevelArea != null) LevelArea.SetActive(false);
+            if (Lock != null) Lock.gameObject.SetActive(false);
+            if (OptionInfoText != null) OptionInfoText.gameObject.SetActive(false);
         }
         else
         {
             _item = i;
-            if (i.data.isAble("Count"))
+            if (i.data.isAble("Count") && Count != null)
             {
                 Count.text = i.count.ToString();
                 Count.gameObject.SetActive(true);
             }
-            else
+            else if (Count != null)
             {
                 Count.gameObject.SetActive(false);
             }
 
-            if (i.data.isAble("Level"))
+            if (i.data.isAble("Level") && LevelArea != null)
             {
-                EXPBar.NewGaugeData(new UIGaugeData(i.level.CurruntExp,i.level.CurruntExpMax));
-                Level.text = "Lv " + i.level.level;
+                CheckExpBar();
                 LevelArea.SetActive(true);
             }
-            else
+            else if (LevelArea != null)
             {
                 LevelArea.SetActive(false);
             }
 
-            if(i.OptionIDList != null && i.OptionIDList.Count > 0)
+            if(i.OptionIDList != null && i.OptionIDList.Count > 0 && OptionInfoArea != null)
             {
                 int line = 0;
                 SetOptionText(out line);
@@ -174,24 +173,32 @@ public class PopupItemInfo : MonoBehaviour
                 OptionInfoText.gameObject.SetActive(true);
                 OptionInfoArea.sizeDelta = new Vector2(OptionInfoArea.rect.width, line * 30f + 10f);
             }
-            else
+            else if (OptionInfoArea != null)
             {
                 OptionInfoArea.gameObject.SetActive(false);
             }
 
-            Lock.gameObject.SetActive(i.isLocked);
-
+            if (Lock != null)
+            {
+                Lock.gameObject.SetActive(i.isLocked);
+            }
             
         }
         
     }
 
 
-    /*
-     *스텟 이름, 현재 적용될 스텟, 장비의 한계스텟(플레이어 레벨이 높으면 미표시) 
-     */
+    public void CheckExpBar()
+    {
+        if (EXPBar != null && item != null)
+        {
+            EXPBar.NewGaugeData(new UIGaugeData(item.level.CurruntExp, item.level.CurruntExpMax));
+            Level.text = "Lv " + item.level.level;
+        }
+    }
     void SetTextHeight(Text t, float height)
     {
+        if (t == null) return;
         RectTransform rt = t.GetComponent<RectTransform>();
         rt.sizeDelta = new Vector2(rt.rect.width, height);
     }
@@ -238,9 +245,9 @@ public class PopupItemInfo : MonoBehaviour
             }
         }
 
-        OptionInfoText.text = NameText;
-        OptionInfoTextValue1.text = Value1Text;
-        OptionInfoTextValue2.text = Value2Text;
+        if (OptionInfoText != null) OptionInfoText.text = NameText;
+        if (OptionInfoTextValue1 != null) OptionInfoTextValue1.text = Value1Text;
+        if (OptionInfoTextValue2 != null) OptionInfoTextValue2.text = Value2Text;
     }
 }
 

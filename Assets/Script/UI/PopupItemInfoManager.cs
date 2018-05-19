@@ -22,4 +22,9 @@ public class PopupItemInfoManager : MonoBehaviour
         InfoSub.item = sub;
         gameObject.SetActive(true);
     }
+
+
+    void Start()
+    {
+    }
 }

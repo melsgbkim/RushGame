@@ -22,7 +22,8 @@ public class UIGaugeUpdater : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        NewGaugeData(new UIGaugeData(150, 150, 150));
+        if(nowData == null)
+            NewGaugeData(new UIGaugeData(150, 150, 150));
     }
 
     // Update is called once per frame
@@ -36,12 +37,18 @@ public class UIGaugeUpdater : MonoBehaviour
                 per = 1f;
                 end = true;
             }
+            Progress(per);
 
-            nowData = data.Progress(beforeData, per);
-            SetRectWidth(bar, nowData.BarPer() * barMax + barStart);
-            SetRectWidth(barBack, nowData.BarBackPer() * barMax + barStart);
-            if(txt != null)txt.text = nowData.GetTxt();
+
         }
+    }
+
+    void Progress(float per)
+    {
+        nowData = data.Progress(beforeData, per);
+        SetRectWidth(bar, nowData.BarPer() * barMax + barStart);
+        SetRectWidth(barBack, nowData.BarBackPer() * barMax + barStart);
+        if (txt != null) txt.text = nowData.GetTxt();
     }
 
     void SetRectWidth(RectTransform t, float width)
@@ -56,5 +63,6 @@ public class UIGaugeUpdater : MonoBehaviour
         data = next;
         per = 0f;
         end = false;
+        Progress(0f);
     }
 }
