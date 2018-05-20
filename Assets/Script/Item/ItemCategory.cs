@@ -13,9 +13,10 @@ public class ItemCategory
     HashByID ItemTableByID = new HashByID();
     //Hashtable ItemTableByItemNumber = new Hashtable();
     HashByNumber ItemTableByItemNumber = new HashByNumber();
-    public ItemCategory(string type)
+    public ItemCategory(string type,int width = 9)
     {
         this.type = type;
+        Width = width;
         //CategoryUI = UIInventoryManager.Get.GetCategoryUI(type);
     }
 
@@ -29,16 +30,20 @@ public class ItemCategory
         Item result = new Item(id);
         GameObject ui = UIInventoryManager.Get.NewItemUI();
         result.UI = ui;
-
-        ItemTableByID.Add(new ItemWithUIData(result, ui));
-        ItemTableByItemNumber.Add(new ItemWithUIData(result, ui));
+        NewData(new ItemWithUIData(result, ui));
 
         if (result.CanAddCount())
             result.AddCount(count);
         return result;
     }
 
-    public bool AddItem(int num, int count)
+    public void NewData(ItemWithUIData i)
+    {
+        ItemTableByID.Add(i);
+        ItemTableByItemNumber.Add(i);
+    }
+
+    public bool AddCountItem(int num, int count)
     {
         bool result = false;
         Item i = ItemTableByItemNumber.GetItem(num);
@@ -68,7 +73,7 @@ public class ItemCategory
     {
         if (CategoryUI != null && CategoryUI.GetComponent<UIItemPositionUpdater>().end == false)
             CategoryUI.GetComponent<UIItemPositionUpdater>().UpdatePos();
-        ICollection list = ItemTableByItemNumber.GetAllData();
+        ICollection list = GetAllData();
         if (list == null) return;
         foreach (ItemWithUIData obj in list)
         {
@@ -81,9 +86,12 @@ public class ItemCategory
     public void UpdateNewPos(int StartIndex)
     {
         Vector3 next = new Vector3(0, StartIndex * -100f, 0);
-        CategoryUI.GetComponent<UIItemPositionUpdater>().SetNextPos(next);
+        if (CategoryUI != null)
+        {
+            CategoryUI.GetComponent<UIItemPositionUpdater>().SetNextPos(next);
+            StartIndex += 1;
+        }
         int x = 0;
-        StartIndex += 1;
         List<int> list = ItemTableByItemNumber.GetKeys();
         foreach (int key in list)
         {   
@@ -96,5 +104,10 @@ public class ItemCategory
                 StartIndex += 1;
             }
         }
+    }
+
+    public ICollection GetAllData()
+    {
+        return ItemTableByItemNumber.GetAllData();
     }
 }

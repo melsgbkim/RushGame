@@ -47,7 +47,7 @@ public class PlayerInventory : MonoBehaviour
         UIInventoryManager.Get.AddCategory(tmp);
         CategoryTable.Add(val, tmp);
     }
-    PlayerItemCategory GetCategoryTable(string key)
+    public PlayerItemCategory GetCategoryTable(string key)
     {
         if (CategoryTable.ContainsKey(key) == false)
             AddCategory(key);

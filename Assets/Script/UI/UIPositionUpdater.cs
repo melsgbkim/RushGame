@@ -36,6 +36,34 @@ public class UIPositionUpdater : MonoBehaviour
     public bool DataActive = true;
     public float SpeedToggle = 2f;
 
+    public enum LocalPosType
+    {
+        localPosition,
+        anchoredPosition
+    }
+    public LocalPosType type = LocalPosType.localPosition;
+    Vector3 LocalPos
+    {
+        set
+        {
+            switch(type)
+            {
+                case LocalPosType.localPosition: transform.localPosition = value; break;
+                case LocalPosType.anchoredPosition: GetComponent<RectTransform>().anchoredPosition = value; break;                    
+            }
+        }
+        get
+        {
+            Vector3 result = Vector3.zero;
+            switch (type)
+            {
+                case LocalPosType.localPosition: result = transform.localPosition; break;
+                case LocalPosType.anchoredPosition: result = GetComponent<RectTransform>().anchoredPosition; break;
+            }
+            return result;
+        }
+    }
+
     void Awake()
     {
         CehckData();
@@ -59,7 +87,7 @@ public class UIPositionUpdater : MonoBehaviour
         {
             string checkKey = (ThisDataName == "" ? DefaultToggle : ThisDataName);
             if (dataTable.ContainsKey(checkKey) == false)
-                dataTable.Add(checkKey, new UIPositionData(checkKey, transform.localPosition, transform.localScale, DataMoveType, DataActive));
+                dataTable.Add(checkKey, new UIPositionData(checkKey, LocalPos, transform.localScale, DataMoveType, DataActive));
             else
                 SetByData(dataTable[DefaultToggle] as UIPositionData);
 
@@ -94,7 +122,7 @@ public class UIPositionUpdater : MonoBehaviour
 
     public void SetByData(UIPositionData data)
     {
-        transform.localPosition = data.pos;
+        LocalPos = data.pos;
         transform.localScale = data.scale;
         gameObject.active = data.Active;
     }
