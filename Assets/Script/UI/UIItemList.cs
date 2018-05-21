@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -12,6 +13,7 @@ public class UIItemList : MonoBehaviour
     public float InventoryHeightMax;
     public int WidthCount = 5;
 
+    Hashtable IconTable = new Hashtable();
     Hashtable CategoryTable = new Hashtable();
     bool needCheckPos = false;
 
@@ -26,12 +28,52 @@ public class UIItemList : MonoBehaviour
         return CategoryTable[key] as ItemCategory;
     }
 
+    void AllCategoryClean()
+    {
+        foreach (ItemCategory cate in CategoryTable.Values)
+            cate.ItemReset();
+    }
+
     public void AddItem(Item i)
     {
         if (isAllowed(i.data.Category) == false) return;
-        ItemWithUIData data = new ItemWithUIData(i, NewItemUI());
-        
+        GameObject ui = NewItemUI();
+        AddItem(i, ui);
+        ui.GetComponent<UIItemInfoUpdater>().SetData(i);
+    }
+
+    public void AddItem(Item i, GameObject ui)
+    {
+        if (isAllowed(i.data.Category) == false) return;
+        ItemWithUIData data = new ItemWithUIData(i, ui);
+        IconTable.Add(i, data.UI);
+
         GetCategoryTable(i.data.Category).NewData(data);
+    }
+
+
+
+
+    public void InitItemList(List<Item> list)
+    {
+        bool ItemRemained = true;
+        bool IconRemained = true;
+        DeleteAllObj();
+        AllCategoryClean();
+        for (int i=0;i< list.Count; i++)
+        {
+            AddItem(list[i]);
+        }
+    }
+
+    public void DeleteAllObj()
+    {
+        foreach(Item i in IconTable.Keys)
+        {
+            GameObject ui = (IconTable[i] as GameObject);
+            Destroy(ui);
+            IconTable.Remove(i);
+        }
     }
 
 

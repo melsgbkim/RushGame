@@ -20,15 +20,26 @@ public class ItemCategory
         //CategoryUI = UIInventoryManager.Get.GetCategoryUI(type);
     }
 
+    public void ItemReset()
+    {
+        ItemTableByID = new HashByID();
+        ItemTableByItemNumber = new HashByNumber();
+    }
+
     public List<ItemWithUIData> GetItemInfoList(string id)
     {
         return ItemTableByID.GetItemInfoList(id);
     }
 
+    public virtual GameObject GetInventoryIcon()
+    {//UIInventoryManager.Get.NewItemUI();
+        return null;
+    }
+
     public Item NewItem(string id, int count = 1)
     {
         Item result = new Item(id);
-        GameObject ui = UIInventoryManager.Get.NewItemUI();
+        GameObject ui = GetInventoryIcon();
         result.UI = ui;
         NewData(new ItemWithUIData(result, ui));
 

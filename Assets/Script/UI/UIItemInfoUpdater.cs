@@ -28,6 +28,10 @@ public class UIItemInfoUpdater : MonoBehaviour
     public Text State;
 
 
+    public void SetData(Item i)
+    {
+        SetData(i.data, i);
+    }
     public void SetData(ItemData data, Item i = null)
     {
         Icon.sprite = data.SpriteWithIndex;//Sprite

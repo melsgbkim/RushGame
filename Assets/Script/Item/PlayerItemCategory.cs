@@ -16,4 +16,9 @@ public class PlayerItemCategory : ItemCategory
         MonoBehaviour.Destroy(i.UI);
         base.DeleteItem(i);
     }
+
+    public override GameObject GetInventoryIcon()
+    {
+        return UIInventoryManager.Get.NewItemUI();
+    }
 }

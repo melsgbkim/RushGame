@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -8,13 +9,14 @@ public class UIUpgradeManager : MonoBehaviour
     public UIPositionUpdater Button2;
     public UIPositionUpdater EquipListUI;
     public UIPositionUpdater OtherListUI;
+    public UIItemList ExpItemList;
     public UIItemList EquipList;
-    public UIItemList OtherList;
+    public UIItemList OtherList;    
 
     public PlayerInventory player;
 
-    public List<UIPositionUpdater> list = new List<UIPositionUpdater>();
-    public List<UIPositionUpdater> UIUpdateList = new List<UIPositionUpdater>();
+    List<UIPositionUpdater> list = new List<UIPositionUpdater>();
+    List<UIPositionUpdater> UIUpdateList = new List<UIPositionUpdater>();
 
 
     void Start()
@@ -60,9 +62,26 @@ public class UIUpgradeManager : MonoBehaviour
         UIUpdateList.AddRange(list);
     }
 
-    public void CheckIcon()
+    public void ResetIcon()
     {
-        ICollection listEtc = player.GetCategoryTable("etc").GetAllData();
-        ICollection listEquip = player.GetCategoryTable("equipment").GetAllData();
+        List<ItemWithUIData> listDataEtc = player.GetCategoryTable("etc").GetAllData().Cast<ItemWithUIData>().ToList();
+        List<ItemWithUIData> listDataEquip = player.GetCategoryTable("equipment").GetAllData().Cast<ItemWithUIData>().ToList();
+
+        List<Item> listEquip = new List<Item>();
+        List<Item> listSum   = new List<Item>();
+        foreach (ItemWithUIData data in listDataEtc) listSum.Add(data.item);
+        foreach (ItemWithUIData data in listDataEquip) listEquip.Add(data.item);
+        listSum.AddRange(listEquip);
+
+        ExpItemList.InitItemList(new List<Item>());
+        EquipList.InitItemList(listEquip);
+        OtherList.InitItemList(listSum);
+    }
+
+    void OnEnable()
+    {
+        ResetIcon();
+
+
     }
 }
