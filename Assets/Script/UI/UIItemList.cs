@@ -56,8 +56,6 @@ public class UIItemList : MonoBehaviour
 
     public void InitItemList(List<Item> list)
     {
-        bool ItemRemained = true;
-        bool IconRemained = true;
         DeleteAllObj();
         AllCategoryClean();
         for (int i=0;i< list.Count; i++)
@@ -72,8 +70,8 @@ public class UIItemList : MonoBehaviour
         {
             GameObject ui = (IconTable[i] as GameObject);
             Destroy(ui);
-            IconTable.Remove(i);
         }
+        IconTable = new Hashtable();
     }
 
 
@@ -82,12 +80,19 @@ public class UIItemList : MonoBehaviour
     public void Init()
     {
         if (root == null) root = this.transform;
+        if (ItemTypeAllowedTable.Count == 0) AllowDataInit();
+    }
+
+    public void AllowDataInit()
+    {
         foreach (string key in ItemTypeAllowedList)
             ItemTypeAllowedTable.Add(key, true);
     }
 
+
     bool isAllowed(string key)
     {
+        if (ItemTypeAllowedTable.Count == 0) AllowDataInit();
         if (ItemTypeAllowedTable.ContainsKey(key))
             return (ItemTypeAllowedTable[key] as bool?).Value;
         return false;
