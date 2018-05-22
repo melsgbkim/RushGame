@@ -17,6 +17,9 @@ public class UIItemList : MonoBehaviour
     Hashtable CategoryTable = new Hashtable();
     bool needCheckPos = false;
 
+    public delegate void NewItemUIAction(GameObject obj, UIItemList parent);
+    public NewItemUIAction actionNewItemUI = null;
+
     void AddCategory(string val)
     {
         ItemCategory tmp = new ItemCategory(val, WidthCount);
@@ -111,6 +114,8 @@ public class UIItemList : MonoBehaviour
         result.transform.SetParent(root);
         result.transform.localPosition = Vector3.zero;
         needCheckPos = true;
+
+        if (actionNewItemUI != null) actionNewItemUI(result,this);
         return result;
     }
 

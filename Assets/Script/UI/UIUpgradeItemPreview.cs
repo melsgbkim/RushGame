@@ -16,7 +16,7 @@ public class UIUpgradeItemPreview : MonoBehaviour
 
     void Start()
     {
-        SetActive(new Item("Item_E0001"), new Item("Item_E0001"));
+        //SetActive(new Item("Item_E0001"), new Item("Item_E0001"));
     }
 
     void Update()

@@ -23,8 +23,6 @@ public class PopupItemInfo : MonoBehaviour
 
     public int PlayerLevel = 1;
 
-
-
     public string id
     {
         set

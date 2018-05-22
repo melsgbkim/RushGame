@@ -10,7 +10,7 @@ public class UIItemInfoUpdater : MonoBehaviour
         if (t.gameObject.activeSelf == false)
             t.gameObject.SetActive(true);
     }
-
+    public Item item;
     public Image Background;
 
     public Image Icon;
@@ -37,6 +37,7 @@ public class UIItemInfoUpdater : MonoBehaviour
         Icon.sprite = data.SpriteWithIndex;//Sprite
         if (data.isAble("Level")) SetLevel(i.level.level);//HasLevel
         if (data.isAble("Count")) SetCount(i.count);//HasCount
+        if (i != null) item = i;
     }
 
     public void SetData(ItemData data, Hashtable i = null)

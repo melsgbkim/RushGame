@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class UIUpgradeManager : MonoBehaviour
 {
+    public UIUpgradeItemPreview itemInfo;
     public UIPositionUpdater Button;
     public UIPositionUpdater Button2;
     public UIPositionUpdater EquipListUI;
@@ -17,14 +18,41 @@ public class UIUpgradeManager : MonoBehaviour
 
     List<UIPositionUpdater> list = new List<UIPositionUpdater>();
     List<UIPositionUpdater> UIUpdateList = new List<UIPositionUpdater>();
+    bool Initialized = false;
 
+    public void AddUIItemClickableComponent(GameObject obj,UIItemList parent)
+    {
+        UIItemClickable ui = obj.AddComponent<UIItemClickable>();
+        ui.InitWithEvent(ClickedItem, parent);
+    }
+
+    public void ClickedItem(GameObject obj, UIItemList parent)
+    {
+        print(obj.name + " is Clicked ");
+        if (parent == EquipList)
+        {
+            SelectEquipItem();
+            Item i = obj.GetComponent<UIItemInfoUpdater>().item;
+            itemInfo.SetActive(i, i);
+        }
+    }
 
     void Start()
     {
+        Init();
+    }
+
+    void Init()
+    {
+        if (Initialized == true) return;
         list.Add(Button);
         list.Add(Button2);
         list.Add(EquipListUI);
         list.Add(OtherListUI);
+
+        ExpItemList.actionNewItemUI = AddUIItemClickableComponent;
+        EquipList.actionNewItemUI = AddUIItemClickableComponent;
+        OtherList.actionNewItemUI = AddUIItemClickableComponent;
     }
 
     // Update is called once per frame
@@ -64,6 +92,7 @@ public class UIUpgradeManager : MonoBehaviour
 
     public void ResetIcon()
     {
+        Init();
         List<ItemWithUIData> listDataEtc = player.GetCategoryTable("etc").GetAllData().Cast<ItemWithUIData>().ToList();
         List<ItemWithUIData> listDataEquip = player.GetCategoryTable("equipment").GetAllData().Cast<ItemWithUIData>().ToList();
 
