@@ -23,6 +23,27 @@ public class PopupItemInfo : MonoBehaviour
 
     public int PlayerLevel = 1;
 
+    int? customCount = null;
+    public int? CustomCount
+    {
+        get { return customCount; }
+        set
+        {
+            customCount = value;
+            if (customCount != null)
+                SetCountText();
+        }
+    }
+    public void SetCountText()
+    {
+        if(customCount != null && customCount.HasValue)
+        {
+            Count.text = customCount.Value.ToString();
+        }
+        else
+            Count.text = _item.count.ToString();
+    }
+
     public string id
     {
         set
@@ -72,6 +93,8 @@ public class PopupItemInfo : MonoBehaviour
                 case PopupItemInfoArea.InfoAreaType.Level: if (LevelArea == null) LevelArea = tmp.area.gameObject; break;
             }
         }
+
+        customCount = null;
     }
 
     void SetAreaPos()
@@ -88,6 +111,10 @@ public class PopupItemInfo : MonoBehaviour
                     break;
                 case PopupItemInfoArea.InfoAreaType.Level:
                     if (_item != null && _item.data.isAble("Level"))
+                        set = true;
+                    break;
+                case PopupItemInfoArea.InfoAreaType.SelectCount:
+                    if (_item != null && _item.data.isAble("Count"))
                         set = true;
                     break;
                 case PopupItemInfoArea.InfoAreaType.Default:
@@ -143,7 +170,7 @@ public class PopupItemInfo : MonoBehaviour
             _item = i;
             if (i.data.isAble("Count") && Count != null)
             {
-                Count.text = i.count.ToString();
+                SetCountText();
                 Count.gameObject.SetActive(true);
             }
             else if (Count != null)
@@ -258,7 +285,8 @@ public class PopupItemInfoArea
     {
         Default,
         Level,
-        Option
+        Option,
+        SelectCount
     }
     public InfoAreaType type = InfoAreaType.Default;
     public RectTransform area = null;

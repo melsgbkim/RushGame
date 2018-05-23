@@ -29,12 +29,66 @@ public class UIUpgradeManager : MonoBehaviour
     public void ClickedItem(GameObject obj, UIItemList parent)
     {
         print(obj.name + " is Clicked ");
+        Item i = obj.GetComponent<UIItemInfoUpdater>().item;
         if (parent == EquipList)
         {
             SelectEquipItem();
-            Item i = obj.GetComponent<UIItemInfoUpdater>().item;
             itemInfo.SetActive(i, i);
+            OtherList.GetItem(i).UI.GetComponent<UIItemInfoUpdater>().SetSelect(true);
         }
+        if (parent == OtherList)
+        {
+            if (itemInfo.item == i) return;//Error This Item is Selected
+            if (i.data.isAble("Count"))
+            {
+                ItemWithUIData itemInExpItemList = ExpItemList.GetItem(i);
+                if (itemInExpItemList != null && itemInExpItemList.UI.GetComponent<PopupItemInfo>() != null && itemInExpItemList.UI.GetComponent<PopupItemInfo>().CustomCount != null)
+                    PopupItemSelectCount.Get.SetActive(i, AddItemToExpItemList, itemInExpItemList.UI.GetComponent<PopupItemInfo>().CustomCount.Value);
+                else
+                    PopupItemSelectCount.Get.SetActive(i, AddItemToExpItemList);
+            }
+            else
+            {
+                AddItemToExpItemList(i, 1);
+            }
+        }
+        if (parent == ExpItemList)
+        {
+            ResetItemInfoState(i);
+        }
+
+    }
+
+    public void AddItemToExpItemList(Item i,int count)
+    {
+        if (isActiveAndEnabled == false) return;
+        ItemWithUIData itemInOtherList      = OtherList.GetItem(i);
+        ItemWithUIData itemInExpItemList    = ExpItemList.GetItem(i);
+
+        if (itemInOtherList == null) return;//Error List Not Contains Item
+        if (itemInExpItemList == null)
+        {
+            ExpItemList.AddItem(i);
+            itemInExpItemList = ExpItemList.GetItem(i);
+        }
+
+        itemInExpItemList.UI.GetComponent<UIItemInfoUpdater>().SetCount(count);//Will use this Item
+        itemInOtherList.UI.GetComponent<UIItemInfoUpdater>().SetCount(i.count - count);//remained item count
+        itemInOtherList.UI.GetComponent<UIItemInfoUpdater>().SetSelect(true);
+    }
+
+    public void ResetItemInfoState(Item i)
+    {
+        ExpItemList.DeleteObj(i);
+
+        ItemWithUIData itemInOtherList = OtherList.GetItem(i);
+        if (itemInOtherList != null)
+        {
+            UIItemInfoUpdater InfoInOtherList = itemInOtherList.UI.GetComponent<UIItemInfoUpdater>();
+            InfoInOtherList.SetData(i);
+        }
+
+        ExpItemList.needCheckPos = true;
     }
 
     void Start()

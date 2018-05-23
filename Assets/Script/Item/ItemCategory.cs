@@ -80,6 +80,11 @@ public class ItemCategory
         DeleteItem(i);
     }
 
+    public ItemWithUIData GetData(int num)
+    {
+        return ItemTableByItemNumber.GetData(num);
+    }
+
     public void UpdatePos()
     {
         if (CategoryUI != null && CategoryUI.GetComponent<UIItemPositionUpdater>().end == false)

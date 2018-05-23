@@ -16,10 +16,10 @@ public class UIItemInfoUpdater : MonoBehaviour
     public Image Icon;
 
     public Text Level;
-    public void SetLevel(int val) { SetText(Level, "Lv " + val); }
+    public void SetLevel(int val) { if (data.isAble(LevelKey)) SetText(Level, "Lv " + val); }
 
     public Text Count;
-    public void SetCount(int val) { SetText(Count, "" + val); }
+    public void SetCount(int val) { if (data.isAble(CountKey)) SetText(Count, "" + val); }
 
     public Image Lock;
 
@@ -27,21 +27,36 @@ public class UIItemInfoUpdater : MonoBehaviour
 
     public Text State;
 
+    public Image Select;
 
+    ItemData data;
+
+    public void SetSelect(bool val)
+    {
+        Select.gameObject.SetActive(val);
+    }
+
+    void Init()
+    {
+        SetSelect(false);
+    }
     public void SetData(Item i)
     {
         SetData(i.data, i);
+        Init();
     }
     public void SetData(ItemData data, Item i = null)
     {
+        this.data = data;
         Icon.sprite = data.SpriteWithIndex;//Sprite
-        if (data.isAble("Level")) SetLevel(i.level.level);//HasLevel
-        if (data.isAble("Count")) SetCount(i.count);//HasCount
+        SetLevel(i.level.level);//HasLevel
+        SetCount(i.count);//HasCount
         if (i != null) item = i;
     }
 
     public void SetData(ItemData data, Hashtable i = null)
     {
+        this.data = data;
         Icon.sprite = data.SpriteWithIndex;//Sprite
         if (data.isAble(LevelKey) && i.ContainsKey(LevelKey)) SetLevel((i[LevelKey] as int?).Value);//HasLevel
         if (data.isAble(CountKey) && i.ContainsKey(CountKey)) SetCount((i[CountKey] as int?).Value);//HasCount

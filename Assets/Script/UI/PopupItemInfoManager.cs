@@ -17,9 +17,12 @@ public class PopupItemInfoManager : MonoBehaviour
     public void SetActive(Item main,Item sub = null)
     {
         InfoMain.PlayerLevel = player.GetIntLv();
-        InfoSub.PlayerLevel = player.GetIntLv();
         InfoMain.item = main;
-        InfoSub.item = sub;
+        if (InfoSub != null)
+        {
+            InfoSub.PlayerLevel = player.GetIntLv();
+            InfoSub.item = sub;
+        }
         gameObject.SetActive(true);
     }
 

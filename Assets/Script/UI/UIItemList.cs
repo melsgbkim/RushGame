@@ -15,7 +15,7 @@ public class UIItemList : MonoBehaviour
 
     Hashtable IconTable = new Hashtable();
     Hashtable CategoryTable = new Hashtable();
-    bool needCheckPos = false;
+    public bool needCheckPos = false;
 
     public delegate void NewItemUIAction(GameObject obj, UIItemList parent);
     public NewItemUIAction actionNewItemUI = null;
@@ -54,6 +54,11 @@ public class UIItemList : MonoBehaviour
         GetCategoryTable(i.data.Category).NewData(data);
     }
 
+    public ItemWithUIData GetItem(Item i)
+    {
+        return GetCategoryTable(i.data.Category).GetData(i.ItemNumber);
+    }
+
 
 
 
@@ -75,6 +80,16 @@ public class UIItemList : MonoBehaviour
             Destroy(ui);
         }
         IconTable = new Hashtable();
+    }
+
+    public void DeleteObj(Item i)
+    {
+        if (IconTable.ContainsKey(i))
+        {
+            Destroy(IconTable[i] as GameObject);
+            IconTable.Remove(i);
+            GetCategoryTable(i.data.Category).DeleteItem(i);
+        }
     }
 
 

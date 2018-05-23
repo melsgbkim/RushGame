@@ -14,6 +14,8 @@ public class UIUpgradeItemPreview : MonoBehaviour
         gameObject.SetActive(true);
     }
 
+    public Item item{ get { return InfoMain.item; } }
+
     void Start()
     {
         //SetActive(new Item("Item_E0001"), new Item("Item_E0001"));
