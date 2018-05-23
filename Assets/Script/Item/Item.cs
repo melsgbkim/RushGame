@@ -102,4 +102,10 @@ public class Item
         if (OptionIDList != null) TrySetEquipmentRandomOptionData(data.OptionID);
         return OptionBase + OptionLvBonus * (this.level.level < PlayerLevel ? this.level.level : PlayerLevel);
     }
+
+    public void SetLevel(Level lv)
+    {
+        level = lv;
+        _UI.SetData(data, this);
+    }
 }

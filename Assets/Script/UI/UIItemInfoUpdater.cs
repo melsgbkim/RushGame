@@ -18,8 +18,9 @@ public class UIItemInfoUpdater : MonoBehaviour
     public Text Level;
     public void SetLevel(int val) { if (data.isAble(LevelKey)) SetText(Level, "Lv " + val); }
 
+    public int LastCount = 0;
     public Text Count;
-    public void SetCount(int val) { if (data.isAble(CountKey)) SetText(Count, "" + val); }
+    public void SetCount(int val) { if (data.isAble(CountKey)) SetText(Count, "" + (LastCount = val)); }
 
     public Image Lock;
 

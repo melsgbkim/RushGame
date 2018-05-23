@@ -50,4 +50,11 @@ public class Level
     {
         return ExpDataManager.Get.GetExpUp(lv, exp);
     }
+
+
+    public void SetExp(int sum)
+    {
+        this.level = ExpDataManager.Get.GetLevel(sum, type);
+        this.sumExp = sum;
+    }
 }

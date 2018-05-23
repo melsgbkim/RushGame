@@ -213,6 +213,14 @@ public class PopupItemInfo : MonoBehaviour
     }
 
 
+    public void SetExpBar(Level lv)
+    {
+        if (EXPBar != null && item != null)
+        {
+            EXPBar.NewGaugeData(new UIGaugeData(lv.CurruntExp, lv.CurruntExpMax));
+            Level.text = "Lv " + lv.level;
+        }
+    }
     public void CheckExpBar()
     {
         if (EXPBar != null && item != null)

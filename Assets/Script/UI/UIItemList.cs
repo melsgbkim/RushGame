@@ -59,6 +59,17 @@ public class UIItemList : MonoBehaviour
         return GetCategoryTable(i.data.Category).GetData(i.ItemNumber);
     }
 
+    public List<ItemWithUIData> GetAllData()
+    {
+        List<ItemWithUIData> result = new List<ItemWithUIData>();
+        foreach(ItemCategory cate in CategoryTable.Values)
+        {
+            List<ItemWithUIData> list = cate.GetAllData().Cast<ItemWithUIData>().ToList();
+            result.AddRange(list);
+        }
+        return result;
+    }
+
 
 
 
@@ -80,6 +91,7 @@ public class UIItemList : MonoBehaviour
             Destroy(ui);
         }
         IconTable = new Hashtable();
+        CategoryTable = new Hashtable();
     }
 
     public void DeleteObj(Item i)
@@ -90,6 +102,21 @@ public class UIItemList : MonoBehaviour
             IconTable.Remove(i);
             GetCategoryTable(i.data.Category).DeleteItem(i);
         }
+    }
+
+    public int GetSumEXP()
+    {
+        int sum = 0;
+        foreach(Item i in IconTable.Keys)
+        {
+            UIItemInfoUpdater info = (IconTable[i] as GameObject).GetComponent<UIItemInfoUpdater>();
+            int count = 1;
+            if (i.data.isAble("Count")) 
+                 count = info.LastCount;
+
+            sum += i.data.Exp * count;
+        }
+        return sum;
     }
 
 

@@ -7,26 +7,36 @@ public class UIUpgradeItemPreview : MonoBehaviour
     public PopupItemInfo InfoSub;
     //public PlayerLevel player;
 
+    public Level mainLevel;
+    public Level subLevel;
+
     public void SetActive(Item main, Item sub = null)
     {
         InfoMain.item = main;
         InfoSub.item = sub;
+
+        mainLevel = new Level(InfoMain.item.level);
+        subLevel = new Level(mainLevel);
+
+        InfoMain.SetExpBar(mainLevel);
+        InfoSub.SetExpBar(subLevel);
         gameObject.SetActive(true);
     }
 
-    public Item item{ get { return InfoMain.item; } }
+    public Item item { get { return InfoMain.item; } }
 
-    void Start()
+    public int EXP
     {
-        //SetActive(new Item("Item_E0001"), new Item("Item_E0001"));
+        set
+        {
+            subLevel.SetExp(value + mainLevel.sumExp);
+            InfoSub.SetExpBar(subLevel);
+        }
     }
 
-    void Update()
+    public void UpgradeOK()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            InfoMain.item.level += 10;
-            InfoMain.CheckExpBar();
-        }
+        InfoMain.item.SetLevel(subLevel);
+        SetActive(InfoMain.item, InfoMain.item);
     }
 }

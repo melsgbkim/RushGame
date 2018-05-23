@@ -28,13 +28,13 @@ public class UIUpgradeManager : MonoBehaviour
 
     public void ClickedItem(GameObject obj, UIItemList parent)
     {
-        print(obj.name + " is Clicked ");
         Item i = obj.GetComponent<UIItemInfoUpdater>().item;
         if (parent == EquipList)
         {
-            SelectEquipItem();
+            SelectEquipItem(i);
             itemInfo.SetActive(i, i);
             OtherList.GetItem(i).UI.GetComponent<UIItemInfoUpdater>().SetSelect(true);
+            CheckExp();
         }
         if (parent == OtherList)
         {
@@ -55,6 +55,7 @@ public class UIUpgradeManager : MonoBehaviour
         if (parent == ExpItemList)
         {
             ResetItemInfoState(i);
+            CheckExp();
         }
 
     }
@@ -75,6 +76,8 @@ public class UIUpgradeManager : MonoBehaviour
         itemInExpItemList.UI.GetComponent<UIItemInfoUpdater>().SetCount(count);//Will use this Item
         itemInOtherList.UI.GetComponent<UIItemInfoUpdater>().SetCount(i.count - count);//remained item count
         itemInOtherList.UI.GetComponent<UIItemInfoUpdater>().SetSelect(true);
+
+        CheckExp();
     }
 
     public void ResetItemInfoState(Item i)
@@ -89,6 +92,52 @@ public class UIUpgradeManager : MonoBehaviour
         }
 
         ExpItemList.needCheckPos = true;
+    }
+
+    public void CheckExp()
+    {
+        itemInfo.EXP = ExpItemList.GetSumEXP();
+    }
+
+
+    public void ResetButton()
+    {
+        ResetSelectList();
+        ExpItemList.DeleteAllObj();
+        CheckExp();
+    }
+
+    public void ResetSelectList()
+    {
+        List<ItemWithUIData> list = ExpItemList.GetAllData();
+        foreach (ItemWithUIData data in list)
+        {
+            UIItemInfoUpdater info = OtherList.GetItem(data.item).UI.GetComponent<UIItemInfoUpdater>();
+            info.SetSelect(false);
+            info.SetData(data.item);
+        }
+    }
+
+    public void UpgradeOK()
+    {
+        
+        List<ItemWithUIData> list = ExpItemList.GetAllData();
+        if (list.Count == 0) return;
+        itemInfo.UpgradeOK();
+        foreach (ItemWithUIData data in list)
+        {
+            Item i = data.item;
+            if (i.data.isAble("Count"))
+            {
+                UIItemInfoUpdater info = data.UI.GetComponent<UIItemInfoUpdater>();
+                player.ItemRemoveCount(i, info.LastCount); 
+            }
+            else
+            {
+                player.ItemRemoveCount(i);
+            }
+        }
+        ResetIcon();
     }
 
     void Start()
@@ -127,6 +176,7 @@ public class UIUpgradeManager : MonoBehaviour
 
     public void OpenEquipList()
     {
+        ResetButton();
         Button.toggle = UIPositionUpdater.DefaultToggle;
         Button2.toggle = UIPositionUpdater.DefaultToggle;
         EquipListUI.toggle = "Opened";
@@ -135,8 +185,11 @@ public class UIUpgradeManager : MonoBehaviour
         UIUpdateList.AddRange(list);
     }
 
-    public void SelectEquipItem()
+    public void SelectEquipItem(Item i)
     {
+        ResetSelectList();
+        if(itemInfo.item != null)OtherList.GetItem(itemInfo.item).UI.GetComponent<UIItemInfoUpdater>().SetSelect(false);
+
         Button.toggle = "Opened";
         Button2.toggle = "Opened";
         EquipListUI.toggle = UIPositionUpdater.DefaultToggle;

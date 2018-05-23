@@ -77,6 +77,20 @@ public class PlayerInventory : MonoBehaviour
             GetCategoryTable(category).NewItem(id, count);
         UIInventoryManager.Get.NeedCheckUIPos();
     }
+
+    public void ItemRemoveCount(Item i,int cnt = 1)
+    {
+        PlayerItemCategory category = GetCategoryTable(i.data.Category);
+        if(i.data.isAble("Count") && i.count - cnt > 0)
+        {
+            i.count -= cnt;
+            i.UI = i.UI;
+        }
+        else
+        {
+            category.DeleteItem(i);
+        }
+    }
     
     void Update()
     {
