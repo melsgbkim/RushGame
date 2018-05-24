@@ -6,6 +6,24 @@ using System.Collections.Generic;
 public class StatusValues
 {
     public StatusValues() { }
+    public StatusValues(TYPE type)
+    {
+        this.type = type;
+        if (type == TYPE.integer)
+        {
+            maxHP = maxSP = str = dex = luk = mas = 
+            incHP = incSP = startPower = power = 
+            footSpeed = attackSpeed = evasion = critical = 
+            attackPoint = damage = StatPoint = 0;
+        }
+        else if (type == TYPE.percent)
+        {
+            maxHP = maxSP = str = dex = luk = mas =
+            incHP = incSP = startPower = power =
+            footSpeed = attackSpeed = evasion = critical =
+            attackPoint = damage = StatPoint = 1;
+        }
+    }
     public StatusValues(StatusValues a)
     {
         maxHP = a.maxHP;
@@ -25,6 +43,7 @@ public class StatusValues
         attackPoint = a.attackPoint;
         damage = a.damage;
         StatPoint = a.StatPoint;
+        type = a.type;
     }
     public string name = "";
     public enum TYPE
@@ -216,23 +235,130 @@ public class StatusValues
     public static StatusValues operator *(StatusValues a, float b)
     {
         StatusValues result = new StatusValues(a);
-        result.maxHP        *= b;  
-        result.maxSP        *= b;
-        result.str          *= b;
-        result.dex          *= b;
-        result.luk          *= b;
-        result.mas          *= b;
-        result.incHP        *= b;
-        result.incSP        *= b;
-        result.startPower   *= b;
-        result.power        *= b;
-        result.footSpeed    *= b;
-        result.attackSpeed  *= b;
-        result.evasion      *= b;
-        result.critical     *= b;
-        result.attackPoint  *= b;
-        result.damage       *= b;
+        if (result.type == TYPE.integer)
+        {
+            result.maxHP *= b;
+            result.maxSP *= b;
+            result.str *= b;
+            result.dex *= b;
+            result.luk *= b;
+            result.mas *= b;
+            result.incHP *= b;
+            result.incSP *= b;
+            result.startPower *= b;
+            result.power *= b;
+            result.footSpeed *= b;
+            result.attackSpeed *= b;
+            result.evasion *= b;
+            result.critical *= b;
+            result.attackPoint *= b;
+            result.damage *= b;
+        }
+        else if (result.type == TYPE.percent)
+        {
+            result.maxHP        = (result.maxHP       -1)* b+1;
+            result.maxSP        = (result.maxSP       -1)* b+1;
+            result.str          = (result.str         -1)* b+1;
+            result.dex          = (result.dex         -1)* b+1;
+            result.luk          = (result.luk         -1)* b+1;
+            result.mas          = (result.mas         -1)* b+1;
+            result.incHP        = (result.incHP       -1)* b+1;
+            result.incSP        = (result.incSP       -1)* b+1;
+            result.startPower   = (result.startPower  -1)* b+1;
+            result.power        = (result.power       -1)* b+1;
+            result.footSpeed    = (result.footSpeed   -1)* b+1;
+            result.attackSpeed  = (result.attackSpeed -1)* b+1;
+            result.evasion      = (result.evasion     -1)* b+1;
+            result.critical     = (result.critical    -1)* b+1;
+            result.attackPoint  = (result.attackPoint -1)* b+1;
+            result.damage       = (result.damage      -1)* b+1;
+        }
         return result;
+    }
+
+    public static StatusValues operator *(StatusValues a, StatusValues b)
+    {
+        StatusValues v = new StatusValues(a);
+        v.maxHP        *= b.maxHP        ;
+        v.maxSP        *= b.maxSP        ;
+        v.str          *= b.str          ;
+        v.dex          *= b.dex          ;
+        v.luk          *= b.luk          ;
+        v.mas          *= b.mas          ;
+        v.incHP        *= b.incHP        ;
+        v.incSP        *= b.incSP        ;
+        v.attackPoint  *= b.attackPoint  ;
+
+        v.startPower   += v.str * 2f * v.mas;
+        v.power        += v.str * 2f;
+        v.footSpeed    += v.dex / (2f * v.mas);
+        v.attackSpeed  += v.dex / (2f * v.mas);
+        v.evasion      += v.luk / v.mas;
+        v.critical     += v.luk / v.mas;
+        v.damage       += (v.str + v.dex) * v.mas * v.attackPoint;
+
+        v.startPower   *= b.startPower   ;
+        v.power        *= b.power        ;
+        v.footSpeed    *= b.footSpeed    ;
+        v.attackSpeed  *= b.attackSpeed  ;
+        v.evasion      *= b.evasion      ;
+        v.critical     *= b.critical     ;
+        v.damage       *= b.damage       ;
+        return v;
+    }
+
+    public static void GetStatusValuesForUI(StatusValues intStat, StatusValues bonusStat, StatusValues perStat, out StatusValues v1, out StatusValues v2, out StatusValues v3)
+    {
+        v1 = new StatusValues();
+        v2 = new StatusValues(bonusStat);
+        v3 = new StatusValues();
+        StatusValues v4 = new StatusValues();
+        v1.StatPoint    = intStat.StatPoint  ;
+        v1.maxHP        = intStat.maxHP      ;
+        v1.maxSP        = intStat.maxSP      ;
+        v1.str          = intStat.str        ;
+        v1.dex          = intStat.dex        ;
+        v1.luk          = intStat.luk        ;
+        v1.mas          = intStat.mas        ;
+        v1.incHP        = intStat.incHP      ;
+        v1.incSP        = intStat.incSP      ;
+        v1.attackPoint  = intStat.attackPoint;
+
+        v3.maxHP        = (v1.maxHP      +v2.maxHP      )*(perStat.maxHP      -1);
+        v3.maxSP        = (v1.maxSP      +v2.maxSP      )*(perStat.maxSP      -1);
+        v3.str          = (v1.str        +v2.str        )*(perStat.str        -1);
+        v3.dex          = (v1.dex        +v2.dex        )*(perStat.dex        -1);
+        v3.luk          = (v1.luk        +v2.luk        )*(perStat.luk        -1);
+        v3.mas          = (v1.mas        +v2.mas        )*(perStat.mas        -1);
+        v3.incHP        = (v1.incHP      +v2.incHP      )*(perStat.incHP      -1);
+        v3.incSP        = (v1.incSP      +v2.incSP      )*(perStat.incSP      -1);
+        v3.attackPoint  = (v1.attackPoint+v2.attackPoint)*(perStat.attackPoint-1);
+
+        v4.maxHP        = (v1.maxHP      +v2.maxHP      )*(perStat.maxHP      );
+        v4.maxSP        = (v1.maxSP      +v2.maxSP      )*(perStat.maxSP      );
+        v4.str          = (v1.str        +v2.str        )*(perStat.str        );
+        v4.dex          = (v1.dex        +v2.dex        )*(perStat.dex        );
+        v4.luk          = (v1.luk        +v2.luk        )*(perStat.luk        );
+        v4.mas          = (v1.mas        +v2.mas        )*(perStat.mas        );
+        v4.incHP        = (v1.incHP      +v2.incHP      )*(perStat.incHP      );
+        v4.incSP        = (v1.incSP      +v2.incSP      )*(perStat.incSP      );
+        v4.attackPoint  = (v1.attackPoint+v2.attackPoint)*(perStat.attackPoint);
+        
+        v1.startPower   += v4.str *   2f    * v4.mas;
+        v1.power        += v4.str *   2f;   
+        v1.footSpeed    += v4.dex /  (2f    * v4.mas);
+        v1.attackSpeed  += v4.dex /  (2f    * v4.mas);
+        v1.evasion      += v4.luk / v4.mas;
+        v1.critical     += v4.luk / v4.mas;
+        v1.damage       +=(v4.str + v4.dex) * v4.mas * v4.attackPoint;
+
+        v3.startPower   = (v1.startPower +v2.startPower )*(perStat.startPower -1);
+        v3.power        = (v1.power      +v2.power      )*(perStat.power      -1);
+        v3.footSpeed    = (v1.footSpeed  +v2.footSpeed  )*(perStat.footSpeed  -1);
+        v3.attackSpeed  = (v1.attackSpeed+v2.attackSpeed)*(perStat.attackSpeed-1);
+        v3.evasion      = (v1.evasion    +v2.evasion    )*(perStat.evasion    -1);
+        v3.critical     = (v1.critical   +v2.critical   )*(perStat.critical   -1);
+        v3.damage       = (v1.damage     +v2.damage     )*(perStat.damage     -1);
     }
 
     static Hashtable VALUETable = null;

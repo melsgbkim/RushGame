@@ -114,7 +114,7 @@ public class UIItemList : MonoBehaviour
             if (i.data.isAble("Count")) 
                  count = info.LastCount;
 
-            sum += i.data.Exp * count;
+            sum += i.data.Exp * count + (i.data.isAble("Level") ? i.level.sumExp : 0);
         }
         return sum;
     }

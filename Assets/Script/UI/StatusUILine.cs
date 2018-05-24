@@ -11,6 +11,8 @@ public class StatusUILine : MonoBehaviour
     public List<Text> ValueList;
     public List<Text> OperatorList;
 
+    public StatusUIUpdater Parent;
+
     float StatusSettingTime = -1f;
 
     public enum TYPE
@@ -30,31 +32,30 @@ public class StatusUILine : MonoBehaviour
 
     public void StatAdd(int val)
     {
-        if (player.StatAdd(ValueType, val) == false)
-            print("bug");
+        Parent.StatAdd(ValueType, val);
     }
 
     // Update is called once per frame
-    public void UpdateText()
+    public void UpdateText(StatusValues v1, StatusValues v2, StatusValues v3, StatusValues v4)
     {
         switch(type)
         {
             case TYPE.OneValue:
                 if (ValueList.Count < 1) break;
-                ValueList[0].text = player.Stat.GetValue(ValueType).ToString();
+                ValueList[0].text = v1.GetValue(ValueType).ToString();
                 break;
             case TYPE.ThreeValue:
                 if (ValueList.Count < 3) break;
-                ValueList[0].text = player.Stat.GetValue(ValueType).ToString();
-                ValueList[1].text = "0";
-                ValueList[2].text = player.Stat.GetValue(ValueType).ToString();
+                ValueList[0].text = v2.GetValue(ValueType).ToString();
+                ValueList[1].text = v3.GetValue(ValueType).ToString();
+                ValueList[2].text = v4.GetValue(ValueType).ToString();
                 break;
             case TYPE.FourValue:
                 if (ValueList.Count < 4) break;
-                ValueList[0].text = player.Stat.GetValue(ValueType).ToString();
-                ValueList[1].text = "0";
-                ValueList[2].text = "0";
-                ValueList[3].text = player.Stat.GetValue(ValueType).ToString();
+                ValueList[0].text = v1.GetValue(ValueType).ToString();
+                ValueList[1].text = v2.GetValue(ValueType).ToString();
+                ValueList[2].text = v3.GetValue(ValueType).ToString();
+                ValueList[3].text = v4.GetValue(ValueType).ToString();
                 break;
             case TYPE.UniqueValueLevel:
                 if (ValueList.Count < 1) break;

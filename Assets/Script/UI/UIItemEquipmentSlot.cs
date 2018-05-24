@@ -12,7 +12,12 @@ public class UIItemEquipmentSlot : MonoBehaviour
         Error
     }
 
-    static Hashtable EquipTypeTable = null;
+    public UIItemInfoUpdater icon;
+    public GameObject selectSlotImage;
+    public GameObject EmptyImage;
+    public EquipType type = EquipType.Error;
+
+    
     public UIItemEquipmentSlot()
     {
         if(EquipTypeTable == null)
@@ -21,16 +26,37 @@ public class UIItemEquipmentSlot : MonoBehaviour
             EquipTypeTable.Add("Armor",EquipType.Armor);
             EquipTypeTable.Add("Helm" ,EquipType.Helm);
             EquipTypeTable.Add("Other",EquipType.Other);
-
-            
-
-
         }
     }
 
-    public EquipType GetEquipType(string key)
+    public void Clicked()
     {
-        EquipType? result = EquipTypeTable["Armor"] as EquipType?;
+        UIItemEquipmentSlotManager.Get.Click(this);
+        Select(true);
+    }
+
+    public void SetData(Item item)
+    {
+        if(item == null)
+        {
+            icon.gameObject.SetActive(false);
+        }
+        else
+        {
+            icon.SetData(item);
+            icon.gameObject.SetActive(true);
+        }
+    }
+
+    public void Select(bool val)
+    {
+        selectSlotImage.SetActive(val);
+    }
+
+    static Hashtable EquipTypeTable = null;
+    public static EquipType GetEquipType(string key)
+    {
+        EquipType? result = EquipTypeTable[key] as EquipType?;
         if (result.HasValue) return result.Value;
         return EquipType.Error;
     }

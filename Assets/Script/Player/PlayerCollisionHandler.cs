@@ -25,7 +25,7 @@ public class PlayerCollisionHandler : MonoBehaviour
             PlayerStat ComponentStat = GetComponent<PlayerStat>();
 
             float MonsterHp = 1;
-            float PowerLossAmount = MonsterHp / ComponentStat.Stat.mas;
+            float PowerLossAmount = MonsterHp / ComponentStat.statSum.mas;
             float NextSpeed = ComponentMove.BeforeVel.magnitude - PowerLossAmount;
             if (NextSpeed < 0) NextSpeed = 0f;
             NowRigid.velocity = NowRigid.velocity.normalized * NextSpeed;

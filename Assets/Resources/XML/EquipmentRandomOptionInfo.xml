@@ -16,6 +16,9 @@
     <Node id="13"><Critical LvBonus="0.1">1</Critical></Node>
     <Node id="14"><AttackPoint LvBonus="0.1">1</AttackPoint></Node>
     <Node id="15"><Damage LvBonus="0.1">1</Damage></Node>
+    <Node id="16"><STR LvBonus="1.02" per="1">1.1</STR></Node>
+    <Node id="17"><DEX LvBonus="1.02" per="1">1.1</DEX></Node>
+    <Node id="18"><LUK LvBonus="1.02" per="1">1.1</LUK></Node>
   </Option>
   <Option id="Helm0001">
     <Node id="1" ><STR LvBonus="0.2">3</STR></Node>
@@ -33,6 +36,9 @@
     <Node id="13"><Critical LvBonus="0.1">1</Critical></Node>
     <Node id="14"><AttackPoint LvBonus="0.1">1</AttackPoint></Node>
     <Node id="15"><Damage LvBonus="0.1">1</Damage></Node>
+    <Node id="16"><STR LvBonus="1.02" per="1">1.1</STR></Node>
+    <Node id="17"><DEX LvBonus="1.02" per="1">1.1</DEX></Node>
+    <Node id="18"><LUK LvBonus="1.02" per="1">1.1</LUK></Node>
   </Option>
   <Option id="Other0001">
     <Node id="1" ><STR LvBonus="0.2">3</STR></Node>
@@ -50,5 +56,8 @@
     <Node id="13"><Critical LvBonus="0.1">1</Critical></Node>
     <Node id="14"><AttackPoint LvBonus="0.1">1</AttackPoint></Node>
     <Node id="15"><Damage LvBonus="0.1">1</Damage></Node>
+    <Node id="16"><STR LvBonus="1.02" per="1">1.1</STR></Node>
+    <Node id="17"><DEX LvBonus="1.02" per="1">1.1</DEX></Node>
+    <Node id="18"><LUK LvBonus="1.02" per="1">1.1</LUK></Node>
   </Option>
 </EquipmentRandomOptionInfo>

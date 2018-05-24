@@ -25,8 +25,10 @@ public class Item
     public bool isLocked = false;
     public string State = "";
     public List<int> OptionIDList = null;
-    public StatusValues OptionBase = new StatusValues();
-    public StatusValues OptionLvBonus = new StatusValues();
+    public StatusValues OptionBase = new StatusValues(StatusValues.TYPE.integer);
+    public StatusValues OptionLvBonus = new StatusValues(StatusValues.TYPE.integer);
+    public StatusValues OptionPerBase = new StatusValues(StatusValues.TYPE.percent);
+    public StatusValues OptionPerLvBonus = new StatusValues(StatusValues.TYPE.percent);
 
     public UIItemInfoUpdater _UI = null;
 
@@ -86,13 +88,21 @@ public class Item
         if (OptionIDList != null) return;
         OptionIDList = new List<int>();
         EquipmentRandomOptionData OptionData = new EquipmentRandomOptionData(id);
-        int cost = Random.Range(0,15);
+        int cost = Random.Range(0,7);
         List<EquipmentRandomOptionNode> nodeList = OptionData.GetRandomOptionList(cost);
 
         foreach (EquipmentRandomOptionNode node in nodeList)
         {
-            OptionBase += node.statValue;
-            OptionLvBonus += node.statValueLevelBonus;
+            if (node.isInt)
+            {
+                OptionBase += node.statValue;
+                OptionLvBonus += node.statValueLevelBonus;   
+            }
+            else
+            {
+                OptionPerBase += node.statValue;
+                OptionPerLvBonus += node.statValueLevelBonus;
+            }
             OptionIDList.Add(node.id);
         }
     }
@@ -101,6 +111,12 @@ public class Item
     {
         if (OptionIDList != null) TrySetEquipmentRandomOptionData(data.OptionID);
         return OptionBase + OptionLvBonus * (this.level.level < PlayerLevel ? this.level.level : PlayerLevel);
+    }
+
+    public StatusValues OptionValuesPer(int PlayerLevel)
+    {
+        if (OptionIDList != null) TrySetEquipmentRandomOptionData(data.OptionID);
+        return OptionPerBase + OptionPerLvBonus * (this.level.level < PlayerLevel ? this.level.level : PlayerLevel);
     }
 
     public void SetLevel(Level lv)

@@ -11,6 +11,17 @@ public class PlayerItemCategory : ItemCategory
         CategoryUI = UIInventoryManager.Get.GetCategoryUI(type);
     }
 
+    public override void NewData(ItemWithUIData i)
+    {
+        base.NewData(i);
+        i.UI.AddComponent<UIItemClickable>().InitWithEvent(ClickEvent, null);
+    }
+    public void ClickEvent(GameObject obj, UIItemList parent)
+    {
+        UIItemInfoUpdater info = obj.GetComponent<UIItemInfoUpdater>();
+        PopupItemInfoManager.Get.SetActive(info.item);
+    }
+
     public override void DeleteItem(Item i)
     {
         MonoBehaviour.Destroy(i.UI);

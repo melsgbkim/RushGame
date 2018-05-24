@@ -48,7 +48,7 @@ public class ItemCategory
         return result;
     }
 
-    public void NewData(ItemWithUIData i)
+    public virtual void NewData(ItemWithUIData i)
     {
         ItemTableByID.Add(i);
         ItemTableByItemNumber.Add(i);

@@ -9,35 +9,27 @@ public class PlayerStat : MonoBehaviour
     public bool statSaved = true;
     StatusValues statBefore = new StatusValues();
     public StatusValues statInt;
-    public StatusValues Stat
+    public StatusValues statBonusInt = new StatusValues();
+    public StatusValues statBonusPer = new StatusValues();
+    StatusValues _statSum = new StatusValues();
+    public StatusValues statSum
     {
-        get { return statInt; }
+        get { return _statSum; }
         set
         {
-            statInt = new StatusValues(value);
+            _statSum = value;
             SetTime = Time.time;
-            SetChildValue(statInt);
-            SetStat(statInt);
+            SetStat(_statSum);
         }
     }
 
-    public bool StatAdd(StatusValues.VALUE valueType,int val)
+    public void StatUpdate()
     {
-        if(statEditingNow == false)
-        {
-            statEditingNow = true;
-            statSaved = false;
-            statBefore = new StatusValues() + statInt;
-        }
-        if (statInt.StatPoint < val)    val = statInt.StatPoint;
-        if (val == 0) return false;
-        statInt.StatPoint -= val;
-        bool result = statInt.AddValue(valueType, val);
-        if (result == true)
-        {
-            Stat = statInt;
-        }
-        return result;
+        PlayerEquipment p = GetComponent<PlayerEquipment>();
+        statBonusInt = p.GetStatInt();
+        statBonusPer = p.GetStatPer();
+
+        statSum = (statInt + statBonusInt) * statBonusPer;
     }
 
     public void StatSave()
@@ -46,7 +38,7 @@ public class PlayerStat : MonoBehaviour
         {
             statEditingNow = false;
             statSaved = true;
-            Stat = statInt;
+            statSum = statInt;
         }
     }
 
@@ -56,19 +48,8 @@ public class PlayerStat : MonoBehaviour
         {
             statEditingNow = false;
             statSaved = true;
-            Stat = statBefore;
+            statSum = statBefore;
         }
-    }
-
-    void SetChildValue(StatusValues v)
-    {
-        v.startPower = v.str * 2f * v.mas;
-        v.power = v.str * 2f;
-        v.footSpeed = v.dex / (2f * v.mas);
-        v.attackSpeed = v.dex / (2f * v.mas);
-        v.evasion = v.luk / v.mas;
-        v.critical = v.luk / v.mas;
-        v.damage = (v.str + v.dex) * v.mas * v.attackPoint;
     }
 
     void SetStat(StatusValues result)
@@ -80,16 +61,11 @@ public class PlayerStat : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Stat = statInt;
+        StatUpdate();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Set)
-        {
-            Set = false;
-            Stat = statInt;
-        }
     }
 }

@@ -23,7 +23,7 @@ public class UIPlayerPowerText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int Power10 = Mathf.RoundToInt(rigid.velocity.magnitude * stat.Stat.mas * 10);
+        int Power10 = Mathf.RoundToInt(rigid.velocity.magnitude * stat.statSum.mas * 10);
         int Power = Power10 / 10;
         string powerUnderOne = "."+(Power10 % 10);
         if (Power >= 100) powerUnderOne = "";

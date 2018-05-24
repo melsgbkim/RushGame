@@ -38,5 +38,6 @@ public class UIUpgradeItemPreview : MonoBehaviour
     {
         InfoMain.item.SetLevel(subLevel);
         SetActive(InfoMain.item, InfoMain.item);
+        UIItemEquipmentSlotManager.Get.InitAllSlot();
     }
 }

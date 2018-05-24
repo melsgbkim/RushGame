@@ -15,6 +15,7 @@ public class UIUpgradeManager : MonoBehaviour
     public UIItemList OtherList;    
 
     public PlayerInventory player;
+    PlayerEquipment playerEquip;
 
     List<UIPositionUpdater> list = new List<UIPositionUpdater>();
     List<UIPositionUpdater> UIUpdateList = new List<UIPositionUpdater>();
@@ -137,6 +138,7 @@ public class UIUpgradeManager : MonoBehaviour
                 player.ItemRemoveCount(i);
             }
         }
+        UIInventoryManager.Get.NeedCheckUIPos();
         ResetIcon();
     }
 
@@ -156,6 +158,7 @@ public class UIUpgradeManager : MonoBehaviour
         ExpItemList.actionNewItemUI = AddUIItemClickableComponent;
         EquipList.actionNewItemUI = AddUIItemClickableComponent;
         OtherList.actionNewItemUI = AddUIItemClickableComponent;
+        playerEquip = player.GetComponent<PlayerEquipment>();
     }
 
     // Update is called once per frame
@@ -189,6 +192,7 @@ public class UIUpgradeManager : MonoBehaviour
     {
         ResetSelectList();
         if(itemInfo.item != null)OtherList.GetItem(itemInfo.item).UI.GetComponent<UIItemInfoUpdater>().SetSelect(false);
+        PopupItemInfoManager.Get.SetActive(i);
 
         Button.toggle = "Opened";
         Button2.toggle = "Opened";
@@ -206,8 +210,12 @@ public class UIUpgradeManager : MonoBehaviour
         List<Item> listEquip = new List<Item>();
         List<Item> listSum   = new List<Item>();
         foreach (ItemWithUIData data in listDataEtc) listSum.Add(data.item);
-        foreach (ItemWithUIData data in listDataEquip) listEquip.Add(data.item);
-        listSum.AddRange(listEquip);
+        foreach (ItemWithUIData data in listDataEquip)
+        {
+            listEquip.Add(data.item);
+            if(playerEquip.GetItemIndex(data.item) == -1)
+                listSum.Add(data.item);
+        }
 
         ExpItemList.InitItemList(new List<Item>());
         EquipList.InitItemList(listEquip);

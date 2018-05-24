@@ -242,17 +242,17 @@ public class PopupItemInfo : MonoBehaviour
         string Value1Text = "";
         string Value2Text = "";
         string ln = "";
-        
+
         StatusValues statInt = _item.OptionValues(PlayerLevel);
         StatusValues statIntEquipLevel = ((PlayerLevel < _item.level.level) ? _item.OptionValues(_item.level.level) : null);
         for (int i = (int)(StatusValues.VALUE.HP); i <= (int)(StatusValues.VALUE.Damage); i++)
         {
             float val = statInt.GetValue((StatusValues.VALUE)i);
             float val2 = 0;
-            if(statIntEquipLevel != null)
+            if (statIntEquipLevel != null)
                 val2 = statIntEquipLevel.GetValue((StatusValues.VALUE)i);
-            
-            if(val != 0)
+
+            if (val != 0)
             {
                 bool plus = val > 0;
                 bool plus2 = val2 > 0;
@@ -260,10 +260,10 @@ public class PopupItemInfo : MonoBehaviour
                 string valueString = string.Format("{0:#.##}", val);
                 string value2String = (val2 == 0 ? "" : string.Format("{0:#.##}", val2));
 
-                NameText += ln+((StatusValues.VALUE)i).ToString();
+                NameText += ln + ((StatusValues.VALUE)i).ToString();
 
-                if (plus)   Value1Text += ln + "<color=#88ff88>+" + valueString + "</color>";
-                else        Value1Text += ln + "<color=#ff8888>" + valueString + "</color>";
+                if (plus) Value1Text += ln + "<color=#88ff88>+" + valueString + "</color>";
+                else Value1Text += ln + "<color=#ff8888>" + valueString + "</color>";
 
                 if (value2String != "")
                 {
@@ -274,7 +274,42 @@ public class PopupItemInfo : MonoBehaviour
                     Value2Text += ln;
                 if (ln == "") ln = "\n";
 
-                 lineCount += 1;
+                lineCount += 1;
+            }
+        }
+
+        statInt = _item.OptionValuesPer(PlayerLevel);
+        statIntEquipLevel = ((PlayerLevel < _item.level.level) ? _item.OptionValuesPer(_item.level.level) : null);
+        for (int i = (int)(StatusValues.VALUE.HP); i <= (int)(StatusValues.VALUE.Damage); i++)
+        {
+            float val = (statInt.GetValue((StatusValues.VALUE)i) - 1) * 100f;
+            float val2 = 0;
+            if (statIntEquipLevel != null)
+                val2 = (statIntEquipLevel.GetValue((StatusValues.VALUE)i) - 1 )* 100f;
+
+            if (val != 0)
+            {
+                bool plus = val > 0;
+                bool plus2 = val2 > 0;
+                string NameTextLine = "";
+                string valueString = string.Format("{0:#}", val);
+                string value2String = (val2 == 0 ? "" : string.Format("{0:#}", val2));
+
+                NameText += ln + ((StatusValues.VALUE)i).ToString();
+
+                if (plus) Value1Text += ln + "<color=#88ff88>+" + valueString + "%</color>";
+                else Value1Text += ln + "<color=#ff8888>" + valueString + "%</color>";
+
+                if (value2String != "")
+                {
+                    if (plus2) Value2Text += ln + "<color=#668866>(+" + value2String + "%)</color>";
+                    else Value2Text += ln + "<color=#886666>(" + value2String + "%)</color>";
+                }
+                else
+                    Value2Text += ln;
+                if (ln == "") ln = "\n";
+
+                lineCount += 1;
             }
         }
 
