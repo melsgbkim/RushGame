@@ -26,7 +26,7 @@ public class UIItemInfoUpdater : MonoBehaviour
 
     public Image Black;
 
-    public Text State;
+    public Text ItemNumber;
 
     public Image Select;
 
@@ -52,7 +52,12 @@ public class UIItemInfoUpdater : MonoBehaviour
         Icon.sprite = data.SpriteWithIndex;//Sprite
         SetLevel(i.level.level);//HasLevel
         SetCount(i.count);//HasCount
-        if (i != null) item = i;
+        if (i != null)
+        {
+            item = i;
+            ItemNumber.text = "ID " + item.ItemNumber;
+            ItemNumber.gameObject.SetActive(true);
+        }
     }
 
     public void SetData(ItemData data, Hashtable i = null)

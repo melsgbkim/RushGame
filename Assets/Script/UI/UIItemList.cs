@@ -77,6 +77,9 @@ public class UIItemList : MonoBehaviour
     {
         DeleteAllObj();
         AllCategoryClean();
+        IconTable = new Hashtable();
+        CategoryTable = new Hashtable();
+
         for (int i=0;i< list.Count; i++)
         {
             AddItem(list[i]);
@@ -90,8 +93,6 @@ public class UIItemList : MonoBehaviour
             GameObject ui = (IconTable[i] as GameObject);
             Destroy(ui);
         }
-        IconTable = new Hashtable();
-        CategoryTable = new Hashtable();
     }
 
     public void DeleteObj(Item i)

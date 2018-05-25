@@ -103,8 +103,9 @@ public class UIUpgradeManager : MonoBehaviour
 
     public void ResetButton()
     {
-        ResetSelectList();
-        ExpItemList.DeleteAllObj();
+        ResetExpItemList();
+//      ResetSelectList();
+//      ExpItemList.DeleteAllObj();
         CheckExp();
     }
 
@@ -219,6 +220,25 @@ public class UIUpgradeManager : MonoBehaviour
 
         ExpItemList.InitItemList(new List<Item>());
         EquipList.InitItemList(listEquip);
+        OtherList.InitItemList(listSum);
+    }
+
+    public void ResetExpItemList()
+    {
+        List<ItemWithUIData> listDataEtc = player.GetCategoryTable("etc").GetAllData().Cast<ItemWithUIData>().ToList();
+        List<ItemWithUIData> listDataEquip = player.GetCategoryTable("equipment").GetAllData().Cast<ItemWithUIData>().ToList();
+
+        List<Item> listEquip = new List<Item>();
+        List<Item> listSum = new List<Item>();
+        foreach (ItemWithUIData data in listDataEtc) listSum.Add(data.item);
+        foreach (ItemWithUIData data in listDataEquip)
+        {
+            listEquip.Add(data.item);
+            if (playerEquip.GetItemIndex(data.item) == -1)
+                listSum.Add(data.item);
+        }
+
+        ExpItemList.InitItemList(new List<Item>());
         OtherList.InitItemList(listSum);
     }
 
